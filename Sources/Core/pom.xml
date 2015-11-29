@@ -10,7 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ubiquity-core</artifactId>
+    <packaging>pom</packaging>
     <name>Ubiquity :: Root :: Core</name>
 
+    <modules>
+        <module>Datastore</module>
+    </modules>
 
 </project>
