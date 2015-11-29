@@ -10,6 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ubiquity-gateways</artifactId>
-
+    <name>Ubiquity :: Root :: Gateways</name>
 
 </project>
