@@ -8,37 +8,43 @@ import com.google.common.base.Strings;
 public final class DataShelf {
 
     private final String identifier;
-    private final Map<String, IDataType> dataTypes;
+    private final Map<String, Data> data;
 
     public static DataShelf create(String identifier) {
         return new DataShelf(identifier);
     }
 
+
     private DataShelf(String identifier) {
         checkIdentifier(identifier);
         this.identifier = identifier;
-        dataTypes = new HashMap<String, IDataType>();
+        data = new HashMap<String, Data>();
     }
+
 
     public String getIdentifier() {
         return identifier;
     }
 
-    public void insertDataType(IDataType dataType) {
-        checkDataType(dataType);
 
-        String identifier = dataType.getIdentifier();
-        if (dataTypes.containsKey(identifier)) {
+    public void insertData(IDataDefinition dataDefinition) {
+        checkDataDefinition(dataDefinition);
+
+        String identifier = dataDefinition.getIdentifier();
+        if (data.containsKey(identifier)) {
             throw new IllegalArgumentException(
                     "Data-type of identifier \"" + identifier + "\" already exists");
         }
-        dataTypes.put(identifier, dataType);
+
+        data.put(identifier, new Data(dataDefinition));
     }
 
-    private void checkDataType(IDataType dataType) {
-        assert dataType != null;
-        assert!Strings.isNullOrEmpty(dataType.getIdentifier());
+
+    private void checkDataDefinition(IDataDefinition dataDefinition) {
+        assert dataDefinition != null;
+        assert!Strings.isNullOrEmpty(dataDefinition.getIdentifier());
     }
+
 
     private static void checkIdentifier(String identifier) {
         assert identifier != null;

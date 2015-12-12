@@ -3,23 +3,22 @@ package com.ubiquity.core.datastore;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Collection;
+
 public class DataShelfTest {
 
     final String DATA_SHELF_ID = "DataShelfIdentifier";
     final String DATA_TYPE_ID = "DataTypeIdentifier";
-
 
     @Test(expected = AssertionError.class)
     public void testNullIdentifier() {
         DataShelf.create(null);
     }
 
-
     @Test(expected = AssertionError.class)
     public void testEmptyIdentifier() {
         DataShelf.create("");
     }
-
 
     @Test
     public void testGetIdentifier() {
@@ -29,22 +28,24 @@ public class DataShelfTest {
         Assert.assertArrayEquals(DATA_SHELF_ID.getBytes(), dataShelf.getIdentifier().getBytes());
     }
 
-
     @Test(expected = IllegalArgumentException.class)
-    public void testInsertExistingDataType() {
+    public void testInsertExistingData() {
         DataShelf dataShelf = DataShelf.create(DATA_SHELF_ID);
 
-        dataShelf.insertDataType(new IDataType() {
-            public String getIdentifier() {
-                return DATA_TYPE_ID;
-            }
-        });
+        dataShelf.insertData(createBasicDataDefinition());
+        dataShelf.insertData(createBasicDataDefinition());
+    }
 
-        dataShelf.insertDataType(new IDataType() {
+    private IDataDefinition createBasicDataDefinition() {
+        return new IDataDefinition() {
             public String getIdentifier() {
                 return DATA_TYPE_ID;
             }
-        });
+
+            public Collection<IFieldDefinition> getFieldDefinitions() {
+                return null;
+            }
+        };
     }
 
 }
