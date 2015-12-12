@@ -12,7 +12,7 @@ public class DataStore {
 
 
     public DataShelf addDataShelf(String identifier) {
-        DataShelf dataShelf = new DataShelf(identifier);
+        DataShelf dataShelf = DataShelf.create(identifier);
         dataShelves.put(identifier, dataShelf);
         return dataShelf;
     }

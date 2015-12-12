@@ -1,12 +1,17 @@
 package com.ubiquity.core.datastore;
 
 
-public class DataShelf {
+public final class DataShelf {
 
     private final String identifier;
 
 
-    public DataShelf(String identifier) {
+    public static DataShelf create(String identifier) {
+        return new DataShelf(identifier);
+    }
+
+
+    private DataShelf(String identifier) {
         checkIdentifier(identifier);
         this.identifier = identifier;
     }
