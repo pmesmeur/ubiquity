@@ -2,23 +2,17 @@ package com.ubiquity.core.datastore.utils;
 
 import static com.ubiquity.core.datastore.IFieldDefinition.DataType.*;
 import static com.ubiquity.core.datastore.IFieldDefinition.Kind;
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.INDEXED;
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.MANDATORY;
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.OPTIONAL;
+import static com.ubiquity.core.datastore.IFieldDefinition.Kind.*;
 
 import com.ubiquity.core.datastore.IDataDefinition;
 
 public class DataDefinitionHelper {
 
     public static IDataDefinition createBasicEntryDataDefinition() {
-        return createBasicEntryDataDefinition(MANDATORY);
+        return createEntryDataDefinition(PRIMARY);
     }
 
-    public static IDataDefinition createFullIndexedEntryDataDefinition() {
-        return createBasicEntryDataDefinition(INDEXED);
-    }
-
-    private static IDataDefinition createBasicEntryDataDefinition(Kind kind) {
+    private static IDataDefinition createEntryDataDefinition(Kind kind) {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
 
         return dataDefinitionBuilder.withIdentifier("BasicData")

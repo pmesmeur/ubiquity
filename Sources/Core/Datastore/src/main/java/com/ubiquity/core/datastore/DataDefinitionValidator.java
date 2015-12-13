@@ -1,10 +1,10 @@
 package com.ubiquity.core.datastore;
 
-import com.google.common.base.Strings;
+import static com.ubiquity.core.datastore.IFieldDefinition.DataType.OBJECT;
 
 import java.util.Collection;
 
-import static com.ubiquity.core.datastore.IFieldDefinition.DataType.OBJECT;
+import com.google.common.base.Strings;
 
 class DataDefinitionValidator {
 
@@ -12,7 +12,8 @@ class DataDefinitionValidator {
         assert dataDefinition != null;
 
         validateIdentifier(dataDefinition.getIdentifier());
-        validateFieldDefinitions(dataDefinition.getFieldDefinitions());
+        validateFieldDefinitions(dataDefinition.getIdentifier(),
+                dataDefinition.getFieldDefinitions());
     }
 
     private static void validateIdentifier(String identifier) {
@@ -20,12 +21,21 @@ class DataDefinitionValidator {
     }
 
 
-    private static void validateFieldDefinitions(Collection<IFieldDefinition> fieldDefinitions) {
+    private static void validateFieldDefinitions(String identifier,
+            Collection<IFieldDefinition> fieldDefinitions) {
         assert fieldDefinitions != null;
         assert fieldDefinitions.size() > 0;
 
+        boolean hasAtLeastOneUniqueField = false;
+
         for (IFieldDefinition fieldDefinition : fieldDefinitions) {
+            hasAtLeastOneUniqueField |= fieldDefinition.getKind().isUnique();
             validateFieldDefinition(fieldDefinition);
+        }
+
+        if (!hasAtLeastOneUniqueField) {
+            throw new RuntimeException(
+                    "The data \"" + identifier + "\" is not defined has having any unique key");
         }
     }
 

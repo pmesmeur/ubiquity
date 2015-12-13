@@ -1,14 +1,12 @@
 package com.ubiquity.core.datastore;
 
 import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.createBasicEntryDataDefinition;
-import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.createFullIndexedEntryDataDefinition;
-
-import org.junit.Assert;
-import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 public class DataTest {
 
@@ -38,14 +36,8 @@ public class DataTest {
     }
 
     @Test
-    public void testNoIndexes() {
-        Data data = new Data(createBasicEntryDataDefinition());
-        Assert.assertEquals(0, data.getIndexes().size());
-    }
-
-    @Test
     public void testIndexesCreated() {
-        Data data = new Data(createFullIndexedEntryDataDefinition());
+        Data data = new Data(createBasicEntryDataDefinition());
         Map<String, Index> indexes = data.getIndexes();
 
         Assert.assertEquals(5, indexes.size());
@@ -59,7 +51,7 @@ public class DataTest {
 
     @Test
     public void testEntryIndexed() {
-        Data data = new Data(createFullIndexedEntryDataDefinition());
+        Data data = new Data(createBasicEntryDataDefinition());
         Map<String, Object> entryValues = createEntryValues();
         data.insert(entryValues);
         data.insert(entryValues);
