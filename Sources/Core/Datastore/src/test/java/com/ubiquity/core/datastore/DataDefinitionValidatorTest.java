@@ -2,6 +2,7 @@ package com.ubiquity.core.datastore;
 
 import static com.ubiquity.core.datastore.IFieldDefinition.DataType.BOOLEAN;
 import static com.ubiquity.core.datastore.IFieldDefinition.DataType.OBJECT;
+import static com.ubiquity.core.datastore.IFieldDefinition.Kind.INDEXED;
 import static com.ubiquity.core.datastore.IFieldDefinition.Kind.PRIMARY;
 
 import org.junit.Test;
@@ -57,6 +58,16 @@ public class DataDefinitionValidatorTest {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
         dataDefinitionBuilder.withIdentifier("Identifier").addFieldDefinition()
                 .withName("Field").withType(OBJECT).withKind(PRIMARY)
+                .build();
+        DataDefinitionValidator
+                .validate(dataDefinitionBuilder.build());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testExceptionIfNoPrimaryField() {
+        DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
+        dataDefinitionBuilder.withIdentifier("Identifier").addFieldDefinition()
+                .withName("Field").withType(OBJECT).withKind(INDEXED)
                 .build();
         DataDefinitionValidator
                 .validate(dataDefinitionBuilder.build());
