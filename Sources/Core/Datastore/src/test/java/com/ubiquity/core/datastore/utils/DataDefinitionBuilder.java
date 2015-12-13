@@ -12,7 +12,7 @@ public class DataDefinitionBuilder {
     private String identifier;
     private ArrayList<IFieldDefinition> fieldDefinitions = new ArrayList<IFieldDefinition>();
 
-    IDataDefinition build() {
+    public IDataDefinition build() {
         return new IDataDefinition() {
             public String getIdentifier() {
                 return identifier;

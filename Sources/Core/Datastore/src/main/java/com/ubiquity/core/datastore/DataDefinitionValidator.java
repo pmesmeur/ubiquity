@@ -6,7 +6,7 @@ import java.util.Collection;
 
 import static com.ubiquity.core.datastore.IFieldDefinition.Type.OBJECT;
 
-public class DataDefinitionValidator {
+class DataDefinitionValidator {
 
     public static void validate(IDataDefinition dataDefinition) {
         assert dataDefinition != null;
