@@ -31,7 +31,7 @@ public class Entry {
     private void populateField(IFieldDefinition fieldDefinition, int index, Map<String, Object> values) {
 
         if (isFieldMandatoryAndMissing(fieldDefinition, values)) {
-            /// TODO: throw
+            throw new IllegalArgumentException("field \"" + fieldDefinition.getName() + "\" is mandatory but is missing");
         }
         else {
             fields[index] = fieldValue(fieldDefinition, values);
