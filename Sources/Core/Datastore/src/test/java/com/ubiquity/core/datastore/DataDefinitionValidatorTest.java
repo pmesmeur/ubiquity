@@ -1,6 +1,8 @@
 package com.ubiquity.core.datastore;
 
-import static com.ubiquity.core.datastore.IFieldDefinition.Type.*;
+import static com.ubiquity.core.datastore.IFieldDefinition.DataType.*;
+import static com.ubiquity.core.datastore.IFieldDefinition.Kind.INDEXED;
+import static com.ubiquity.core.datastore.IFieldDefinition.Kind.MANDATORY;
 
 import org.junit.Test;
 
@@ -12,7 +14,7 @@ public class DataDefinitionValidatorTest {
     public void testSuccess() {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
         dataDefinitionBuilder.withIdentifier("Identifier").addFieldDefinition()
-                .withName("Field").withType(BOOLEAN).withIsIndexed(true).withIsMandatory(true)
+                .withName("Field").withType(BOOLEAN).withKind(INDEXED)
                 .build();
         DataDefinitionValidator
                 .validate(dataDefinitionBuilder.build());
@@ -27,7 +29,7 @@ public class DataDefinitionValidatorTest {
     public void testNullIdentifier() {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
         dataDefinitionBuilder.withIdentifier(null).addFieldDefinition()
-                .withName("Field").withType(BOOLEAN).withIsIndexed(false).withIsMandatory(true)
+                .withName("Field").withType(BOOLEAN).withKind(MANDATORY)
                 .build();
         DataDefinitionValidator
                 .validate(dataDefinitionBuilder.build());
@@ -37,7 +39,7 @@ public class DataDefinitionValidatorTest {
     public void testEmptyIdentifier() {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
         dataDefinitionBuilder.withIdentifier("").addFieldDefinition()
-                .withName("Field").withType(BOOLEAN).withIsIndexed(false).withIsMandatory(true)
+                .withName("Field").withType(BOOLEAN).withKind(MANDATORY)
                 .build();
         DataDefinitionValidator
                 .validate(dataDefinitionBuilder.build());
@@ -54,17 +56,7 @@ public class DataDefinitionValidatorTest {
     public void testIndexedFieldObject() {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
         dataDefinitionBuilder.withIdentifier("Identifier").addFieldDefinition()
-                .withName("Field").withType(OBJECT).withIsIndexed(true).withIsMandatory(true)
-                .build();
-        DataDefinitionValidator
-                .validate(dataDefinitionBuilder.build());
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testIndexedAndMandatortyField() {
-        DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
-        dataDefinitionBuilder.withIdentifier("Identifier").addFieldDefinition()
-                .withName("Field").withType(INTEGER).withIsIndexed(true).withIsMandatory(false)
+                .withName("Field").withType(OBJECT).withKind(INDEXED)
                 .build();
         DataDefinitionValidator
                 .validate(dataDefinitionBuilder.build());

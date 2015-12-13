@@ -40,7 +40,7 @@ public class Data {
         Map<String, Index> indexes = new HashMap<String, Index>();
 
         for (IFieldDefinition fieldDefinition : dataDefinition.getFieldDefinitions()) {
-            if (fieldDefinition.isIndexed()) {
+            if (fieldDefinition.getKind().isIndexed()) {
                 indexes.put(fieldDefinition.getName(), new Index());
             }
         }

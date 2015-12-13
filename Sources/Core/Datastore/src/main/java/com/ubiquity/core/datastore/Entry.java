@@ -1,6 +1,6 @@
 package com.ubiquity.core.datastore;
 
-import com.ubiquity.core.datastore.IFieldDefinition.Type;
+import com.ubiquity.core.datastore.IFieldDefinition.DataType;
 
 import java.util.Collection;
 import java.util.Map;
@@ -40,11 +40,11 @@ public class Entry {
 
     private Object fieldValue(IFieldDefinition fieldDefinition, Map<String, Object> values) {
         String fieldName = fieldDefinition.getName();
-        Type fieldType = fieldDefinition.getType();
+        DataType dataType = fieldDefinition.getType();
         Object fieldValue = values.get(fieldName);
 
-        if (fieldType != Type.OBJECT) {
-            fieldValue = checkAndCloneValue(fieldName, fieldType, fieldValue);
+        if (dataType != DataType.OBJECT) {
+            fieldValue = checkAndCloneValue(fieldName, dataType, fieldValue);
         }
 
         return fieldValue;
@@ -52,14 +52,14 @@ public class Entry {
 
 
     private boolean isFieldMandatoryAndMissing(IFieldDefinition fieldDefinition, Map<String, Object> values) {
-        return fieldDefinition.isMandatory() && !values.containsKey(fieldDefinition.getName());
+        return fieldDefinition.getKind().isMandatory() && !values.containsKey(fieldDefinition.getName());
     }
 
 
-    private Object checkAndCloneValue(String fieldName, Type type, Object fieldValue) {
+    private Object checkAndCloneValue(String fieldName, DataType dataType, Object fieldValue) {
         Object result = null;
 
-        switch (type) {
+        switch (dataType) {
 
             case DOUBLE:
                 result = checkAndCloneDoubleValue(fieldName, fieldValue);

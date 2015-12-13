@@ -4,7 +4,7 @@ import com.google.common.base.Strings;
 
 import java.util.Collection;
 
-import static com.ubiquity.core.datastore.IFieldDefinition.Type.OBJECT;
+import static com.ubiquity.core.datastore.IFieldDefinition.DataType.OBJECT;
 
 class DataDefinitionValidator {
 
@@ -33,12 +33,12 @@ class DataDefinitionValidator {
         String name = fieldDefinition.getName();
         assert !Strings.isNullOrEmpty(name);
 
-        if (fieldDefinition.isIndexed()) {
+        if (fieldDefinition.getKind().isIndexed()) {
             if (fieldDefinition.getType() == OBJECT) {
                 throw new IllegalArgumentException("Field \"" + name + "\" is indexed and is of 'OBJECT' type" );
             }
 
-            if (!fieldDefinition.isMandatory()) {
+            if (!fieldDefinition.getKind().isMandatory()) {
                 throw new IllegalArgumentException("Field \"" + name + "\" is index but is not mandatory");
             }
         }

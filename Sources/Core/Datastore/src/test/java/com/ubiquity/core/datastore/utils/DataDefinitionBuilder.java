@@ -2,7 +2,8 @@ package com.ubiquity.core.datastore.utils;
 
 import com.ubiquity.core.datastore.IDataDefinition;
 import com.ubiquity.core.datastore.IFieldDefinition;
-import com.ubiquity.core.datastore.IFieldDefinition.Type;
+import com.ubiquity.core.datastore.IFieldDefinition.DataType;
+import com.ubiquity.core.datastore.IFieldDefinition.Kind;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -38,9 +39,8 @@ public class DataDefinitionBuilder {
 
     public class FieldDefinitionBuilder {
         private String name;
-        private Type type;
-        private boolean isIndexed;
-        private boolean isMandatory;
+        private DataType dataType;
+        private Kind kind;
 
         public DataDefinitionBuilder build() {
             fieldDefinitions.add(new IFieldDefinition() {
@@ -49,17 +49,14 @@ public class DataDefinitionBuilder {
                     return name;
                 }
 
-                public Type getType() {
-                    return type;
+                public DataType getType() {
+                    return dataType;
                 }
 
-                public boolean isIndexed() {
-                    return isIndexed;
+                public Kind getKind() {
+                    return kind;
                 }
 
-                public boolean isMandatory() {
-                    return isMandatory;
-                }
             });
             return DataDefinitionBuilder.this;
         }
@@ -69,18 +66,13 @@ public class DataDefinitionBuilder {
             return this;
         }
 
-        public FieldDefinitionBuilder withType(Type type) {
-            this.type = type;
+        public FieldDefinitionBuilder withType(DataType dataType) {
+            this.dataType = dataType;
             return this;
         }
 
-        public FieldDefinitionBuilder withIsIndexed(boolean isIndexed) {
-            this.isIndexed = isIndexed;
-            return this;
-        }
-
-        public FieldDefinitionBuilder withIsMandatory(boolean isMandatory) {
-            this.isMandatory = isMandatory;
+        public FieldDefinitionBuilder withKind(Kind kind) {
+            this.kind = kind;
             return this;
         }
     }
