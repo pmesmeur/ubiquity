@@ -3,6 +3,7 @@ package com.ubiquity.core.datastore;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 public class Data {
 
@@ -10,9 +11,15 @@ public class Data {
     private final Collection<Entry> entries;
 
     public Data(IDataDefinition dataDefinition) {
+        assert dataDefinition != null;
+
         this.dataDefinition = dataDefinition; /// TODO: make a copy
         this.entries = new ArrayList<Entry>();
     }
 
 
+    public void insert(Map<String, Object> entryValues) {
+
+        Entry entry = new Entry(dataDefinition, entryValues);
+    }
 }

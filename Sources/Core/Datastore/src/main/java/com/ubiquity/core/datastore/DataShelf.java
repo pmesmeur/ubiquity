@@ -18,7 +18,7 @@ public final class DataShelf {
     private DataShelf(String identifier) {
         checkIdentifier(identifier);
         this.identifier = identifier;
-        data = new HashMap<String, Data>();
+        this.data = new HashMap<String, Data>();
     }
 
 
