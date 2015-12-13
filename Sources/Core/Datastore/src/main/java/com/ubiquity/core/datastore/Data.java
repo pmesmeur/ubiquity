@@ -11,7 +11,7 @@ public class Data {
     private final Collection<Entry> entries;
 
     public Data(IDataDefinition dataDefinition) {
-        assert dataDefinition != null;
+        DataDefinitionValidator.validate(dataDefinition);
 
         this.dataDefinition = dataDefinition; /// TODO: make a copy
         this.entries = new ArrayList<Entry>();

@@ -1,5 +1,6 @@
 package com.ubiquity.core.datastore;
 
+import com.ubiquity.core.datastore.utils.DataDefinitionHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,20 +33,10 @@ public class DataShelfTest {
     public void testInsertExistingData() {
         DataShelf dataShelf = DataShelf.create(DATA_SHELF_ID);
 
-        dataShelf.insertData(createBasicDataDefinition());
-        dataShelf.insertData(createBasicDataDefinition());
-    }
+        IDataDefinition dataDefinition = DataDefinitionHelper.createBasicEntryDataDefinition();
 
-    private IDataDefinition createBasicDataDefinition() {
-        return new IDataDefinition() {
-            public String getIdentifier() {
-                return DATA_TYPE_ID;
-            }
-
-            public Collection<IFieldDefinition> getFieldDefinitions() {
-                return null;
-            }
-        };
+        dataShelf.insertData(dataDefinition);
+        dataShelf.insertData(dataDefinition);
     }
 
 }
