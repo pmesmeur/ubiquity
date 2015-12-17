@@ -21,23 +21,37 @@ public class Entry {
     private void populateFields(Collection<IFieldDefinition> fieldDefinitions,
             Map<String, Object> values) {
         int index = 0;
+        int nbInserted = 0;
 
         /// test if all values maps an existing field
 
         for (IFieldDefinition fieldDefinition : fieldDefinitions) {
-            populateField(fieldDefinition, index++, values);
+            if (populateField(fieldDefinition, index++, values)) {
+                nbInserted++;
+            }
+        }
+
+        if (nbInserted != values.size()) {
+            throw new IllegalArgumentException("some fields were provided bus did not fit the data definition");
         }
     }
 
-    private void populateField(IFieldDefinition fieldDefinition, int index,
+    private boolean populateField(IFieldDefinition fieldDefinition, int index,
             Map<String, Object> values) {
-
-        if (isFieldMandatoryAndMissing(fieldDefinition, values)) {
+        boolean inserted = false;
+        if (values.containsKey(fieldDefinition.getName())) {
+            fields[index] = fieldValue(fieldDefinition, values);
+            inserted = true;
+        } else if (isFieldMandatory(fieldDefinition)) {
             throw new IllegalArgumentException(
                     "field \"" + fieldDefinition.getName() + "\" is mandatory but is missing");
-        } else {
-            fields[index] = fieldValue(fieldDefinition, values);
         }
+
+        return inserted;
+    }
+
+    private boolean isFieldMandatory(IFieldDefinition fieldDefinition) {
+        return fieldDefinition.getKind().isMandatory();
     }
 
     private Object fieldValue(IFieldDefinition fieldDefinition, Map<String, Object> values) {
@@ -50,12 +64,6 @@ public class Entry {
         }
 
         return fieldValue;
-    }
-
-    private boolean isFieldMandatoryAndMissing(IFieldDefinition fieldDefinition,
-            Map<String, Object> values) {
-        return fieldDefinition.getKind().isMandatory()
-                && !values.containsKey(fieldDefinition.getName());
     }
 
     private Object checkAndCloneValue(String fieldName, DataType dataType, Object fieldValue) {

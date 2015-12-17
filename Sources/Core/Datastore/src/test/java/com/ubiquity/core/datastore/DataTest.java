@@ -83,7 +83,7 @@ public class DataTest {
         return entryValues;
     }
 
-    @Test//(expected = AssertionError.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testInsertEntryThatDoesNotFitDataDefinition() {
         Data data = new Data(createPrimaryOptionalEntry());
         Map<String, Object> entryValues = createEntryValues();
