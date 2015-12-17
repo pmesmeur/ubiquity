@@ -1,6 +1,7 @@
 package com.ubiquity.core.datastore;
 
 import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.createBasicEntryDataDefinition;
+import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.createPrimaryOptionalEntry;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -64,4 +65,31 @@ public class DataTest {
             Assert.assertTrue(index.getIndexedObjects().size() == data.getEntries().size());
         }
     }
+
+    @Test//(expected = AssertionError.class)
+    public void testDoubleEntryOnPrimaryKey() {
+        Data data = new Data(createPrimaryOptionalEntry());
+        Map<String, Object> entryValues = createPrimaryOptionalEntryValues();
+        data.insert(entryValues);
+        data.insert(entryValues);
+    }
+
+    private Map<String, Object> createPrimaryOptionalEntryValues() {
+        Map<String, Object> entryValues = new HashMap<String, Object>();
+
+        entryValues.put("Field1", new Boolean(true));
+        entryValues.put("Field2", new Double(1.));
+
+        return entryValues;
+    }
+
+    @Test//(expected = AssertionError.class)
+    public void testInsertEntryThatDoesNotFitDataDefinition() {
+        Data data = new Data(createPrimaryOptionalEntry());
+        Map<String, Object> entryValues = createEntryValues();
+
+        data.insert(entryValues);
+    }
+
+
 }

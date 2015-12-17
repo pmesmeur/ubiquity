@@ -49,4 +49,21 @@ public class DataDefinitionHelper {
             .build();
     }
 
+    public static IDataDefinition createPrimaryOptionalEntry() {
+        DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
+
+        return dataDefinitionBuilder.withIdentifier("BasicData")
+                .addFieldDefinition()
+                .withName("Field1")
+                .withType(BOOLEAN)
+                .withKind(PRIMARY)
+                .build()
+                .addFieldDefinition()
+                .withName("Field2")
+                .withType(DOUBLE)
+                .withKind(OPTIONAL)
+                .build()
+                .build();
+    }
+
 }

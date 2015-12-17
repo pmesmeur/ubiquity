@@ -1,9 +1,9 @@
 package com.ubiquity.core.datastore;
 
-import com.ubiquity.core.datastore.IFieldDefinition.DataType;
-
 import java.util.Collection;
 import java.util.Map;
+
+import com.ubiquity.core.datastore.IFieldDefinition.DataType;
 
 public class Entry {
 
@@ -18,22 +18,24 @@ public class Entry {
         populateFields(fieldDefinitions, values);
     }
 
-
-    private void populateFields(Collection<IFieldDefinition> fieldDefinitions, Map<String, Object> values) {
+    private void populateFields(Collection<IFieldDefinition> fieldDefinitions,
+            Map<String, Object> values) {
         int index = 0;
+
+        /// test if all values maps an existing field
 
         for (IFieldDefinition fieldDefinition : fieldDefinitions) {
             populateField(fieldDefinition, index++, values);
         }
     }
 
-
-    private void populateField(IFieldDefinition fieldDefinition, int index, Map<String, Object> values) {
+    private void populateField(IFieldDefinition fieldDefinition, int index,
+            Map<String, Object> values) {
 
         if (isFieldMandatoryAndMissing(fieldDefinition, values)) {
-            throw new IllegalArgumentException("field \"" + fieldDefinition.getName() + "\" is mandatory but is missing");
-        }
-        else {
+            throw new IllegalArgumentException(
+                    "field \"" + fieldDefinition.getName() + "\" is mandatory but is missing");
+        } else {
             fields[index] = fieldValue(fieldDefinition, values);
         }
     }
@@ -50,46 +52,45 @@ public class Entry {
         return fieldValue;
     }
 
-
-    private boolean isFieldMandatoryAndMissing(IFieldDefinition fieldDefinition, Map<String, Object> values) {
-        return fieldDefinition.getKind().isMandatory() && !values.containsKey(fieldDefinition.getName());
+    private boolean isFieldMandatoryAndMissing(IFieldDefinition fieldDefinition,
+            Map<String, Object> values) {
+        return fieldDefinition.getKind().isMandatory()
+                && !values.containsKey(fieldDefinition.getName());
     }
-
 
     private Object checkAndCloneValue(String fieldName, DataType dataType, Object fieldValue) {
         Object result = null;
 
         switch (dataType) {
 
-            case DOUBLE:
-                result = checkAndCloneDoubleValue(fieldName, fieldValue);
-                break;
+        case DOUBLE:
+            result = checkAndCloneDoubleValue(fieldName, fieldValue);
+            break;
 
-            case STRING:
-                result = checkAndCloneStringValue(fieldName, fieldValue);
-                break;
+        case STRING:
+            result = checkAndCloneStringValue(fieldName, fieldValue);
+            break;
 
-            case BOOLEAN:
-                result = checkAndCloneBooleanValue(fieldName, fieldValue);
-                break;
+        case BOOLEAN:
+            result = checkAndCloneBooleanValue(fieldName, fieldValue);
+            break;
 
-            case INTEGER:
-                result = checkAndCloneIntegerValue(fieldName, fieldValue);
-                break;
+        case INTEGER:
+            result = checkAndCloneIntegerValue(fieldName, fieldValue);
+            break;
 
-            case CHAR:
-                result = checkAndCloneCharValue(fieldName, fieldValue);
-                break;
+        case CHAR:
+            result = checkAndCloneCharValue(fieldName, fieldValue);
+            break;
 
-            case OBJECT:
-            default:
-                ; /// Not supposed to come here
+        case OBJECT:
+        default:
+            /// Not supposed to come here
 
         }
 
         return result;
     }
-
 
     private Object checkAndCloneDoubleValue(String fieldName, Object fieldValue) {
         if (!(fieldValue instanceof Double)) {
@@ -98,14 +99,12 @@ public class Entry {
         return new Double((Double) fieldValue);
     }
 
-
     private Object checkAndCloneIntegerValue(String fieldName, Object fieldValue) {
         if (!(fieldValue instanceof Integer)) {
             throwBadType(fieldName, Integer.class);
         }
         return new Integer((Integer) fieldValue);
     }
-
 
     private Object checkAndCloneStringValue(String fieldName, Object fieldValue) {
         if (!(fieldValue instanceof String)) {
@@ -114,14 +113,12 @@ public class Entry {
         return new String((String) fieldValue);
     }
 
-
     private Object checkAndCloneCharValue(String fieldName, Object fieldValue) {
         if (!(fieldValue instanceof Character)) {
             throwBadType(fieldName, Character.class);
         }
         return new Character((Character) fieldValue);
     }
-
 
     private Object checkAndCloneBooleanValue(String fieldName, Object fieldValue) {
         if (!(fieldValue instanceof Boolean)) {
@@ -130,9 +127,9 @@ public class Entry {
         return new Boolean((Boolean) fieldValue);
     }
 
-
     private void throwBadType(String fieldName, Class<?> clazz) {
-        throw new IllegalArgumentException(clazz.toString() + ": invalid type for field \"" + fieldName + "\"");
+        throw new IllegalArgumentException(
+                clazz.toString() + ": invalid type for field \"" + fieldName + "\"");
     }
 
 }
