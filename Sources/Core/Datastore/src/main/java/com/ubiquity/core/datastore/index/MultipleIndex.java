@@ -1,22 +1,25 @@
-package com.ubiquity.core.datastore;
+package com.ubiquity.core.datastore.index;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
-public class Index {
+import java.util.Collection;
+
+class MultipleIndex implements IIndex {
 
     private final Multimap<Object, Object> indexedObjects;
 
-    public Index() {
+    public MultipleIndex() {
         indexedObjects = HashMultimap.create();
     }
 
-
+    @Override
     public void insertObject(Object indexedValue, Object indexedObject) {
         indexedObjects.put(indexedValue, indexedObject);
     }
 
-    protected Multimap<Object, Object> getIndexedObjects() {
-        return indexedObjects;
+    @Override
+    public Collection<Object> getIndexedObjects() {
+        return indexedObjects.values();
     }
 }

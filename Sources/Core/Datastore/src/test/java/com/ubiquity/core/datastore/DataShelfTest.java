@@ -6,6 +6,9 @@ import org.junit.Test;
 
 import java.util.Collection;
 
+import static com.ubiquity.core.datastore.IFieldDefinition.Kind.PRIMARY;
+import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.createEntryDataDefinition;
+
 public class DataShelfTest {
 
     final String DATA_SHELF_ID = "DataShelfIdentifier";
@@ -33,7 +36,7 @@ public class DataShelfTest {
     public void testInsertExistingData() {
         DataShelf dataShelf = DataShelf.create(DATA_SHELF_ID);
 
-        IDataDefinition dataDefinition = DataDefinitionHelper.createBasicEntryDataDefinition();
+        IDataDefinition dataDefinition = createEntryDataDefinition(PRIMARY);
 
         dataShelf.insertData(dataDefinition);
         dataShelf.insertData(dataDefinition);

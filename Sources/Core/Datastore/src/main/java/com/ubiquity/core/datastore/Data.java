@@ -1,13 +1,19 @@
 package com.ubiquity.core.datastore;
 
+import com.ubiquity.core.datastore.index.IIndex;
+import com.ubiquity.core.datastore.index.IndexFactory;
+
 import java.util.*;
+
+import static com.ubiquity.core.datastore.index.IndexFactory.Kind.MULTIPLE;
+import static com.ubiquity.core.datastore.index.IndexFactory.Kind.UNIQUE;
 
 
 public class Data {
 
     private final IDataDefinition dataDefinition;
     private final Collection<Entry> entries;
-    private final Map<String, Index> indexes;
+    private final Map<String, IIndex> indexes;
 
     public Data(IDataDefinition dataDefinition) {
         DataDefinitionValidator.validate(dataDefinition);
@@ -26,29 +32,38 @@ public class Data {
 
 
     private void populateIndexes(Map<String, Object> entryValues, Entry entry) {
-        for (Map.Entry<String, Index> indexEntry : indexes.entrySet()) {
-            String attributeName = indexEntry.getKey();
-            Index index = indexEntry.getValue();
-
-            Object v = entryValues.get(attributeName);
-            index.insertObject(v, entry);
+        for (Map.Entry<String, IIndex> indexEntry : indexes.entrySet()) {
+            populateIndex(entryValues, entry, indexEntry);
         }
     }
 
+    private void populateIndex(Map<String, Object> entryValues, Entry entry, Map.Entry<String, IIndex> indexEntry) {
+        String attributeName = indexEntry.getKey();
+        IIndex index = indexEntry.getValue();
 
-    private static Map<String, Index> buildIndexes(IDataDefinition dataDefinition) {
-        Map<String, Index> indexes = new HashMap<String, Index>();
+        Object v = entryValues.get(attributeName);
+        index.insertObject(v, entry);
+    }
+
+
+    private static Map<String, IIndex> buildIndexes(IDataDefinition dataDefinition) {
+        Map<String, IIndex> indexes = new HashMap<String, IIndex>();
 
         for (IFieldDefinition fieldDefinition : dataDefinition.getFieldDefinitions()) {
-            if (fieldDefinition.getKind().isIndexed()) {
-                indexes.put(fieldDefinition.getName(), new Index());
-            }
+            buildIndex(indexes, fieldDefinition);
         }
 
         return (indexes);
     }
 
-    protected Map<String, Index> getIndexes() {
+    private static void buildIndex(Map<String, IIndex> indexes, IFieldDefinition fieldDefinition) {
+        IFieldDefinition.Kind kind = fieldDefinition.getKind();
+        if (kind.isIndexed()) {
+            indexes.put(fieldDefinition.getName(), IndexFactory.createIndex(kind.isUnique() ? UNIQUE : MULTIPLE));
+        }
+    }
+
+    protected Map<String, IIndex> getIndexes() {
         return indexes;
     }
 

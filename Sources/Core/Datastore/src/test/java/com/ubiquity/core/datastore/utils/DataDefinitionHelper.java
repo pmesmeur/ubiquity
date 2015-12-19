@@ -9,17 +9,17 @@ import com.ubiquity.core.datastore.IDataDefinition;
 public class DataDefinitionHelper {
 
     public static IDataDefinition createBasicEntryDataDefinition() {
-        return createEntryDataDefinition(PRIMARY);
+        return createEntryDataDefinition(INDEXED);
     }
 
-    private static IDataDefinition createEntryDataDefinition(Kind kind) {
+    public static IDataDefinition createEntryDataDefinition(Kind kind) {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
 
         return dataDefinitionBuilder.withIdentifier("BasicData")
             .addFieldDefinition()
                 .withName("Field1")
-                .withType(BOOLEAN)
-                .withKind(kind)
+                .withType(STRING)
+                .withKind(PRIMARY)
                 .build()
             .addFieldDefinition()
                 .withName("Field2")
@@ -38,7 +38,7 @@ public class DataDefinitionHelper {
                 .build()
             .addFieldDefinition()
                 .withName("Field5")
-                .withType(STRING)
+                .withType(BOOLEAN)
                 .withKind(kind)
                 .build()
             .addFieldDefinition()
@@ -55,7 +55,7 @@ public class DataDefinitionHelper {
         return dataDefinitionBuilder.withIdentifier("BasicData")
                 .addFieldDefinition()
                 .withName("Field1")
-                .withType(BOOLEAN)
+                .withType(STRING)
                 .withKind(PRIMARY)
                 .build()
                 .addFieldDefinition()

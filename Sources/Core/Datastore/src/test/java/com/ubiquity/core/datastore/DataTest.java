@@ -6,6 +6,7 @@ import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.createPrima
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ubiquity.core.datastore.index.IIndex;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -25,13 +26,18 @@ public class DataTest {
     }
 
     private Map<String, Object> createEntryValues() {
+        return createEntryValues("Ubiquity");
+    }
+
+    private Map<String, Object> createEntryValues(String primariyKeyValue) {
+        assert primariyKeyValue != null;
         Map<String, Object> entryValues = new HashMap<String, Object>();
 
-        entryValues.put("Field1", new Boolean(true));
+        entryValues.put("Field1", new String(primariyKeyValue));
         entryValues.put("Field2", new Double(1.));
         entryValues.put("Field3", new Character('c'));
         entryValues.put("Field4", new Integer(27));
-        entryValues.put("Field5", new String("Ubiquity"));
+        entryValues.put("Field5", new Boolean(true));
         entryValues.put("Field6", new HashMap<String, String>());
         return entryValues;
     }
@@ -39,7 +45,7 @@ public class DataTest {
     @Test
     public void testIndexesCreated() {
         Data data = new Data(createBasicEntryDataDefinition());
-        Map<String, Index> indexes = data.getIndexes();
+        Map<String, IIndex> indexes = data.getIndexes();
 
         Assert.assertEquals(5, indexes.size());
         Assert.assertTrue(indexes.containsKey("Field1"));
@@ -53,20 +59,19 @@ public class DataTest {
     @Test
     public void testEntryIndexed() {
         Data data = new Data(createBasicEntryDataDefinition());
-        Map<String, Object> entryValues = createEntryValues();
-        data.insert(entryValues);
-        data.insert(entryValues);
-        data.insert(entryValues);
+        data.insert(createEntryValues("HelloWorld"));
+        data.insert(createEntryValues("Foo"));
+        data.insert(createEntryValues("Bar"));
 
         Assert.assertEquals(3, data.getEntries().size());
 
-        Map<String, Index> indexes = data.getIndexes();
-        for (Index index : indexes.values()) {
+        Map<String, IIndex> indexes = data.getIndexes();
+        for (IIndex index : indexes.values()) {
             Assert.assertTrue(index.getIndexedObjects().size() == data.getEntries().size());
         }
     }
 
-    @Test//(expected = AssertionError.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testDoubleEntryOnPrimaryKey() {
         Data data = new Data(createPrimaryOptionalEntry());
         Map<String, Object> entryValues = createPrimaryOptionalEntryValues();
@@ -77,7 +82,7 @@ public class DataTest {
     private Map<String, Object> createPrimaryOptionalEntryValues() {
         Map<String, Object> entryValues = new HashMap<String, Object>();
 
-        entryValues.put("Field1", new Boolean(true));
+        entryValues.put("Field1", new String("Ubiquity"));
         entryValues.put("Field2", new Double(1.));
 
         return entryValues;
@@ -90,6 +95,5 @@ public class DataTest {
 
         data.insert(entryValues);
     }
-
 
 }
