@@ -32,11 +32,11 @@ public class DataTest {
         return createEntryValues("Ubiquity");
     }
 
-    private Map<String, Object> createEntryValues(String primariyKeyValue) {
-        assert primariyKeyValue != null;
+    private Map<String, Object> createEntryValues(String primariyFieldValue) {
+        assert primariyFieldValue != null;
         Map<String, Object> entryValues = new HashMap<String, Object>();
 
-        entryValues.put("Field1", new String(primariyKeyValue));
+        entryValues.put("Field1", new String(primariyFieldValue));
         entryValues.put("Field2", new Double(1.));
         entryValues.put("Field3", new Character('c'));
         entryValues.put("Field4", new Integer(27));
@@ -75,7 +75,7 @@ public class DataTest {
     }
 
     @Test(expected = ValueOfPrimaryFieldAlreadyInsertedException.class)
-    public void testDoubleEntryOnPrimaryKey() {
+    public void testDoubleEntryOnPrimaryField() {
         Data data = new Data(createPrimaryOptionalEntry());
         Map<String, Object> entryValues = createPrimaryOptionalEntryValues();
         data.insert(entryValues);
@@ -92,7 +92,7 @@ public class DataTest {
     }
 
     @Test
-    public void testSizeOfIndexesWhenErrorOnPrimaryKey() {
+    public void testSizeOfIndexesWhenErrorOnPrimaryField() {
         Data data = new Data(createEntryDataDefinition(PRIMARY));
         data.insert(createEntryValues("Field1", 1., 'A', 1, Boolean.FALSE, data));
         try {
