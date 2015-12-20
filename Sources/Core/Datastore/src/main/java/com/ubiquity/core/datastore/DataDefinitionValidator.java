@@ -51,11 +51,6 @@ class DataDefinitionValidator {
             if (fieldDefinition.getType() == OBJECT) {
                 throw new IndexingObjectException(fieldName);
             }
-
-            if (!fieldDefinition.getKind().isMandatory()) {
-                throw new IllegalArgumentException(
-                        "Field \"" + fieldName + "\" is index but is not mandatory");
-            }
         }
         /// TODO: check that two fields does not have the same value
     }
