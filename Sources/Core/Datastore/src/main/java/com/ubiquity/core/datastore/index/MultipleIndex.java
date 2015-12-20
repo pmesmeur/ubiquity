@@ -8,24 +8,24 @@ import com.ubiquity.core.datastore.Entry;
 
 class MultipleIndex implements IIndex {
 
-    private final Multimap<Object, Object> indexedObjects;
+    private final Multimap<Object, Entry> indexedEntries;
 
     public MultipleIndex() {
-        indexedObjects = HashMultimap.create();
+        indexedEntries = HashMultimap.create();
     }
 
     @Override
-    public void insertObject(Object indexedValue, Object indexedObject) {
-        indexedObjects.put(indexedValue, indexedObject);
+    public void insertEntry(Object indexedValue, Entry indexedEntry) {
+        indexedEntries.put(indexedValue, indexedEntry);
     }
 
     @Override
-    public void removeObject(Object indexedValue, Entry indexedObject) {
-        indexedObjects.remove(indexedValue, indexedObject);
+    public void removeEntry(Object indexedValue, Entry indexedEntry) {
+        indexedEntries.remove(indexedValue, indexedEntry);
     }
 
     @Override
-    public Collection<Object> getIndexedObjects() {
-        return indexedObjects.values();
+    public Collection<Entry> getEntry() {
+        return indexedEntries.values();
     }
 }

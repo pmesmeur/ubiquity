@@ -68,7 +68,7 @@ public class DataTest {
 
         Map<String, IIndex> indexes = data.getIndexes();
         for (IIndex index : indexes.values()) {
-            Assert.assertTrue(index.getIndexedObjects().size() == data.getEntries().size());
+            Assert.assertTrue(index.getEntry().size() == data.getEntries().size());
         }
     }
 
@@ -100,7 +100,7 @@ public class DataTest {
 
         for (Map.Entry<String, IIndex> indexEntry : data.getIndexes().entrySet()) {
             IIndex index = indexEntry.getValue();
-            Assert.assertEquals(1, index.getIndexedObjects().size());
+            Assert.assertEquals(1, index.getEntry().size());
         }
     }
 

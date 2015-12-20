@@ -5,8 +5,9 @@ import java.util.Collection;
 import com.ubiquity.core.datastore.Entry;
 
 public interface IIndex {
-    void insertObject(Object indexedValue, Object indexedObject);
+            void insertEntry(Object indexedValue, Entry indexedEntry);
 
-    void removeObject(Object indexedValue, Entry indexedObject);
-    Collection<Object> getIndexedObjects();
+    void removeEntry(Object indexedValue, Entry indexedEntry);
+
+    Collection<Entry> getEntry();
 }

@@ -8,27 +8,27 @@ import com.ubiquity.core.datastore.Entry;
 
 class SingleIndex implements IIndex {
 
-    private final Map<Object, Object> indexedObjects;
+    private final Map<Object, Entry> indexedEntries;
 
     public SingleIndex() {
-        indexedObjects = new HashMap();
+        indexedEntries = new HashMap();
     }
 
     @Override
-    public void insertObject(Object indexedValue, Object indexedObject) {
-        if (indexedObjects.containsKey(indexedValue)) {
+    public void insertEntry(Object indexedValue, Entry indexedEntry) {
+        if (indexedEntries.containsKey(indexedValue)) {
             throw new IllegalArgumentException("value already indexed");
         }
-        indexedObjects.put(indexedValue, indexedObject);
+        indexedEntries.put(indexedValue, indexedEntry);
     }
 
     @Override
-    public void removeObject(Object indexedValue, Entry indexedObject) {
-        indexedObjects.remove(indexedValue, indexedObject);
+    public void removeEntry(Object indexedValue, Entry indexedObject) {
+        indexedEntries.remove(indexedValue, indexedObject);
     }
 
     @Override
-    public Collection<Object> getIndexedObjects() {
-        return indexedObjects.values();
+    public Collection<Entry> getEntry() {
+        return indexedEntries.values();
     }
 }

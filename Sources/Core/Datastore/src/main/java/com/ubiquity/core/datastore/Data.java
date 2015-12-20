@@ -71,7 +71,7 @@ public class Data {
         IIndex index = indexEntry.getValue();
 
         Object indexedObject = entryValues.get(attributeName);
-        index.insertObject(indexedObject, entry);
+        index.insertEntry(indexedObject, entry);
     }
 
     private void unpopulateIndex(Map.Entry<String, IIndex> indexEntry,
@@ -80,7 +80,7 @@ public class Data {
         IIndex index = indexEntry.getValue();
 
         Object indexedObject = entryValues.get(attributeName);
-        index.removeObject(indexedObject, entry);
+        index.removeEntry(indexedObject, entry);
     }
 
     protected Map<String, IIndex> getIndexes() {
