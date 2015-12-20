@@ -8,6 +8,9 @@ import com.google.common.base.Strings;
 
 class DataDefinitionValidator {
 
+    private DataDefinitionValidator() {
+    }
+
     public static void validate(IDataDefinition dataDefinition) {
         assert dataDefinition != null;
 
