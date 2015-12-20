@@ -1,4 +1,4 @@
-package com.ubiquity.core.datastore.index;
+package com.ubiquity.core.datastore.indexes;
 
 import java.util.Collection;
 import java.util.HashMap;

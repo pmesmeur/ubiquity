@@ -9,7 +9,7 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.ubiquity.core.datastore.index.IIndex;
+import com.ubiquity.core.datastore.indexes.IIndex;
 
 public class DataTest {
 

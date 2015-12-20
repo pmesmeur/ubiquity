@@ -1,15 +1,15 @@
 package com.ubiquity.core.datastore;
 
-import static com.ubiquity.core.datastore.index.IndexFactory.Kind.MULTIPLE;
-import static com.ubiquity.core.datastore.index.IndexFactory.Kind.UNIQUE;
+import static com.ubiquity.core.datastore.indexes.IndexFactory.Kind.MULTIPLE;
+import static com.ubiquity.core.datastore.indexes.IndexFactory.Kind.UNIQUE;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ubiquity.core.datastore.index.IIndex;
-import com.ubiquity.core.datastore.index.IndexFactory;
+import com.ubiquity.core.datastore.indexes.IIndex;
+import com.ubiquity.core.datastore.indexes.IndexFactory;
 
 
 public class Data {
