@@ -1,12 +1,15 @@
 package com.ubiquity.core.datastore;
 
-import com.ubiquity.core.datastore.index.IIndex;
-import com.ubiquity.core.datastore.index.IndexFactory;
-
-import java.util.*;
-
 import static com.ubiquity.core.datastore.index.IndexFactory.Kind.MULTIPLE;
 import static com.ubiquity.core.datastore.index.IndexFactory.Kind.UNIQUE;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.ubiquity.core.datastore.index.IIndex;
+import com.ubiquity.core.datastore.index.IndexFactory;
 
 
 public class Data {
@@ -23,29 +26,6 @@ public class Data {
         this.indexes = buildIndexes(dataDefinition);
     }
 
-
-    public void insert(Map<String, Object> entryValues) {
-        Entry entry = new Entry(dataDefinition, entryValues);
-        populateIndexes(entryValues, entry);
-        entries.add(entry);
-    }
-
-
-    private void populateIndexes(Map<String, Object> entryValues, Entry entry) {
-        for (Map.Entry<String, IIndex> indexEntry : indexes.entrySet()) {
-            populateIndex(entryValues, entry, indexEntry);
-        }
-    }
-
-    private void populateIndex(Map<String, Object> entryValues, Entry entry, Map.Entry<String, IIndex> indexEntry) {
-        String attributeName = indexEntry.getKey();
-        IIndex index = indexEntry.getValue();
-
-        Object v = entryValues.get(attributeName);
-        index.insertObject(v, entry);
-    }
-
-
     private static Map<String, IIndex> buildIndexes(IDataDefinition dataDefinition) {
         Map<String, IIndex> indexes = new HashMap<String, IIndex>();
 
@@ -59,8 +39,48 @@ public class Data {
     private static void buildIndex(Map<String, IIndex> indexes, IFieldDefinition fieldDefinition) {
         IFieldDefinition.Kind kind = fieldDefinition.getKind();
         if (kind.isIndexed()) {
-            indexes.put(fieldDefinition.getName(), IndexFactory.createIndex(kind.isUnique() ? UNIQUE : MULTIPLE));
+            indexes.put(fieldDefinition.getName(),
+                    IndexFactory.createIndex(kind.isUnique() ? UNIQUE : MULTIPLE));
         }
+    }
+
+    public void insert(Map<String, Object> entryValues) {
+        Entry entry = new Entry(dataDefinition, entryValues);
+        populateIndexes(entryValues, entry);
+        entries.add(entry);
+    }
+
+    private void populateIndexes(Map<String, Object> entryValues, Entry entry) {
+        try {
+            for (Map.Entry<String, IIndex> indexEntry : indexes.entrySet()) {
+                populateIndex(indexEntry, entryValues, entry);
+            }
+        }
+
+        catch (RuntimeException e) {
+            for (Map.Entry<String, IIndex> indexEntry : indexes.entrySet()) {
+                unpopulateIndex(indexEntry, entryValues, entry);
+            }
+            throw e;
+        }
+    }
+
+    private void populateIndex(Map.Entry<String, IIndex> indexEntry,
+            Map<String, Object> entryValues, Entry entry) {
+        String attributeName = indexEntry.getKey();
+        IIndex index = indexEntry.getValue();
+
+        Object indexedObject = entryValues.get(attributeName);
+        index.insertObject(indexedObject, entry);
+    }
+
+    private void unpopulateIndex(Map.Entry<String, IIndex> indexEntry,
+            Map<String, Object> entryValues, Entry entry) {
+        String attributeName = indexEntry.getKey();
+        IIndex index = indexEntry.getValue();
+
+        Object indexedObject = entryValues.get(attributeName);
+        index.removeObject(indexedObject, entry);
     }
 
     protected Map<String, IIndex> getIndexes() {

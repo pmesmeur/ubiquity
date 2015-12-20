@@ -23,8 +23,6 @@ public class Entry {
         int index = 0;
         int nbInserted = 0;
 
-        /// test if all values maps an existing field
-
         for (IFieldDefinition fieldDefinition : fieldDefinitions) {
             if (populateField(fieldDefinition, index++, values)) {
                 nbInserted++;

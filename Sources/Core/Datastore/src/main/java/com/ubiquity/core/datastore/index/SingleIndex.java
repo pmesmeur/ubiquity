@@ -1,11 +1,10 @@
 package com.ubiquity.core.datastore.index;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.ubiquity.core.datastore.Entry;
 
 class SingleIndex implements IIndex {
 
@@ -21,6 +20,11 @@ class SingleIndex implements IIndex {
             throw new IllegalArgumentException("value already indexed");
         }
         indexedObjects.put(indexedValue, indexedObject);
+    }
+
+    @Override
+    public void removeObject(Object indexedValue, Entry indexedObject) {
+        indexedObjects.remove(indexedValue, indexedObject);
     }
 
     @Override
