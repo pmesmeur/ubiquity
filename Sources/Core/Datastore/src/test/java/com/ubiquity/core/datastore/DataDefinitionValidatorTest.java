@@ -2,11 +2,13 @@ package com.ubiquity.core.datastore;
 
 import static com.ubiquity.core.datastore.IFieldDefinition.DataType.BOOLEAN;
 import static com.ubiquity.core.datastore.IFieldDefinition.DataType.OBJECT;
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.INDEXED;
+import static com.ubiquity.core.datastore.IFieldDefinition.Kind.MANDATORY;
 import static com.ubiquity.core.datastore.IFieldDefinition.Kind.PRIMARY;
 
 import org.junit.Test;
 
+import com.ubiquity.core.datastore.exceptions.IndexingObjectException;
+import com.ubiquity.core.datastore.exceptions.NoPrimaryFieldException;
 import com.ubiquity.core.datastore.utils.DataDefinitionBuilder;
 
 public class DataDefinitionValidatorTest {
@@ -53,7 +55,7 @@ public class DataDefinitionValidatorTest {
                 .validate(dataDefinitionBuilder.withIdentifier("Identifier").build());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IndexingObjectException.class)
     public void testIndexedFieldObject() {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
         dataDefinitionBuilder.withIdentifier("Identifier").addFieldDefinition()
@@ -63,11 +65,11 @@ public class DataDefinitionValidatorTest {
                 .validate(dataDefinitionBuilder.build());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NoPrimaryFieldException.class)
     public void testExceptionIfNoPrimaryField() {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
         dataDefinitionBuilder.withIdentifier("Identifier").addFieldDefinition()
-                .withName("Field").withType(OBJECT).withKind(INDEXED)
+                .withName("Field").withType(OBJECT).withKind(MANDATORY)
                 .build();
         DataDefinitionValidator
                 .validate(dataDefinitionBuilder.build());

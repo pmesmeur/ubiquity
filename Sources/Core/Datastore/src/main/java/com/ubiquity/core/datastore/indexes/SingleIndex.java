@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.ubiquity.core.datastore.Entry;
+import com.ubiquity.core.datastore.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
 
 class SingleIndex implements IIndex {
 
@@ -17,7 +18,7 @@ class SingleIndex implements IIndex {
     @Override
     public void insertEntry(Object indexedValue, Entry indexedEntry) {
         if (indexedEntries.containsKey(indexedValue)) {
-            throw new IllegalArgumentException("value already indexed");
+            throw new ValueOfPrimaryFieldAlreadyInsertedException();
         }
         indexedEntries.put(indexedValue, indexedEntry);
     }

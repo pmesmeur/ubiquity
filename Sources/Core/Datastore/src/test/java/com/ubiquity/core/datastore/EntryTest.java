@@ -7,6 +7,9 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import com.ubiquity.core.datastore.exceptions.MissingMandatoryFieldException;
+import com.ubiquity.core.datastore.exceptions.WrongFieldTypeException;
+
 public class EntryTest {
 
     @Test(expected = AssertionError.class)
@@ -42,7 +45,7 @@ public class EntryTest {
         new Entry(createBasicEntryDataDefinition(), entryValues);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = MissingMandatoryFieldException.class)
     public void testCreatingEntryWithMissingMandatoryField() {
         Map<String, Object> entryValues = new HashMap<String, Object>();
 
@@ -55,7 +58,7 @@ public class EntryTest {
         new Entry(createBasicEntryDataDefinition(), entryValues);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = WrongFieldTypeException.class)
     public void testCreatingEntryWithBadTypedField() {
         Map<String, Object> entryValues = new HashMap<String, Object>();
 

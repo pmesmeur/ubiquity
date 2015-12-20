@@ -9,6 +9,8 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.ubiquity.core.datastore.exceptions.EntryDoesNotFitDataDefinitionException;
+import com.ubiquity.core.datastore.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
 import com.ubiquity.core.datastore.indexes.IIndex;
 
 public class DataTest {
@@ -72,7 +74,7 @@ public class DataTest {
         }
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = ValueOfPrimaryFieldAlreadyInsertedException.class)
     public void testDoubleEntryOnPrimaryKey() {
         Data data = new Data(createPrimaryOptionalEntry());
         Map<String, Object> entryValues = createPrimaryOptionalEntryValues();
@@ -95,7 +97,7 @@ public class DataTest {
         data.insert(createEntryValues("Field1", 1., 'A', 1, Boolean.FALSE, data));
         try {
             data.insert(createEntryValues("Field2", 2., 'B', 1, Boolean.TRUE, data));
-        } catch (IllegalArgumentException e) {
+        } catch (ValueOfPrimaryFieldAlreadyInsertedException e) {
         }
 
         for (Map.Entry<String, IIndex> indexEntry : data.getIndexes().entrySet()) {
@@ -118,7 +120,7 @@ public class DataTest {
         return entryValues;
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = EntryDoesNotFitDataDefinitionException.class)
     public void testInsertEntryThatDoesNotFitDataDefinition() {
         Data data = new Data(createPrimaryOptionalEntry());
         Map<String, Object> entryValues = createEntryValues();

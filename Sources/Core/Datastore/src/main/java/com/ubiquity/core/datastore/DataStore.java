@@ -1,9 +1,10 @@
 package com.ubiquity.core.datastore;
 
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+
+import com.ubiquity.core.datastore.exceptions.DataShelfNotFoundException;
 
 
 public class DataStore {
@@ -21,7 +22,7 @@ public class DataStore {
     public DataShelf getDataShelf(String identifier) {
         DataShelf dataShelf = dataShelves.get(identifier);
         if (dataShelf == null) {
-            throw new NoSuchElementException("Cannot find shelf \"" + identifier + "\"");
+            throw new DataShelfNotFoundException(identifier);
         }
         return dataShelf;
     }
