@@ -46,6 +46,21 @@ public class DataDefinitionHelper {
                 .withType(OBJECT)
                 .withKind(kind.isIndexed() ? MANDATORY : OPTIONAL)
                 .build()
+            .addFieldDefinition()
+                .withName("Field7")
+                .withType(DATE)
+                .withKind(kind)
+                .build()
+            .addFieldDefinition()
+                .withName("Field8")
+                .withType(TIME)
+                .withKind(kind)
+                .build()
+            .addFieldDefinition()
+                .withName("Field9")
+                .withType(DURATION)
+                .withKind(kind)
+                .build()
             .build();
     }
 

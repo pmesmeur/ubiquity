@@ -2,7 +2,11 @@ package com.ubiquity.core.datastore;
 
 import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.createBasicEntryDataDefinition;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import org.junit.Test;
@@ -41,6 +45,9 @@ public class EntryTest {
         entryValues.put("Field4", new Integer(27));
         entryValues.put("Field5", new Boolean(true));
         entryValues.put("Field6", new HashMap<String, String>());
+        entryValues.put("Field7", LocalDate.MAX);
+        entryValues.put("Field8", LocalTime.MAX);
+        entryValues.put("Field9", Duration.ZERO);
 
         new Entry(createBasicEntryDataDefinition(), entryValues);
     }

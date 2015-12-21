@@ -1,7 +1,17 @@
 package com.ubiquity.core.datastore;
 
 public interface IFieldDefinition {
-    enum DataType { INTEGER, DOUBLE, STRING, BOOLEAN, OBJECT, CHAR }
+    enum DataType { INTEGER,
+        DOUBLE,
+        STRING,
+        BOOLEAN,
+        OBJECT,
+        CHAR,
+        DATE,
+        TIME,
+        DURATION
+    }
+
     enum Kind {
         PRIMARY(true, true, true),
         INDEXED(true, true, false),
