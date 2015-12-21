@@ -1,11 +1,13 @@
 package com.ubiquity.core.datastore;
 
+import java.util.Set;
+
 import junit.framework.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.NoSuchElementException;
-import java.util.Set;
+import com.ubiquity.core.datastore.exceptions.DataShelfNotFoundException;
 
 public class DataStoreTest {
 
@@ -28,7 +30,7 @@ public class DataStoreTest {
     }
 
 
-    @Test(expected = NoSuchElementException.class)
+    @Test(expected = DataShelfNotFoundException.class)
     public void testGetUnexistingShelf() {
         testDataShelfInsertions(NB_INSERTIONS);
         dataStore.getDataShelf("hello-world");

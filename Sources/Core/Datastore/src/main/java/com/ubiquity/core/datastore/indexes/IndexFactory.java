@@ -1,11 +1,6 @@
-package com.ubiquity.core.datastore.index;
+package com.ubiquity.core.datastore.indexes;
 
 public class IndexFactory {
-
-    public enum Kind {
-        MULTIPLE,
-        UNIQUE
-    }
 
     private IndexFactory() {
     }
@@ -16,5 +11,10 @@ public class IndexFactory {
         } else {
             return new SingleIndex();
         }
+    }
+
+    public enum Kind {
+        MULTIPLE,
+        UNIQUE
     }
 }

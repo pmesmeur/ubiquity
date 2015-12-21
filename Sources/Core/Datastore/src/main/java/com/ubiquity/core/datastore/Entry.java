@@ -4,6 +4,9 @@ import java.util.Collection;
 import java.util.Map;
 
 import com.ubiquity.core.datastore.IFieldDefinition.DataType;
+import com.ubiquity.core.datastore.exceptions.EntryDoesNotFitDataDefinitionException;
+import com.ubiquity.core.datastore.exceptions.MissingMandatoryFieldException;
+import com.ubiquity.core.datastore.exceptions.WrongFieldTypeException;
 
 public class Entry {
 
@@ -23,8 +26,6 @@ public class Entry {
         int index = 0;
         int nbInserted = 0;
 
-        /// test if all values maps an existing field
-
         for (IFieldDefinition fieldDefinition : fieldDefinitions) {
             if (populateField(fieldDefinition, index++, values)) {
                 nbInserted++;
@@ -32,7 +33,7 @@ public class Entry {
         }
 
         if (nbInserted != values.size()) {
-            throw new IllegalArgumentException("some fields were provided bus did not fit the data definition");
+            throw new EntryDoesNotFitDataDefinitionException();
         }
     }
 
@@ -43,8 +44,7 @@ public class Entry {
             fields[index] = fieldValue(fieldDefinition, values);
             inserted = true;
         } else if (isFieldMandatory(fieldDefinition)) {
-            throw new IllegalArgumentException(
-                    "field \"" + fieldDefinition.getName() + "\" is mandatory but is missing");
+            throw new MissingMandatoryFieldException(fieldDefinition.getName());
         }
 
         return inserted;
@@ -136,8 +136,7 @@ public class Entry {
     }
 
     private void throwBadType(String fieldName, Class<?> clazz) {
-        throw new IllegalArgumentException(
-                clazz.toString() + ": invalid type for field \"" + fieldName + "\"");
+        throw new WrongFieldTypeException(fieldName, clazz);
     }
 
 }

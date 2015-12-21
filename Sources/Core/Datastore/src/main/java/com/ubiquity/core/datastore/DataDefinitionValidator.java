@@ -5,8 +5,13 @@ import static com.ubiquity.core.datastore.IFieldDefinition.DataType.OBJECT;
 import java.util.Collection;
 
 import com.google.common.base.Strings;
+import com.ubiquity.core.datastore.exceptions.IndexingObjectException;
+import com.ubiquity.core.datastore.exceptions.NoPrimaryFieldException;
 
 class DataDefinitionValidator {
+
+    private DataDefinitionValidator() {
+    }
 
     public static void validate(IDataDefinition dataDefinition) {
         assert dataDefinition != null;
@@ -34,22 +39,17 @@ class DataDefinitionValidator {
         }
 
         if (!hasAtLeastOneUniqueField) {
-            throw new RuntimeException(
-                    "The data \"" + identifier + "\" is not defined has having any unique key");
+            throw new NoPrimaryFieldException(identifier);
         }
     }
 
     private static void validateFieldDefinition(IFieldDefinition fieldDefinition) {
-        String name = fieldDefinition.getName();
-        assert !Strings.isNullOrEmpty(name);
+        String fieldName = fieldDefinition.getName();
+        assert!Strings.isNullOrEmpty(fieldName);
 
         if (fieldDefinition.getKind().isIndexed()) {
             if (fieldDefinition.getType() == OBJECT) {
-                throw new IllegalArgumentException("Field \"" + name + "\" is indexed and is of 'OBJECT' type" );
-            }
-
-            if (!fieldDefinition.getKind().isMandatory()) {
-                throw new IllegalArgumentException("Field \"" + name + "\" is index but is not mandatory");
+                throw new IndexingObjectException(fieldName);
             }
         }
         /// TODO: check that two fields does not have the same value
