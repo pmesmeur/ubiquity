@@ -24,7 +24,7 @@ public class DataDefinitionHelper {
             .addFieldDefinition()
                 .withName("Field2")
                 .withType(DOUBLE)
-                .withKind(kind)
+                .withKind(kind.isUnique() ? INDEXED : kind)
                 .build()
             .addFieldDefinition()
                 .withName("Field3")
