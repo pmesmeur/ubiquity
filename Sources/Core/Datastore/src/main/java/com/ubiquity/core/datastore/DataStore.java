@@ -28,7 +28,7 @@ public class DataStore {
     }
 
 
-    public Set<String> getAllShlevesId() {
+    public Set<String> getAllShelvesId() {
         return dataShelves.keySet();
     }
 }

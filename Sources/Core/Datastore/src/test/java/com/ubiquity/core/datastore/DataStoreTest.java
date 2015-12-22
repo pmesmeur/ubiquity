@@ -25,7 +25,7 @@ public class DataStoreTest {
     public void testShelvesInsert() {
         testDataShelfInsertions(NB_INSERTIONS);
 
-        Set<String> dataShelvesId = dataStore.getAllShlevesId();
+        Set<String> dataShelvesId = dataStore.getAllShelvesId();
         Assert.assertEquals(dataShelvesId.size(), NB_INSERTIONS);
     }
 
