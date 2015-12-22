@@ -1,0 +1,1000 @@
+ id  |           substring            | type | substring 
+-----+--------------------------------+------+-----------
+   1 | Afghanistan                    |    1 | 
+   2 | Albania                        |    1 | 
+   3 | Algeria                        |    1 | 
+   4 | American Samoa                 |    1 | 
+   5 | Andorra                        |    1 | 
+   6 | Angola                         |    1 | 
+   7 | Anguilla                       |    1 | 
+   8 | Antarctica                     |    1 | 
+   9 | Antigua and Barbuda            |    1 | 
+  10 | Argentina                      |    1 | 
+  11 | Armenia                        |    1 | 
+  12 | Aruba                          |    1 | 
+  13 | Australia                      |    1 | 
+  14 | Austria                        |    1 | 
+  15 | Azerbaijan                     |    1 | 
+  16 | Bahamas                        |    1 | 
+  17 | Bahrain                        |    1 | 
+  18 | Bangladesh                     |    1 | 
+  19 | Barbados                       |    1 | 
+  20 | Belarus                        |    1 | 
+  21 | Belgium                        |    1 | 
+  22 | Belize                         |    1 | 
+  23 | Benin                          |    1 | 
+  24 | Bermuda                        |    1 | 
+  25 | Bhutan                         |    1 | 
+  26 | Bolivia                        |    1 | 
+  27 | Bosnia and Herzegovina         |    1 | 
+  28 | Botswana                       |    1 | 
+  29 | Bouvet Island                  |    1 | 
+  30 | Brazil                         |    1 | 
+  31 | British Indian Ocean Territory |    1 | 
+  32 | Brunei                         |    1 | 
+  33 | Bulgaria                       |    1 | 
+  34 | Burkina Faso                   |    1 | 
+  35 | Burundi                        |    1 | 
+  36 | Cambodia                       |    1 | 
+  37 | Cameroon                       |    1 | 
+  38 | Canada                         |    1 | 
+  39 | Cape Verde                     |    1 | 
+  40 | Cayman Islands                 |    1 | 
+  41 | Central African Republic       |    1 | 
+  42 | Chad                           |    1 | 
+  43 | Chile                          |    1 | 
+  44 | China                          |    1 | 
+  45 | Christmas Island               |    1 | 
+  46 | Cocos (Keeling) Islands        |    1 | 
+  47 | Colombia                       |    1 | 
+  48 | Comoros                        |    1 | 
+  49 | Congo                          |    1 | 
+  50 | Cook Islands                   |    1 | 
+  51 | Costa Rica                     |    1 | 
+  52 | Côte d'Ivoire                  |    1 | 
+  53 | Croatia                        |    1 | 
+  54 | Cuba                           |    1 | 
+  55 | Cyprus                         |    1 | 
+  56 | Czech Republic                 |    1 | 
+  57 | Denmark                        |    1 | 
+  58 | Djibouti                       |    1 | 
+  59 | Dominica                       |    1 | 
+  60 | Dominican Republic             |    1 | 
+  61 | Timor-Leste                    |    1 | 
+  62 | Ecuador                        |    1 | 
+  63 | Egypt                          |    1 | 
+  64 | El Salvador                    |    1 | 
+  65 | Equatorial Guinea              |    1 | 
+  66 | Eritrea                        |    1 | 
+  67 | Estonia                        |    1 | 
+  68 | Ethiopia                       |    1 | 
+  69 | Falkland Islands               |    1 | 
+  70 | Faroe Islands                  |    1 | 
+  71 | Fiji                           |    1 | 
+  72 | Finland                        |    1 | 
+  73 | France                         |    1 | 
+  75 | French Guiana                  |    1 | 
+  76 | French Polynesia               |    1 | 
+  77 | French Southern Territories    |    1 | 
+  78 | Gabon                          |    1 | 
+  79 | Gambia                         |    1 | 
+  80 | Georgia                        |    1 | 
+  81 | Germany                        |    1 | 
+  82 | Ghana                          |    1 | 
+  83 | Gibraltar                      |    1 | 
+  84 | Greece                         |    1 | 
+  85 | Greenland                      |    1 | 
+  86 | Grenada                        |    1 | 
+  87 | Guadeloupe                     |    1 | 
+  88 | Guam                           |    1 | 
+  89 | Guatemala                      |    1 | 
+  90 | Guinea                         |    1 | 
+  91 | Guinea-Bissau                  |    1 | 
+  92 | Guyana                         |    1 | 
+  93 | Haiti                          |    1 | 
+  94 | Heard Island and McDonald Isla |    1 | 
+  95 | Honduras                       |    1 | 
+  96 | Hong Kong                      |    1 | 
+  97 | Hungary                        |    1 | 
+  98 | Iceland                        |    1 | 
+  99 | India                          |    1 | 
+ 100 | Indonesia                      |    1 | 
+ 101 | Iran                           |    1 | 
+ 102 | Iraq                           |    1 | 
+ 103 | Ireland                        |    1 | 
+ 104 | Israel                         |    1 | 
+ 105 | Italy                          |    1 | 
+ 106 | Jamaica                        |    1 | 
+ 107 | Japan                          |    1 | 
+ 108 | Jordan                         |    1 | 
+ 109 | Kazakhstan                     |    1 | 
+ 110 | Kenya                          |    1 | 
+ 111 | Kiribati                       |    1 | 
+ 112 | North Korea                    |    1 | 
+ 113 | South Korea                    |    1 | 
+ 114 | Kuwait                         |    1 | 
+ 115 | Kyrgyzstan                     |    1 | 
+ 116 | Laos                           |    1 | 
+ 117 | Latvia                         |    1 | 
+ 118 | Lebanon                        |    1 | 
+ 119 | Lesotho                        |    1 | 
+ 120 | Liberia                        |    1 | 
+ 121 | Libya                          |    1 | 
+ 122 | Liechtenstein                  |    1 | 
+ 123 | Lithuania                      |    1 | 
+ 124 | Luxembourg                     |    1 | 
+ 125 | Macao                          |    1 | 
+ 126 | Macedonia                      |    1 | 
+ 127 | Madagascar                     |    1 | 
+ 128 | Malawi                         |    1 | 
+ 129 | Malaysia                       |    1 | 
+ 130 | Maldives                       |    1 | 
+ 131 | Mali                           |    1 | 
+ 132 | Malta                          |    1 | 
+ 133 | Marshall Islands               |    1 | 
+ 134 | Martinique                     |    1 | 
+ 135 | Mauritania                     |    1 | 
+ 136 | Mauritius                      |    1 | 
+ 137 | Mayotte                        |    1 | 
+ 138 | Mexico                         |    1 | 
+ 139 | Federated States of Micronesia |    1 | 
+ 140 | Moldova                        |    1 | 
+ 141 | Monaco                         |    1 | 
+ 142 | Mongolia                       |    1 | 
+ 143 | Montserrat                     |    1 | 
+ 144 | Morocco                        |    1 | 
+ 145 | Mozambique                     |    1 | 
+ 146 | Myanmar                        |    1 | 
+ 147 | Namibia                        |    1 | 
+ 148 | Nauru                          |    1 | 
+ 149 | Nepal                          |    1 | 
+ 150 | Netherlands                    |    1 | 
+ 151 | Netherlands Antilles           |    1 | 
+ 152 | New Caledonia                  |    1 | 
+ 153 | New Zealand                    |    1 | 
+ 154 | Nicaragua                      |    1 | 
+ 155 | Niger                          |    1 | 
+ 156 | Nigeria                        |    1 | 
+ 157 | Niue                           |    1 | 
+ 158 | Norfolk Island                 |    1 | 
+ 159 | Northern Mariana Islands       |    1 | 
+ 160 | Norway                         |    1 | 
+ 161 | Oman                           |    1 | 
+ 162 | Pakistan                       |    1 | 
+ 163 | Palau                          |    1 | 
+ 164 | Panama                         |    1 | 
+ 165 | Papua New Guinea               |    1 | 
+ 166 | Paraguay                       |    1 | 
+ 167 | Peru                           |    1 | 
+ 168 | Philippines                    |    1 | 
+ 169 | Pitcairn                       |    1 | 
+ 170 | Poland                         |    1 | 
+ 171 | Portugal                       |    1 | 
+ 172 | Puerto Rico                    |    1 | 
+ 173 | Qatar                          |    1 | 
+ 174 | Réunion                        |    1 | 
+ 175 | Romania                        |    1 | 
+ 176 | Russia                         |    1 | 
+ 177 | Rwanda                         |    1 | 
+ 178 | Saint Kitts and Nevis          |    1 | 
+ 179 | Saint Lucia                    |    1 | 
+ 180 | Saint Vincent and The Grenadin |    1 | 
+ 181 | Samoa                          |    1 | 
+ 182 | San Marino                     |    1 | 
+ 183 | Sao Tome and Principe          |    1 | 
+ 184 | Saudi Arabia                   |    1 | 
+ 185 | Senegal                        |    1 | 
+ 186 | Seychelles                     |    1 | 
+ 187 | Sierra Leone                   |    1 | 
+ 188 | Singapore                      |    1 | 
+ 189 | Slovakia                       |    1 | 
+ 190 | Slovenia                       |    1 | 
+ 191 | Solomon Islands                |    1 | 
+ 192 | Somalia                        |    1 | 
+ 193 | South Africa                   |    1 | 
+ 194 | Spain                          |    1 | 
+ 195 | Sri Lanka                      |    1 | 
+ 196 | Saint Helena, Ascension and Tr |    1 | 
+ 197 | Saint Pierre and Miquelon      |    1 | 
+ 198 | Sudan                          |    1 | 
+ 199 | Suriname                       |    1 | 
+ 200 | Svalbard and Jan Mayen         |    1 | 
+ 201 | Swaziland                      |    1 | 
+ 202 | Sweden                         |    1 | 
+ 203 | Switzerland                    |    1 | 
+ 204 | Syria                          |    1 | 
+ 205 | Taiwan                         |    1 | 
+ 206 | Tajikistan                     |    1 | 
+ 207 | Tanzania                       |    1 | 
+ 208 | Thailand                       |    1 | 
+ 209 | Togo                           |    1 | 
+ 210 | Tokelau                        |    1 | 
+ 211 | Tonga                          |    1 | 
+ 212 | Trinidad and Tobago            |    1 | 
+ 213 | Tunisia                        |    1 | 
+ 214 | Turkey                         |    1 | 
+ 215 | Turkmenistan                   |    1 | 
+ 216 | Turks and Caicos Islands       |    1 | 
+ 217 | Tuvalu                         |    1 | 
+ 218 | Uganda                         |    1 | 
+ 219 | Ukraine                        |    1 | 
+ 220 | United Arab Emirates           |    1 | 
+ 221 | United Kingdom                 |    1 | 
+ 222 | United States                  |    1 | 
+ 223 | United States Minor Outlying I |    1 | 
+ 224 | Uruguay                        |    1 | 
+ 225 | Uzbekistan                     |    1 | 
+ 226 | Vanuatu                        |    1 | 
+ 227 | Vatican City                   |    1 | 
+ 228 | Venezuela                      |    1 | 
+ 229 | Vietnam                        |    1 | 
+ 230 | British Virgin Islands         |    1 | 
+ 231 | U.S. Virgin Islands            |    1 | 
+ 232 | Wallis and Futuna              |    1 | 
+ 233 | Western Sahara                 |    1 | 
+ 234 | Yemen                          |    1 | 
+ 235 | Yugoslavia                     |    1 | 
+ 236 | Democratic Republic of the Con |    1 | 
+ 237 | Zambia                         |    1 | 
+ 238 | Zimbabwe                       |    1 | 
+ 240 | [Worldwide]                    |      | 
+ 241 | Europe                         |      | 
+ 242 | Serbia and Montenegro          |    1 | 
+ 243 | Soviet Union                   |    1 | 
+ 244 | East Germany                   |    1 | 
+ 245 | Czechoslovakia                 |    1 | 
+ 247 | Montenegro                     |    1 | 
+ 248 | South Georgia and the South Sa |    1 | 
+ 249 | Palestine                      |    1 | 
+ 250 | Åland Islands                  |    1 | 
+ 251 | Guernsey                       |    1 | 
+ 252 | Isle of Man                    |    1 | 
+ 253 | Jersey                         |    1 | 
+ 254 | Serbia                         |    1 | 
+ 255 | Saint Barthélemy               |    1 | 
+ 256 | Saint Martin (French part)     |    1 | 
+ 257 | South Sudan                    |    1 | 
+ 258 | Bonaire, Sint Eustatius and Sa |    1 | 
+ 259 | Curaçao                        |    1 | 
+ 260 | Sint Maarten (Dutch part)      |    1 | 
+ 261 | Maryland                       |    2 | 
+ 262 | Alaska                         |    2 | 
+ 263 | Alabama                        |    2 | 
+ 264 | Arkansas                       |    2 | 
+ 265 | Arizona                        |    2 | 
+ 266 | California                     |    2 | 
+ 267 | Colorado                       |    2 | 
+ 268 | Connecticut                    |    2 | 
+ 269 | Washington, D.C.               |    2 | 
+ 270 | Delaware                       |    2 | 
+ 271 | Florida                        |    2 | 
+ 272 | Georgia                        |    2 | 
+ 273 | Hawaii                         |    2 | 
+ 274 | Iowa                           |    2 | 
+ 275 | Idaho                          |    2 | 
+ 276 | Illinois                       |    2 | 
+ 277 | Indiana                        |    2 | 
+ 278 | Kansas                         |    2 | 
+ 279 | Kentucky                       |    2 | 
+ 280 | Louisiana                      |    2 | 
+ 281 | Massachusetts                  |    2 | 
+ 282 | Maine                          |    2 | 
+ 283 | Michigan                       |    2 | 
+ 284 | Minnesota                      |    2 | 
+ 285 | Missouri                       |    2 | 
+ 286 | Mississippi                    |    2 | 
+ 287 | Montana                        |    2 | 
+ 288 | North Carolina                 |    2 | 
+ 289 | North Dakota                   |    2 | 
+ 290 | Nebraska                       |    2 | 
+ 291 | New Hampshire                  |    2 | 
+ 292 | New Jersey                     |    2 | 
+ 293 | New Mexico                     |    2 | 
+ 294 | Nevada                         |    2 | 
+ 295 | New York                       |    2 | 
+ 296 | Ohio                           |    2 | 
+ 297 | Oklahoma                       |    2 | 
+ 298 | Oregon                         |    2 | 
+ 299 | Pennsylvania                   |    2 | 
+ 300 | Rhode Island                   |    2 | 
+ 301 | South Carolina                 |    2 | 
+ 302 | South Dakota                   |    2 | 
+ 303 | Tennessee                      |    2 | 
+ 304 | Texas                          |    2 | 
+ 305 | Utah                           |    2 | 
+ 306 | Virginia                       |    2 | 
+ 307 | Vermont                        |    2 | 
+ 308 | Washington                     |    2 | 
+ 309 | Wisconsin                      |    2 | 
+ 310 | West Virginia                  |    2 | 
+ 311 | Wyoming                        |    2 | 
+ 312 | Alberta                        |    2 | 
+ 313 | British Columbia               |    2 | 
+ 314 | Manitoba                       |    2 | 
+ 315 | New Brunswick                  |    2 | 
+ 316 | Newfoundland and Labrador      |    2 | 
+ 317 | Nova Scotia                    |    2 | 
+ 318 | Northwest Territories          |    2 | 
+ 319 | Nunavut                        |    2 | 
+ 320 | Ontario                        |    2 | 
+ 321 | Prince Edward Island           |    2 | 
+ 322 | Quebec                         |    2 | 
+ 323 | Saskatchewan                   |    2 | 
+ 324 | Yukon                          |    2 | 
+ 325 | Brandenburg                    |    2 | 
+ 326 | Berlin                         |    3 | 
+ 327 | Baden-Württemberg              |    2 | 
+ 328 | Bayern                         |    2 | 
+ 329 | Bremen                         |    2 | 
+ 330 | Hessen                         |    2 | 
+ 331 | Hamburg                        |    3 | 
+ 332 | Mecklenburg-Vorpommern         |    2 | 
+ 333 | Niedersachsen                  |    2 | 
+ 334 | Nordrhein-Westfalen            |    2 | 
+ 335 | Rheinland-Pfalz                |    2 | 
+ 336 | Schleswig-Holstein             |    2 | 
+ 337 | Saarland                       |    2 | 
+ 338 | Sachsen                        |    2 | 
+ 339 | Sachsen-Anhalt                 |    2 | 
+ 340 | Thüringen                      |    2 | 
+ 341 | Harjumaa                       |    2 | 
+ 342 | Hiiumaa                        |    2 | 
+ 343 | Ida-Virumaa                    |    2 | 
+ 344 | Jõgevamaa                      |    2 | 
+ 345 | Järvamaa                       |    2 | 
+ 346 | Läänemaa                       |    2 | 
+ 347 | Lääne-Virumaa                  |    2 | 
+ 348 | Põlvamaa                       |    2 | 
+ 349 | Pärnumaa                       |    2 | 
+ 350 | Raplamaa                       |    2 | 
+ 351 | Saaremaa                       |    2 | 
+ 352 | Tartumaa                       |    2 | 
+ 353 | Valgamaa                       |    2 | 
+ 354 | Viljandimaa                    |    2 | 
+ 355 | Võrumaa                        |    2 | 
+ 356 | Østfold                        |    2 | 
+ 357 | Akershus                       |    2 | 
+ 358 | Oslo                           |    3 | 
+ 359 | Hedmark                        |    2 | 
+ 360 | Oppland                        |    2 | 
+ 361 | Buskerud                       |    2 | 
+ 362 | Vestfold                       |    2 | 
+ 363 | Telemark                       |    2 | 
+ 364 | Aust-Agder                     |    2 | 
+ 365 | Vest-Agder                     |    2 | 
+ 366 | Rogaland                       |    2 | 
+ 367 | Hordaland                      |    2 | 
+ 368 | Sogn og Fjordane               |    2 | 
+ 369 | Møre og Romsdal                |    2 | 
+ 370 | Sør-Trøndelag                  |    2 | 
+ 371 | Nord-Trøndelag                 |    2 | 
+ 372 | Nordland                       |    2 | 
+ 373 | Troms                          |    2 | 
+ 374 | Finnmark                       |    2 | 
+ 375 | Svalbard                       |    2 | 
+ 376 | Jan Mayen                      |    2 | 
+ 377 | Australian Capital Territory   |    2 | 
+ 378 | New South Wales                |    2 | 
+ 379 | Northern Territory             |    2 | 
+ 380 | Queensland                     |    2 | 
+ 381 | South Australia                |    2 | 
+ 382 | Tasmania                       |    2 | 
+ 383 | Victoria                       |    2 | 
+ 384 | Western Australia              |    2 | 
+ 385 | Hokkaido                       |    2 | 
+ 386 | Aomori                         |    2 | 
+ 387 | Iwate                          |    2 | 
+ 388 | Miyagi                         |    2 | 
+ 389 | Akita                          |    2 | 
+ 390 | Yamagata                       |    2 | 
+ 391 | Fukushima                      |    2 | 
+ 392 | Ibaraki                        |    2 | 
+ 393 | Tochigi                        |    2 | 
+ 394 | Gunma                          |    2 | 
+ 395 | Saitama                        |    2 | 
+ 396 | Chiba                          |    2 | 
+ 397 | Tokyo                          |    2 | 
+ 398 | Kanagawa                       |    2 | 
+ 399 | Niigata                        |    2 | 
+ 400 | Toyama                         |    2 | 
+ 401 | Ishikawa                       |    2 | 
+ 402 | Fukui                          |    2 | 
+ 403 | Yamanashi                      |    2 | 
+ 404 | Nagano                         |    2 | 
+ 405 | Gifu                           |    2 | 
+ 406 | Shizuoka                       |    2 | 
+ 407 | Aichi                          |    2 | 
+ 408 | Mie                            |    2 | 
+ 409 | Shiga                          |    2 | 
+ 410 | Kyoto                          |    2 | 
+ 411 | Osaka                          |    2 | 
+ 412 | Hyogo                          |    2 | 
+ 413 | Nara                           |    2 | 
+ 414 | Wakayama                       |    2 | 
+ 415 | Tottori                        |    2 | 
+ 416 | Shimane                        |    2 | 
+ 417 | Okayama                        |    2 | 
+ 418 | Hiroshima                      |    2 | 
+ 419 | Yamaguchi                      |    2 | 
+ 420 | Tokushima                      |    2 | 
+ 421 | Kagawa                         |    2 | 
+ 422 | Ehime                          |    2 | 
+ 423 | Kochi                          |    2 | 
+ 424 | Fukuoka                        |    2 | 
+ 425 | Saga                           |    2 | 
+ 426 | Nagasaki                       |    2 | 
+ 427 | Kumamoto                       |    2 | 
+ 428 | Oita                           |    2 | 
+ 429 | Miyazaki                       |    2 | 
+ 430 | Kagoshima                      |    2 | 
+ 431 | Okinawa                        |    2 | 
+ 432 | England                        |    2 | 
+ 433 | Northern Ireland               |    2 | 
+ 434 | Scotland                       |    2 | 
+ 435 | Wales                          |    2 | 
+ 436 | Etelä-Karjala                  |    2 | 
+ 437 | Etelä-Pohjanmaa                |    2 | 
+ 438 | Etelä-Savo                     |    2 | 
+ 439 | Kainuu                         |    2 | 
+ 440 | Kanta-Häme                     |    2 | 
+ 441 | Keski-Pohjanmaa                |    2 | 
+ 442 | Keski-Suomi                    |    2 | 
+ 443 | Kymenlaakso                    |    2 | 
+ 444 | Lappi                          |    2 | 
+ 445 | Pirkanmaa                      |    2 | 
+ 446 | Pohjanmaa                      |    2 | 
+ 447 | Pohjois-Karjala                |    2 | 
+ 448 | Pohjois-Pohjanmaa              |    2 | 
+ 449 | Pohjois-Savo                   |    2 | 
+ 450 | Päijät-Häme                    |    2 | 
+ 451 | Satakunta                      |    2 | 
+ 452 | Uusimaa                        |    2 | 
+ 453 | Varsinais-Suomi                |    2 | 
+ 454 | Bonaire                        |    2 | 
+ 455 | Saba                           |    2 | 
+ 456 | Sint Eustatius                 |    2 | 
+ 457 | Drenthe                        |    2 | 
+ 458 | Flevoland                      |    2 | 
+ 459 | Fryslân                        |    2 | 
+ 460 | Gelderland                     |    2 | 
+ 461 | Groningen                      |    2 | 
+ 462 | Limburg                        |    2 | 
+ 463 | Noord-Brabant                  |    2 | 
+ 464 | Noord-Holland                  |    2 | 
+ 465 | Overijssel                     |    2 | 
+ 466 | Utrecht                        |    2 | 
+ 467 | Zeeland                        |    2 | 
+ 468 | Zuid-Holland                   |    2 | 
+ 469 | Stockholm                      |    2 | 
+ 470 | Västerbotten                   |    2 | 
+ 471 | Norrbotten                     |    2 | 
+ 472 | Uppsala                        |    2 | 
+ 473 | Södermanland                   |    2 | 
+ 474 | Östergötland                   |    2 | 
+ 475 | Jönköping                      |    2 | 
+ 476 | Kronoberg                      |    2 | 
+ 477 | Kalmar                         |    2 | 
+ 478 | Gotland                        |    2 | 
+ 479 | Blekinge                       |    2 | 
+ 480 | Skåne                          |    2 | 
+ 481 | Halland                        |    2 | 
+ 482 | Västra Götaland                |    2 | 
+ 483 | Värmland                       |    2 | 
+ 484 | Örebro                         |    2 | 
+ 485 | Västmanland                    |    2 | 
+ 486 | Dalarna                        |    2 | 
+ 487 | Gävleborg                      |    2 | 
+ 488 | Västernorrland                 |    2 | 
+ 489 | Jämtland                       |    2 | 
+ 490 | Dolnośląskie                   |    2 | 
+ 491 | Kujawsko-pomorskie             |    2 | 
+ 492 | Lubuskie                       |    2 | 
+ 493 | Łódzkie                        |    2 | 
+ 494 | Lubelskie                      |    2 | 
+ 495 | Małopolskie                    |    2 | 
+ 496 | Mazowieckie                    |    2 | 
+ 497 | Opolskie                       |    2 | 
+ 498 | Podlaskie                      |    2 | 
+ 499 | Podkarpackie                   |    2 | 
+ 500 | Pomorskie                      |    2 | 
+ 501 | Świętokrzyskie                 |    2 | 
+ 502 | Śląskie                        |    2 | 
+ 503 | Warmińsko-mazurskie            |    2 | 
+ 504 | Wielkopolskie                  |    2 | 
+ 505 | Zachodniopomorskie             |    2 | 
+ 506 | Adana                          |    2 | 
+ 507 | Adıyaman                       |    2 | 
+ 508 | Afyonkarahisar                 |    2 | 
+ 509 | Ağrı                           |    2 | 
+ 510 | Amasya                         |    2 | 
+ 511 | Ankara                         |    2 | 
+ 512 | Antalya                        |    2 | 
+ 513 | Artvin                         |    2 | 
+ 514 | Aydın                          |    2 | 
+ 515 | Balıkesir                      |    2 | 
+ 516 | Bilecik                        |    2 | 
+ 517 | Bingöl                         |    2 | 
+ 518 | Bitlis                         |    2 | 
+ 519 | Bolu                           |    2 | 
+ 520 | Burdur                         |    2 | 
+ 521 | Bursa                          |    2 | 
+ 522 | Çanakkale                      |    2 | 
+ 523 | Çankırı                        |    2 | 
+ 524 | Çorum                          |    2 | 
+ 525 | Denizli                        |    2 | 
+ 526 | Diyarbakır                     |    2 | 
+ 527 | Edirne                         |    2 | 
+ 528 | Elazığ                         |    2 | 
+ 529 | Erzincan                       |    2 | 
+ 530 | Erzurum                        |    2 | 
+ 531 | Eskişehir                      |    2 | 
+ 532 | Gaziantep                      |    2 | 
+ 533 | Giresun                        |    2 | 
+ 534 | Gümüşhane                      |    2 | 
+ 535 | Hakkâri                        |    2 | 
+ 536 | Hatay                          |    2 | 
+ 537 | Isparta                        |    2 | 
+ 538 | Mersin                         |    2 | 
+ 539 | İstanbul                       |    2 | 
+ 540 | İzmir                          |    2 | 
+ 541 | Kars                           |    2 | 
+ 542 | Kastamonu                      |    2 | 
+ 543 | Kayseri                        |    2 | 
+ 544 | Kırklareli                     |    2 | 
+ 545 | Kırşehir                       |    2 | 
+ 546 | Kocaeli                        |    2 | 
+ 547 | Konya                          |    2 | 
+ 548 | Kütahya                        |    2 | 
+ 549 | Malatya                        |    2 | 
+ 550 | Manisa                         |    2 | 
+ 551 | Kahramanmaraş                  |    2 | 
+ 552 | Mardin                         |    2 | 
+ 553 | Muğla                          |    2 | 
+ 554 | Muş                            |    2 | 
+ 555 | Nevşehir                       |    2 | 
+ 556 | Niğde                          |    2 | 
+ 557 | Ordu                           |    2 | 
+ 558 | Rize                           |    2 | 
+ 559 | Sakarya                        |    2 | 
+ 560 | Samsun                         |    2 | 
+ 561 | Siirt                          |    2 | 
+ 562 | Sinop                          |    2 | 
+ 563 | Sivas                          |    2 | 
+ 564 | Tekirdağ                       |    2 | 
+ 565 | Tokat                          |    2 | 
+ 566 | Trabzon                        |    2 | 
+ 567 | Tunceli                        |    2 | 
+ 568 | Şanlıurfa                      |    2 | 
+ 569 | Uşak                           |    2 | 
+ 570 | Van                            |    2 | 
+ 571 | Yozgat                         |    2 | 
+ 572 | Zonguldak                      |    2 | 
+ 573 | Aksaray                        |    2 | 
+ 574 | Bayburt                        |    2 | 
+ 575 | Karaman                        |    2 | 
+ 576 | Kırıkkale                      |    2 | 
+ 577 | Batman                         |    2 | 
+ 578 | Şırnak                         |    2 | 
+ 579 | Bartın                         |    2 | 
+ 580 | Ardahan                        |    2 | 
+ 581 | Iğdır                          |    2 | 
+ 582 | Yalova                         |    2 | 
+ 583 | Karabük                        |    2 | 
+ 584 | Kilis                          |    2 | 
+ 585 | Osmaniye                       |    2 | 
+ 586 | Düzce                          |    2 | 
+ 587 | Aargau                         |    2 | 
+ 588 | Appenzell Innerrhoden          |    2 | 
+ 589 | Appenzell Ausserrhoden         |    2 | 
+ 590 | Bern                           |    2 | 
+ 591 | Basel-Landschaft               |    2 | 
+ 592 | Basel-Stadt                    |    2 | 
+ 593 | Fribourg                       |    2 | 
+ 594 | Genève                         |    2 | 
+ 595 | Glarus                         |    2 | 
+ 596 | Graubünden                     |    2 | 
+ 597 | Jura                           |    2 | 
+ 598 | Luzern                         |    2 | 
+ 599 | Neuchâtel                      |    2 | 
+ 600 | Nidwalden                      |    2 | 
+ 601 | Obwalden                       |    2 | 
+ 602 | Sankt Gallen                   |    2 | 
+ 603 | Schaffhausen                   |    2 | 
+ 604 | Solothurn                      |    2 | 
+ 605 | Schwyz                         |    2 | 
+ 606 | Thurgau                        |    2 | 
+ 607 | Ticino                         |    2 | 
+ 608 | Uri                            |    2 | 
+ 609 | Vaud                           |    2 | 
+ 610 | Valais                         |    2 | 
+ 611 | Zug                            |    2 | 
+ 612 | Zürich                         |    2 | 
+ 613 | North Denmark Region           |    2 | 
+ 614 | Central Denmark Region         |    2 | 
+ 615 | Region of Southern Denmark     |    2 | 
+ 616 | Capital Region of Denmark      |    2 | 
+ 617 | Region Zealand                 |    2 | 
+ 618 | Acre                           |    2 | 
+ 619 | Alagoas                        |    2 | 
+ 620 | Amazonas                       |    2 | 
+ 621 | Amapá                          |    2 | 
+ 622 | Bahia                          |    2 | 
+ 623 | Ceará                          |    2 | 
+ 624 | Distrito Federal               |    2 | 
+ 625 | Espírito Santo                 |    2 | 
+ 626 | Goiás                          |    2 | 
+ 627 | Maranhão                       |    2 | 
+ 628 | Minas Gerais                   |    2 | 
+ 629 | Mato Grosso do Sul             |    2 | 
+ 630 | Mato Grosso                    |    2 | 
+ 631 | Pará                           |    2 | 
+ 632 | Paraíba                        |    2 | 
+ 633 | Pernambuco                     |    2 | 
+ 634 | Piauí                          |    2 | 
+ 635 | Paraná                         |    2 | 
+ 636 | Rio de Janeiro                 |    2 | 
+ 637 | Rio Grande do Norte            |    2 | 
+ 638 | Rondônia                       |    2 | 
+ 639 | Roraima                        |    2 | 
+ 640 | Rio Grande do Sul              |    2 | 
+ 641 | Santa Catarina                 |    2 | 
+ 642 | Sergipe                        |    2 | 
+ 643 | São Paulo                      |    2 | 
+ 644 | Tocantins                      |    2 | 
+ 645 | Burgenland                     |    2 | 
+ 646 | Kärnten                        |    2 | 
+ 647 | Niederösterreich               |    2 | 
+ 648 | Oberösterreich                 |    2 | 
+ 649 | Salzburg                       |    2 | 
+ 650 | Steiermark                     |    2 | 
+ 651 | Tirol                          |    2 | 
+ 652 | Vorarlberg                     |    2 | 
+ 653 | Wien                           |    3 | 
+ 654 | Andaman and Nicobar Islands    |    2 | 
+ 655 | Andhra Pradesh                 |    2 | 
+ 656 | Arunachal Pradesh              |    2 | 
+ 657 | Assam                          |    2 | 
+ 658 | Bihar                          |    2 | 
+ 659 | Chandigarh                     |    2 | 
+ 660 | Chhattisgarh                   |    2 | 
+ 661 | Daman and Diu                  |    2 | 
+ 662 | Delhi                          |    2 | 
+ 663 | Dadra and Nagar Haveli         |    2 | 
+ 664 | Goa                            |    2 | 
+ 665 | Gujarat                        |    2 | 
+ 666 | Himachal Pradesh               |    2 | 
+ 667 | Haryana                        |    2 | 
+ 668 | Jharkhand                      |    2 | 
+ 669 | Jammu and Kashmir              |    2 | 
+ 670 | Karnataka                      |    2 | 
+ 671 | Kerala                         |    2 | 
+ 672 | Lakshadweep                    |    2 | 
+ 673 | Maharashtra                    |    2 | 
+ 674 | Meghalaya                      |    2 | 
+ 675 | Manipur                        |    2 | 
+ 676 | Madhya Pradesh                 |    2 | 
+ 677 | Mizoram                        |    2 | 
+ 678 | Nagaland                       |    2 | 
+ 679 | Odisha                         |    2 | 
+ 680 | Punjab                         |    2 | 
+ 681 | Puducherry (Pondicherry)       |    2 | 
+ 682 | Rajasthan                      |    2 | 
+ 683 | Sikkim                         |    2 | 
+ 684 | Tamil Nadu                     |    2 | 
+ 685 | Tripura                        |    2 | 
+ 686 | Uttar Pradesh                  |    2 | 
+ 687 | Uttarakhand                    |    2 | 
+ 688 | West Bengal                    |    2 | 
+ 689 | Connaught                      |    2 | 
+ 690 | Leinster                       |    2 | 
+ 691 | Munster                        |    2 | 
+ 692 | Ulster                         |    2 | 
+ 693 | Salta                          |    2 | 
+ 694 | Buenos Aires                   |    2 | 
+ 695 | Buenos Aires                   |    3 | 
+ 696 | San Luis                       |    2 | 
+ 697 | Entre Ríos                     |    2 | 
+ 698 | La Rioja                       |    2 | 
+ 699 | Santiago del Estero            |    2 | 
+ 700 | Chaco                          |    2 | 
+ 701 | San Juan                       |    2 | 
+ 702 | Catamarca                      |    2 | 
+ 703 | La Pampa                       |    2 | 
+ 704 | Mendoza                        |    2 | 
+ 705 | Misiones                       |    2 | 
+ 706 | Formosa                        |    2 | 
+ 707 | Neuquén                        |    2 | 
+ 708 | Río Negro                      |    2 | 
+ 709 | Santa Fe                       |    2 | 
+ 710 | Tucumán                        |    2 | 
+ 711 | Chubut                         |    2 | 
+ 712 | Tierra del Fuego               |    2 | 
+ 713 | Corrientes                     |    2 | 
+ 714 | Córdoba                        |    2 | 
+ 715 | Jujuy                          |    2 | 
+ 716 | Santa Cruz                     |    2 | 
+ 717 | Baranya                        |    2 | 
+ 718 | Békéscsaba                     |    3 | 
+ 719 | Békés                          |    2 | 
+ 720 | Bács-Kiskun                    |    2 | 
+ 721 | Budapest                       |    3 | 
+ 722 | Borsod-Abaúj-Zemplén           |    2 | 
+ 723 | Csongrád                       |    2 | 
+ 724 | Debrecen                       |    3 | 
+ 725 | Dunaújváros                    |    3 | 
+ 726 | Eger                           |    3 | 
+ 727 | Érd                            |    3 | 
+ 728 | Fejér                          |    2 | 
+ 729 | Győr-Moson-Sopron              |    2 | 
+ 730 | Győr                           |    3 | 
+ 731 | Hajdú-Bihar                    |    2 | 
+ 732 | Heves                          |    2 | 
+ 733 | Hódmezővásárhely               |    3 | 
+ 734 | Jász-Nagykun-Szolnok           |    2 | 
+ 735 | Komárom-Esztergom              |    2 | 
+ 736 | Kecskemét                      |    3 | 
+ 737 | Kaposvár                       |    3 | 
+ 738 | Miskolc                        |    3 | 
+ 739 | Nagykanizsa                    |    3 | 
+ 740 | Nógrád                         |    2 | 
+ 741 | Nyíregyháza                    |    3 | 
+ 742 | Pest                           |    2 | 
+ 743 | Pécs                           |    3 | 
+ 744 | Szeged                         |    3 | 
+ 745 | Székesfehérvár                 |    3 | 
+ 746 | Szombathely                    |    3 | 
+ 747 | Szolnok                        |    3 | 
+ 748 | Sopron                         |    3 | 
+ 749 | Somogy                         |    2 | 
+ 750 | Szekszárd                      |    3 | 
+ 751 | Salgótarján                    |    3 | 
+ 752 | Szabolcs-Szatmár-Bereg         |    2 | 
+ 753 | Tatabánya                      |    3 | 
+ 754 | Tolna                          |    2 | 
+ 755 | Vas                            |    2 | 
+ 756 | Veszprém                       |    2 | 
+ 757 | Veszprém                       |    3 | 
+ 758 | Zala                           |    2 | 
+ 759 | Zalaegerszeg                   |    3 | 
+ 760 | Aveiro                         |    2 | 
+ 761 | Beja                           |    2 | 
+ 762 | Braga                          |    2 | 
+ 763 | Bragança                       |    2 | 
+ 764 | Castelo Branco                 |    2 | 
+ 765 | Coimbra                        |    2 | 
+ 766 | Évora                          |    2 | 
+ 767 | Faro                           |    2 | 
+ 768 | Guarda                         |    2 | 
+ 769 | Leiria                         |    2 | 
+ 770 | Lisboa                         |    2 | 
+ 771 | Portalegre                     |    2 | 
+ 772 | Porto                          |    2 | 
+ 773 | Santarém                       |    2 | 
+ 774 | Setúbal                        |    2 | 
+ 775 | Viana do Castelo               |    2 | 
+ 776 | Vila Real                      |    2 | 
+ 777 | Viseu                          |    2 | 
+ 778 | Açores                         |    2 | 
+ 779 | Madeira                        |    2 | 
+ 780 | Reykjavík                      |    3 | 
+ 781 | Höfuðborgarsvæðið              |    2 | 
+ 782 | Suðurnes                       |    2 | 
+ 783 | Vesturland                     |    2 | 
+ 784 | Vestfirðir                     |    2 | 
+ 785 | Norðurland vestra              |    2 | 
+ 786 | Norðurland eystra              |    2 | 
+ 787 | Austurland                     |    2 | 
+ 788 | Suðurland                      |    2 | 
+ 789 | Canillo                        |    2 | 
+ 790 | Encamp                         |    2 | 
+ 791 | La Massana                     |    2 | 
+ 792 | Ordino                         |    2 | 
+ 793 | Sant Julià de Lòria            |    2 | 
+ 794 | Andorra la Vella               |    3 | 
+ 795 | Escaldes-Engordany             |    2 | 
+ 796 | Alytaus Apskritis              |    2 | 
+ 797 | Klaipėdos Apskritis            |    2 | 
+ 798 | Kauno Apskritis                |    2 | 
+ 799 | Marijampolės Apskritis         |    2 | 
+ 800 | Panevėžio Apskritis            |    2 | 
+ 801 | Šiaulių Apskritis              |    2 | 
+ 802 | Tauragės Apskritis             |    2 | 
+ 803 | Telšių Apskritis               |    2 | 
+ 804 | Utenos Apskritis               |    2 | 
+ 805 | Vilniaus Apskritis             |    2 | 
+ 806 | Alba                           |    2 | 
+ 807 | Argeș                          |    2 | 
+ 808 | Arad                           |    2 | 
+ 809 | București                      |    3 | 
+ 810 | Bacău                          |    2 | 
+ 811 | Bihor                          |    2 | 
+ 812 | Bistrița-Năsăud                |    2 | 
+ 813 | Brăila                         |    2 | 
+ 814 | Botoșani                       |    2 | 
+ 815 | Brașov                         |    2 | 
+ 816 | Buzău                          |    2 | 
+ 817 | Cluj                           |    2 | 
+ 818 | Călărași                       |    2 | 
+ 819 | Caraș-Severin                  |    2 | 
+ 820 | Constanța                      |    2 | 
+ 821 | Covasna                        |    2 | 
+ 822 | Dâmbovița                      |    2 | 
+ 823 | Dolj                           |    2 | 
+ 824 | Gorj                           |    2 | 
+ 825 | Galați                         |    2 | 
+ 826 | Giurgiu                        |    2 | 
+ 827 | Hunedoara                      |    2 | 
+ 828 | Harghita                       |    2 | 
+ 829 | Ilfov                          |    2 | 
+ 830 | Ialomița                       |    2 | 
+ 831 | Iași                           |    2 | 
+ 832 | Mehedinți                      |    2 | 
+ 833 | Maramureș                      |    2 | 
+ 834 | Mureș                          |    2 | 
+ 835 | Neamț                          |    2 | 
+ 836 | Olt                            |    2 | 
+ 837 | Prahova                        |    2 | 
+ 838 | Sibiu                          |    2 | 
+ 839 | Sălaj                          |    2 | 
+ 840 | Satu Mare                      |    2 | 
+ 841 | Suceava                        |    2 | 
+ 842 | Tulcea                         |    2 | 
+ 843 | Timiș                          |    2 | 
+ 844 | Teleorman                      |    2 | 
+ 845 | Vâlcea                         |    2 | 
+ 846 | Vrancea                        |    2 | 
+ 847 | Vaslui                         |    2 | 
+ 848 | Beijing                        |    3 | 
+ 849 | Tianjin                        |    3 | 
+ 850 | Hebei                          |    2 | 
+ 851 | Shanxi                         |    2 | 
+ 852 | Nei Mongol                     |    2 | 
+ 853 | Liaoning                       |    2 | 
+ 854 | Jilin                          |    2 | 
+ 855 | Heilongjiang                   |    2 | 
+ 856 | Shanghai                       |    3 | 
+ 857 | Jiangsu                        |    2 | 
+ 858 | Zhejiang                       |    2 | 
+ 859 | Anhui                          |    2 | 
+ 860 | Fujian                         |    2 | 
+ 861 | Jiangxi                        |    2 | 
+ 862 | Shandong                       |    2 | 
+ 863 | Henan                          |    2 | 
+ 864 | Hubei                          |    2 | 
+ 865 | Hunan                          |    2 | 
+ 866 | Guangdong                      |    2 | 
+ 867 | Guangxi                        |    2 | 
+ 868 | Hainan                         |    2 | 
+ 869 | Chongqing                      |    3 | 
+ 870 | Sichuan                        |    2 | 
+ 871 | Guizhou                        |    2 | 
+ 872 | Yunnan                         |    2 | 
+ 873 | Xizang                         |    2 | 
+ 874 | Shaanxi                        |    2 | 
+ 875 | Gansu                          |    2 | 
+ 876 | Qinghai                        |    2 | 
+ 877 | Ningxia                        |    2 | 
+ 878 | Xinjiang                       |    2 | 
+ 879 | Changhua County                |    2 | 
+ 880 | Chiayi County                  |    2 | 
+ 881 | Chiayi                         |    3 | 
+ 882 | Hsinchu County                 |    2 | 
+ 883 | Hsinchu                        |    3 | 
+ 884 | Hualien County                 |    2 | 
+ 885 | Ilan County                    |    2 | 
+ 886 | Keelung                        |    3 | 
+ 887 | Kaohsiung                      |    3 | 
+ 888 | Kaohsiung County               |    2 | 
+ 889 | Miaoli County                  |    2 | 
+ 890 | Nantou County                  |    2 | 
+ 891 | Penghu County                  |    2 | 
+ 892 | Pingtung County                |    2 | 
+ 893 | Taoyuan County                 |    2 | 
+ 894 | Tainan                         |    3 | 
+ 895 | Tainan County                  |    2 | 
+ 896 | Taipei                         |    3 | 
+ 897 | New Taipei City                |    3 | 
+ 898 | Taitung County                 |    2 | 
+ 899 | Taichung                       |    3 | 
+ 900 | Taichung County                |    2 | 
+ 901 | Yunlin County                  |    2 | 
+ 902 | Attard                         |    2 | 
+ 903 | Balzan                         |    2 | 
+ 904 | Birgu                          |    2 | 
+ 905 | Birkirkara                     |    2 | 
+ 906 | Birżebbuġa                     |    2 | 
+ 907 | Bormla                         |    2 | 
+ 908 | Dingli                         |    2 | 
+ 909 | Fgura                          |    2 | 
+ 910 | Floriana                       |    2 | 
+ 911 | Fontana                        |    2 | 
+ 912 | Gudja                          |    2 | 
+ 913 | Gżira                          |    2 | 
+ 914 | Għajnsielem                    |    2 | 
+ 915 | Għarb                          |    2 | 
+ 916 | Għargħur                       |    2 | 
+ 917 | Għasri                         |    2 | 
+ 918 | Għaxaq                         |    2 | 
+ 919 | Ħamrun                         |    2 | 
+ 920 | Iklin                          |    2 | 
+ 921 | Isla                           |    2 | 
+ 922 | Kalkara                        |    2 | 
+ 923 | Kerċem                         |    2 | 
+ 924 | Kirkop                         |    2 | 
+ 925 | Lija                           |    2 | 
+ 926 | Luqa                           |    2 | 
+ 927 | Marsa                          |    2 | 
+ 928 | Marsaskala                     |    2 | 
+ 929 | Marsaxlokk                     |    2 | 
+ 930 | Mdina                          |    2 | 
+ 931 | Mellieħa                       |    2 | 
+ 932 | Mġarr                          |    2 | 
+ 933 | Mosta                          |    2 | 
+ 934 | Mqabba                         |    2 | 
+ 935 | Msida                          |    2 | 
+ 936 | Mtarfa                         |    2 | 
+ 937 | Munxar                         |    2 | 
+ 938 | Nadur                          |    2 | 
+ 939 | Naxxar                         |    2 | 
+ 940 | Paola                          |    2 | 
+ 941 | Pembroke                       |    2 | 
+ 942 | Pietà                          |    2 | 
+ 943 | Qala                           |    2 | 
+ 944 | Qormi                          |    2 | 
+ 945 | Qrendi                         |    2 | 
+ 946 | Rabat Għawdex                  |    2 | 
+ 947 | Rabat Malta                    |    2 | 
+ 948 | Safi                           |    2 | 
+ 949 | San Ġiljan                     |    2 | 
+ 950 | San Ġwann                      |    2 | 
+ 951 | San Lawrenz                    |    2 | 
+ 952 | San Pawl il-Baħar              |    2 | 
+ 953 | Sannat                         |    2 | 
+ 954 | Santa Luċija                   |    2 | 
+ 955 | Santa Venera                   |    2 | 
+ 956 | Siġġiewi                       |    2 | 
+ 957 | Sliema                         |    2 | 
+ 958 | Swieqi                         |    2 | 
+ 959 | Ta’ Xbiex                      |    2 | 
+ 960 | Tarxien                        |    2 | 
+ 961 | Valletta                       |    2 | 
+ 962 | Xagħra                         |    2 | 
+ 963 | Xewkija                        |    2 | 
+ 964 | Xgħajra                        |    2 | 
+ 965 | Żabbar                         |    2 | 
+ 966 | Żebbuġ Għawdex                 |    2 | 
+ 967 | Żebbuġ Malta                   |    2 | 
+ 968 | Żejtun                         |    2 | 
+ 969 | Żurrieq                        |    2 | 
+ 970 | El Beni                        |    2 | 
+ 971 | Cochabamba                     |    2 | 
+ 972 | Chuquisaca                     |    2 | 
+ 973 | La Paz                         |    2 | 
+ 974 | Pando                          |    2 | 
+ 975 | Oruro                          |    2 | 
+ 976 | Potosí                         |    2 | 
+ 977 | Santa Cruz                     |    2 | 
+ 978 | Tarija                         |    2 | 
+ 979 | Aisén del General Carlos Ibáñe |    2 | 
+ 980 | Antofagasta                    |    2 | 
+ 981 | Arica y Parinacota             |    2 | 
+ 982 | Araucanía                      |    2 | 
+ 983 | Atacama                        |    2 | 
+ 984 | Bío-Bío                        |    2 | 
+ 985 | Coquimbo                       |    2 | 
+ 986 | Libertador General Bernardo O' |    2 | 
+ 987 | Los Lagos                      |    2 | 
+ 988 | Los Ríos                       |    2 | 
+ 989 | Magallanes                     |    2 | 
+ 990 | Maule                          |    2 | 
+ 991 | Región Metropolitana de Santia |    2 | 
+ 992 | Tarapacá                       |    2 | 
+ 993 | Valparaíso                     |    2 | 
+ 994 | Amazonas                       |    2 | 
+ 995 | Antioquia                      |    2 | 
+ 996 | Arauca                         |    2 | 
+ 997 | Atlántico                      |    2 | 
+ 998 | Bolívar                        |    2 | 
+ 999 | Boyacá                         |    2 | 
+(996 rows)
+

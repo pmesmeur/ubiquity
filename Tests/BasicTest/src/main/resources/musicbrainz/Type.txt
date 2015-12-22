@@ -1,0 +1,10 @@
+ id |   name    | parent | child_order | description 
+----+-----------+--------+-------------+-------------
+  5 | Orchestra |      2 |           0 | 
+  6 | Choir     |      2 |           0 | 
+  2 | Group     |        |           2 | 
+  1 | Person    |        |           1 | 
+  4 | Character |        |           3 | 
+  3 | Other     |        |          99 | 
+(6 rows)
+

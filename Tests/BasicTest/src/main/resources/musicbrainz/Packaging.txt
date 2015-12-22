@@ -1,0 +1,17 @@
+ id |          name          | parent | child_order |                       description                       
+----+------------------------+--------+-------------+---------------------------------------------------------
+  3 | Digipak                |        |           0 | 
+  6 | Keep Case              |        |           0 | 
+  4 | Cardboard/Paper Sleeve |        |           0 | 
+  8 | Cassette Case          |        |           0 | 
+  9 | Book                   |        |           0 | 
+ 10 | Fatbox                 |        |           0 | 
+ 11 | Snap Case              |        |           0 | 
+ 12 | Gatefold Cover         |        |           0 | 
+ 13 | Discbox Slider         |        |           0 | 
+  5 | Other                  |        |           1 | 
+  7 | None                   |        |           2 | 
+  1 | Jewel Case             |        |           0 | The traditional CD case, made of hard, brittle plastic.
+  2 | Slim Jewel Case        |        |           0 | A thinner jewel case, commonly used for CD singles.
+(13 rows)
+
