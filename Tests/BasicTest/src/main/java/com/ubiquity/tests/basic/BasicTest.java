@@ -14,7 +14,7 @@ public class BasicTest {
 
     public static void main(String[] args) {
         BasicTest basicTest = new BasicTest();
-        parse("Data/Area.dsc");
+        parse("Tests/BasicTest/src/main/resources/musicbrainz/Area.dsc");
         basicTest.run();
     }
 
