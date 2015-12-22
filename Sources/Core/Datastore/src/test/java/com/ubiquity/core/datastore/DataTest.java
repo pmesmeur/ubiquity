@@ -3,6 +3,9 @@ package com.ubiquity.core.datastore;
 import static com.ubiquity.core.datastore.IFieldDefinition.Kind.PRIMARY;
 import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.*;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,6 +45,9 @@ public class DataTest {
         entryValues.put("Field4", new Integer(27));
         entryValues.put("Field5", new Boolean(true));
         entryValues.put("Field6", new HashMap<String, String>());
+        entryValues.put("Field7", LocalDate.MAX);
+        entryValues.put("Field8", LocalTime.MAX);
+        entryValues.put("Field9", Duration.ZERO);
         return entryValues;
     }
 
@@ -50,13 +56,16 @@ public class DataTest {
         Data data = new Data(createBasicEntryDataDefinition());
         Map<String, IIndex> indexes = data.getIndexes();
 
-        Assert.assertEquals(5, indexes.size());
+        Assert.assertEquals(8, indexes.size());
         Assert.assertTrue(indexes.containsKey("Field1"));
         Assert.assertTrue(indexes.containsKey("Field2"));
         Assert.assertTrue(indexes.containsKey("Field3"));
         Assert.assertTrue(indexes.containsKey("Field4"));
         Assert.assertTrue(indexes.containsKey("Field5"));
         Assert.assertFalse(indexes.containsKey("Field6"));
+        Assert.assertTrue(indexes.containsKey("Field7"));
+        Assert.assertTrue(indexes.containsKey("Field8"));
+        Assert.assertTrue(indexes.containsKey("Field9"));
     }
 
     @Test
@@ -94,9 +103,9 @@ public class DataTest {
     @Test
     public void testSizeOfIndexesWhenErrorOnPrimaryField() {
         Data data = new Data(createEntryDataDefinition(PRIMARY));
-        data.insert(createEntryValues("Field1", 1., 'A', 1, Boolean.FALSE, data));
+        data.insert(createEntryValues("Field1", 1., 'A', 1, Boolean.FALSE, data, LocalDate.MIN, LocalTime.MIN, Duration.ZERO));
         try {
-            data.insert(createEntryValues("Field2", 2., 'B', 1, Boolean.TRUE, data));
+            data.insert(createEntryValues("Field2", 2., 'B', 1, Boolean.TRUE, data, LocalDate.MAX, LocalTime.MAX, Duration.ZERO));
         } catch (ValueOfPrimaryFieldAlreadyInsertedException e) {
         }
 
@@ -107,7 +116,7 @@ public class DataTest {
     }
 
     private Map<String, Object> createEntryValues(String field1, Double field2, Character field3,
-            Integer field4, Boolean field5, Object field6) {
+            Integer field4, Boolean field5, Object field6, LocalDate field7, LocalTime field8, Duration field9) {
         Map<String, Object> entryValues = new HashMap<String, Object>();
 
         entryValues.put("Field1", field1);
@@ -116,6 +125,9 @@ public class DataTest {
         entryValues.put("Field4", field4);
         entryValues.put("Field5", field5);
         entryValues.put("Field6", field6);
+        entryValues.put("Field7", field7);
+        entryValues.put("Field8", field8);
+        entryValues.put("Field9", field9);
 
         return entryValues;
     }

@@ -1,11 +1,13 @@
 package com.ubiquity.core.datastore;
 
+import static com.ubiquity.core.datastore.IFieldDefinition.DataType.DOUBLE;
 import static com.ubiquity.core.datastore.IFieldDefinition.DataType.OBJECT;
 
 import java.util.Collection;
 
 import com.google.common.base.Strings;
-import com.ubiquity.core.datastore.exceptions.IndexingObjectException;
+import com.ubiquity.core.datastore.exceptions.DoubleTypeCannotBeUniqueException;
+import com.ubiquity.core.datastore.exceptions.ObjectTypeCannotBeIndexException;
 import com.ubiquity.core.datastore.exceptions.NoPrimaryFieldException;
 
 class DataDefinitionValidator {
@@ -49,7 +51,13 @@ class DataDefinitionValidator {
 
         if (fieldDefinition.getKind().isIndexed()) {
             if (fieldDefinition.getType() == OBJECT) {
-                throw new IndexingObjectException(fieldName);
+                throw new ObjectTypeCannotBeIndexException(fieldName);
+            }
+        }
+
+        if (fieldDefinition.getKind().isUnique()) {
+            if (fieldDefinition.getType() == DOUBLE) {
+                throw new DoubleTypeCannotBeUniqueException(fieldName);
             }
         }
         /// TODO: check that two fields does not have the same value
