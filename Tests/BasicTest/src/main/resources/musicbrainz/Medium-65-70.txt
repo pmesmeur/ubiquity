@@ -1,4 +1,4 @@
-   id    | release | format |           substring            | track_count 
+   id    | release | format |           name                 | track_count
 ---------+---------+--------+--------------------------------+-------------
  1488006 | 1429895 |     33 |                                |          13
  1488139 | 1430019 |     33 |                                |           4

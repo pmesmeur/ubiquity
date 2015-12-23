@@ -1,4 +1,4 @@
-   id    |           substring            | begin_date_year | end_date_year | ended | type | area |           substring            
+   id    |           name                 | begin_date_year | end_date_year | ended | type | area |           comment
 ---------+--------------------------------+-----------------+---------------+-------+------+------+--------------------------------
    71166 | Lord Finesse                   |            1970 |               | f     |    1 |  222 | 
   666177 | Bruno Lopes                    |            1967 |               | f     |    1 |   73 | 

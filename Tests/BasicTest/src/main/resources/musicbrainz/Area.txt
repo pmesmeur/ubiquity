@@ -1,4 +1,4 @@
- id  |           substring            | type | substring 
+ id  |           name                 | type | comment
 -----+--------------------------------+------+-----------
    1 | Afghanistan                    |    1 | 
    2 | Albania                        |    1 | 
