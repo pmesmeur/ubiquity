@@ -60,18 +60,37 @@ public class DataStoreTest {
         dataStore.insertDataShelf("");
     }
 
+
     @Test(expected = DataShelfNotFoundException.class)
     public void testInsertDataOnUnknownShelf() {
-        dataStore.insertData("ThisShelfDoesNotExist", new IDataDefinition() {
-            @Override
-            public String getIdentifier() {
-                return null;
-            }
-
-            @Override
-            public Collection<IFieldDefinition> getFieldDefinitions() {
-                return null;
-            }
-        });
+        dataStore.insertData("ThisShelfDoesNotExist", new DataDefinition());
     }
+
+    @Test(expected = AssertionError.class)
+    public void testInsertDataWithEmptyIdentifier() {
+        dataStore.insertData("", new DataDefinition());
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testInsertDataWithNullIdentifier() {
+        dataStore.insertData(null, new DataDefinition());
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testInsertDataWithNullDefinition() {
+        dataStore.insertData("ThisShelfDoesNotExist", null);
+    }
+
+    private class DataDefinition implements IDataDefinition {
+        @Override
+        public String getIdentifier() {
+            return "AnIdentifier";
+        }
+
+        @Override
+        public Collection<IFieldDefinition> getFieldDefinitions() {
+            return null;
+        }
+    }
+
 }
