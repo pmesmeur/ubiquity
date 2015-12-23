@@ -32,7 +32,9 @@ public class DataStore {
         return dataShelves.keySet();
     }
 
-    public void insertData(String shelf, IDataDefinition dataDefinition) {
 
+    public void insertData(String shelf, IDataDefinition dataDefinition) {
+        DataShelf dataShelf = getDataShelf(shelf);
+        dataShelf.insertData(dataDefinition);
     }
 }

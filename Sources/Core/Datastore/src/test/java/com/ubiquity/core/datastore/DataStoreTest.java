@@ -1,5 +1,6 @@
 package com.ubiquity.core.datastore;
 
+import java.util.Collection;
 import java.util.Set;
 
 import junit.framework.Assert;
@@ -59,4 +60,18 @@ public class DataStoreTest {
         dataStore.insertDataShelf("");
     }
 
+    @Test(expected = DataShelfNotFoundException.class)
+    public void testInsertDataOnUnknownShelf() {
+        dataStore.insertData("ThisShelfDoesNotExist", new IDataDefinition() {
+            @Override
+            public String getIdentifier() {
+                return null;
+            }
+
+            @Override
+            public Collection<IFieldDefinition> getFieldDefinitions() {
+                return null;
+            }
+        });
+    }
 }
