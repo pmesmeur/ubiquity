@@ -1,37 +1,36 @@
 package com.ubiquity.tests.basic;
 
-import com.ubiquity.core.datastore.DataShelf;
 import com.ubiquity.core.datastore.DataStore;
 import com.ubiquity.core.datastore.IDataDefinition;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 public class BasicTest {
 
+    private final DataStore dataStore;
+
     protected BasicTest() {
+        dataStore = new DataStore();
     }
 
     public static void main(String[] args) {
         BasicTest basicTest = new BasicTest();
-        parse("Tests/BasicTest/src/main/resources/musicbrainz/Area.dsc");
         basicTest.run();
     }
 
-    private static void parse(String s) {
-        DataDescriptorParser dataDescriptorParser = new DataDescriptorParser();
-        dataDescriptorParser.parse(s);
-        String store = dataDescriptorParser.getStore();
-        String name = dataDescriptorParser.getName();
-        System.out.println("Data: {" + store + "," + name + "}");
+    private void run() {
+        parseAndInsert("Tests/BasicTest/src/main/resources/musicbrainz/Area.dsc");
     }
 
-    private void run() {
-        DataStore dataStore = new DataStore();
-        String dataShelfName = BasicTest.class.getPackage().toString();
+    private IDataDefinition parseAndInsert(String s) {
+        DataDescriptorParser dataDescriptorParser = new DataDescriptorParser();
+        dataDescriptorParser.parse(s);
+        String shelf = dataDescriptorParser.getShelf();
+        String name = dataDescriptorParser.getName();
 
-        DataShelf dataShelf = dataStore.addDataShelf(dataShelfName);
-        // dataShelf.insertData();
+        dataStore.insertDataShelf(shelf);
+        dataStore.insertData(shelf, dataDescriptorParser.getDataDefinition());
+
+        System.out.println("Data: {" + shelf + "," + name + "}");
+        return null;
     }
 
     private IDataDefinition createDataDefinition() {

@@ -1,13 +1,16 @@
 package com.ubiquity.tests.basic;
 
 
+import com.ubiquity.core.datastore.IDataDefinition;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class DataDescriptorParser {
     private int lineIndex;
-    private String store;
+    private String shelf;
     private String name;
+    private IDataDefinition dataDefinition;
 
     public DataDescriptorParser() {
         init();
@@ -15,12 +18,12 @@ public class DataDescriptorParser {
 
     private void init() {
         this.lineIndex = 0;
-        this.store = null;
+        this.shelf = null;
         this.name = null;
     }
 
-    public String getStore() {
-        return store;
+    public String getShelf() {
+        return shelf;
     }
 
     public String getName() {
@@ -49,11 +52,15 @@ public class DataDescriptorParser {
         textFileReader.read(new LineProcessor());
     }
 
+    public IDataDefinition getDataDefinition() {
+        return dataDefinition;
+    }
+
     private class LineProcessor implements ILineProcessor {
         public void processLine(String line) {
             if (lineIndex == 0) {
                 String fullDataName = getFullDataName(line);
-                store = getStore(fullDataName);
+                shelf = getStore(fullDataName);
                 name = getName(fullDataName);
                 System.out.println(fullDataName);
             } else if (lineIndex >= 3) {
