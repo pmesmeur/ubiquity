@@ -12,7 +12,7 @@ public class DataStore {
     private final Map<String, DataShelf> dataShelves = new ConcurrentHashMap<String, DataShelf>();
 
 
-    public DataShelf addDataShelf(String identifier) {
+    public DataShelf insertDataShelf(String identifier) {
         DataShelf dataShelf = DataShelf.create(identifier);
         dataShelves.put(identifier, dataShelf);
         return dataShelf;
@@ -30,5 +30,9 @@ public class DataStore {
 
     public Set<String> getAllShelvesId() {
         return dataShelves.keySet();
+    }
+
+    public void insertData(String shelf, IDataDefinition dataDefinition) {
+
     }
 }

@@ -39,13 +39,13 @@ public class DataStoreTest {
 
     @Test(expected = AssertionError.class)
     public void testNullNamedShelfInsert() {
-        dataStore.addDataShelf(null);
+        dataStore.insertDataShelf(null);
     }
 
 
     @Test(expected = AssertionError.class)
     public void testEmptyNamedShelfInsert() {
-        dataStore.addDataShelf("");
+        dataStore.insertDataShelf("");
     }
 
 
@@ -57,7 +57,7 @@ public class DataStoreTest {
 
 
     private void testDataShelfInsertion(String identifier) {
-        DataShelf dataShelf1 = dataStore.addDataShelf(identifier);
+        DataShelf dataShelf1 = dataStore.insertDataShelf(identifier);
         Assert.assertEquals(dataShelf1, dataStore.getDataShelf(identifier));
     }
 
