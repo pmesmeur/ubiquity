@@ -30,6 +30,17 @@ public class DataStoreTest {
     }
 
 
+    private void testDataShelfInsertions(int quantity) {
+        for (int index = 0; index < quantity; index++) {
+            testDataShelfInsertion("id" + index);
+        }
+    }
+
+    private void testDataShelfInsertion(String identifier) {
+        DataShelf dataShelf1 = dataStore.insertDataShelf(identifier);
+        Assert.assertEquals(dataShelf1, dataStore.getDataShelf(identifier));
+    }
+
     @Test(expected = DataShelfNotFoundException.class)
     public void testGetUnexistingShelf() {
         testDataShelfInsertions(NB_INSERTIONS);
@@ -46,19 +57,6 @@ public class DataStoreTest {
     @Test(expected = AssertionError.class)
     public void testEmptyNamedShelfInsert() {
         dataStore.insertDataShelf("");
-    }
-
-
-    private void testDataShelfInsertions(int quantity) {
-        for (int index = 0 ; index < quantity ; index++) {
-            testDataShelfInsertion("id" + index);
-        }
-    }
-
-
-    private void testDataShelfInsertion(String identifier) {
-        DataShelf dataShelf1 = dataStore.insertDataShelf(identifier);
-        Assert.assertEquals(dataShelf1, dataStore.getDataShelf(identifier));
     }
 
 }
