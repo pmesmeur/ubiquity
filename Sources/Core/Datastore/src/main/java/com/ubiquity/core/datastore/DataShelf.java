@@ -1,10 +1,11 @@
 package com.ubiquity.core.datastore;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.google.common.base.Strings;
 import com.ubiquity.core.datastore.exceptions.DataAlreadyExistsException;
+import com.ubiquity.core.datastore.exceptions.DataNotFoundException;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public final class DataShelf {
 
@@ -41,6 +42,17 @@ public final class DataShelf {
         }
 
         data.put(identifier, new Data(dataDefinition));
+    }
+
+    public Data getData(String identifier) {
+        assert identifier != null;
+
+        Data result = data.get(identifier);
+        if (result == null) {
+            throw new DataNotFoundException(identifier);
+        }
+
+        return result;
     }
 
     private void checkDataDefinition(IDataDefinition dataDefinition) {

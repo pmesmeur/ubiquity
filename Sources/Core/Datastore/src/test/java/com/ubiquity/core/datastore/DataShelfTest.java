@@ -1,12 +1,12 @@
 package com.ubiquity.core.datastore;
 
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.PRIMARY;
-import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.createEntryDataDefinition;
-
+import com.ubiquity.core.datastore.exceptions.DataAlreadyExistsException;
+import com.ubiquity.core.datastore.exceptions.DataNotFoundException;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.ubiquity.core.datastore.exceptions.DataAlreadyExistsException;
+import static com.ubiquity.core.datastore.IFieldDefinition.Kind.PRIMARY;
+import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.createEntryDataDefinition;
 
 public class DataShelfTest {
 
@@ -41,4 +41,15 @@ public class DataShelfTest {
         dataShelf.insertData(dataDefinition);
     }
 
+    @Test(expected = AssertionError.class)
+    public void testGetDataWithNullIdentifier() {
+        DataShelf dataShelf = DataShelf.create("DataShelfIdentifier");
+        dataShelf.getData(null);
+    }
+
+    @Test(expected = DataNotFoundException.class)
+    public void testGetDataWithUnknownIdentifier() {
+        DataShelf dataShelf = DataShelf.create("DataShelfIdentifier");
+        dataShelf.getData("DataIdentifier");
+    }
 }

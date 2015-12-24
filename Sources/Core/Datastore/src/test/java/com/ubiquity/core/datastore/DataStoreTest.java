@@ -1,14 +1,17 @@
 package com.ubiquity.core.datastore;
 
-import java.util.Collection;
-import java.util.Set;
-
+import com.ubiquity.core.datastore.exceptions.DataShelfNotFoundException;
 import junit.framework.Assert;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ubiquity.core.datastore.exceptions.DataShelfNotFoundException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Set;
+
+import static com.ubiquity.core.datastore.IFieldDefinition.DataType.STRING;
+import static com.ubiquity.core.datastore.IFieldDefinition.Kind.PRIMARY;
+import static org.junit.Assert.assertNotNull;
 
 public class DataStoreTest {
 
@@ -61,6 +64,22 @@ public class DataStoreTest {
     }
 
 
+    @Test
+    public void testInsertData() {
+        final String DATA_SHELF_NAME = "The.Data.Shelf";
+        DataDefinition dataDefinition = new DataDefinition();
+
+        dataStore.insertDataShelf(DATA_SHELF_NAME);
+        dataStore.insertData(DATA_SHELF_NAME, dataDefinition);
+
+        DataShelf dataShelf = dataStore.getDataShelf(DATA_SHELF_NAME);
+        assertNotNull(dataShelf);
+
+        Data data = dataShelf.getData(dataDefinition.getIdentifier());
+        assertNotNull(data);
+    }
+
+
     @Test(expected = DataShelfNotFoundException.class)
     public void testInsertDataOnUnknownShelf() {
         dataStore.insertData("ThisShelfDoesNotExist", new DataDefinition());
@@ -82,6 +101,29 @@ public class DataStoreTest {
     }
 
     private class DataDefinition implements IDataDefinition {
+
+        private final Collection<IFieldDefinition> fieldDefinitions;
+
+        public DataDefinition() {
+            this.fieldDefinitions = new ArrayList<IFieldDefinition>();
+            fieldDefinitions.add(new IFieldDefinition() {
+                @Override
+                public String getName() {
+                    return "DummyField";
+                }
+
+                @Override
+                public DataType getType() {
+                    return STRING;
+                }
+
+                @Override
+                public Kind getKind() {
+                    return PRIMARY;
+                }
+            });
+        }
+
         @Override
         public String getIdentifier() {
             return "AnIdentifier";
@@ -89,7 +131,7 @@ public class DataStoreTest {
 
         @Override
         public Collection<IFieldDefinition> getFieldDefinitions() {
-            return null;
+            return fieldDefinitions;
         }
     }
 
