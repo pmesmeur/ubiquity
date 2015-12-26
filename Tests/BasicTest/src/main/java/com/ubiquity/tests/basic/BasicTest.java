@@ -23,11 +23,13 @@ public class BasicTest {
     private IDataDefinition parseAndInsert(String s) {
         DataDescriptorParser dataDescriptorParser = new DataDescriptorParser();
         dataDescriptorParser.parse(s);
+
         String shelf = dataDescriptorParser.getShelf();
         String name = dataDescriptorParser.getName();
+        IDataDefinition dataDefinition = dataDescriptorParser.getDataDefinition();
 
         dataStore.insertDataShelf(shelf);
-        dataStore.insertData(shelf, dataDescriptorParser.getDataDefinition());
+        dataStore.insertData(shelf, dataDefinition);
 
         System.out.println("Data: {" + shelf + "," + name + "}");
         return null;
