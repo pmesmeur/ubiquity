@@ -8,6 +8,7 @@ import java.io.File;
 public class BasicTest {
 
     private final DataStore dataStore;
+    String DIR_NAME = "Tests/BasicTest/src/main/resources/musicbrainz";
 
     protected BasicTest() {
         dataStore = new DataStore();
@@ -19,19 +20,23 @@ public class BasicTest {
     }
 
     private void run() {
-        String dirName = "Tests/BasicTest/src/main/resources/musicbrainz";
-        final File folder = new File(dirName);
+        final File folder = new File(DIR_NAME);
 
-        for (final File fileEntry : folder.listFiles()) {
+        scanFolderAndInsertDataDescriptors(folder);
+        scanFolderAndInsertData(folder);
+    }
+
+    private void scanFolderAndInsertDataDescriptors(File folder) {
+        for (File fileEntry : folder.listFiles()) {
             String fileName = fileEntry.getName();
 
             if (fileName.endsWith(".dsc")) {
-                parseAndInsert(dirName + "/" + fileName);
+                parseAndInsertDataDescriptor(DIR_NAME + "/" + fileName);
             }
         }
     }
 
-    private IDataDefinition parseAndInsert(String s) {
+    private IDataDefinition parseAndInsertDataDescriptor(String s) {
         DataDescriptorParser dataDescriptorParser = new DataDescriptorParser();
         dataDescriptorParser.parse(s);
 
@@ -46,7 +51,18 @@ public class BasicTest {
         return null;
     }
 
-    private IDataDefinition createDataDefinition() {
-        return null;
+    private void scanFolderAndInsertData(File folder) {
+        for (File fileEntry : folder.listFiles()) {
+            String fileName = fileEntry.getName();
+
+            if (fileName.endsWith(".txt")) {
+                parseAndInsertData(DIR_NAME + "/" + fileName);
+            }
+        }
     }
+
+    private void parseAndInsertData(String s) {
+
+    }
+
 }
