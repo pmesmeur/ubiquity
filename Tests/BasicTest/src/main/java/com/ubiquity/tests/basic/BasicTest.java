@@ -2,6 +2,7 @@ package com.ubiquity.tests.basic;
 
 import com.ubiquity.core.datastore.DataStore;
 import com.ubiquity.core.datastore.IDataDefinition;
+import com.ubiquity.tests.basic.DataDescriptorParser.IDataInsertor;
 
 import java.io.File;
 
@@ -36,19 +37,16 @@ public class BasicTest {
         }
     }
 
-    private IDataDefinition parseAndInsertDataDescriptor(String s) {
+    private void parseAndInsertDataDescriptor(String s) {
         DataDescriptorParser dataDescriptorParser = new DataDescriptorParser();
-        dataDescriptorParser.parse(s);
+        dataDescriptorParser.parse(s, new IDataInsertor() {
 
-        String shelf = dataDescriptorParser.getShelf();
-        String name = dataDescriptorParser.getName();
-        IDataDefinition dataDefinition = dataDescriptorParser.getDataDefinition();
-
-        dataStore.insertDataShelf(shelf);
-        dataStore.insertData(shelf, dataDefinition);
-
-        System.out.println("Data: {" + shelf + "," + name + "}");
-        return null;
+            public void insert(String shelf, IDataDefinition dataDefinition) {
+                dataStore.insertDataShelf(shelf);
+                dataStore.insertData(shelf, dataDefinition);
+                System.out.println("Data: {" + shelf + "," + dataDefinition.getIdentifier() + "}");
+            }
+        });
     }
 
     private void scanFolderAndInsertData(File folder) {

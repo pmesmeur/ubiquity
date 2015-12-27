@@ -19,10 +19,9 @@ import static com.ubiquity.core.datastore.IFieldDefinition.Kind.*;
 public class DataDescriptorParser {
 
     private String shelf;
-    ;
     private String name;
-    private IDataDefinition dataDefinition;
     private Map<String, FieldDefinition> fieldDefinitions;
+
     public DataDescriptorParser() {
         init();
     }
@@ -33,20 +32,13 @@ public class DataDescriptorParser {
         this.fieldDefinitions = new HashMap<String, FieldDefinition>();
     }
 
-    public String getShelf() {
-        return shelf;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void parse(String fileName) {
+    public void parse(String fileName, IDataInsertor dataInsertor) {
         init();
         TextFileReader textFileReader = new TextFileReader();
 
         try {
             parseImpl(fileName, textFileReader);
+            insertAllData(dataInsertor);
         }
 
         catch (FileNotFoundException e) {
@@ -59,17 +51,16 @@ public class DataDescriptorParser {
     private void parseImpl(String fileName, TextFileReader textFileReader) throws IOException {
         textFileReader.open(fileName);
         textFileReader.read(new LineProcessor());
-        dataDefinition = makeDataDefinition();
     }
 
-    private IDataDefinition makeDataDefinition() {
+    private void insertAllData(IDataInsertor dataInsertor) {
         final Collection<IFieldDefinition> fieldDef = new ArrayList<IFieldDefinition>();
 
         for (IFieldDefinition iter : fieldDefinitions.values()) {
             fieldDef.add(iter);
         }
 
-        return new IDataDefinition() {
+        dataInsertor.insert(shelf, new IDataDefinition() {
             public String getIdentifier() {
                 return name;
             }
@@ -77,14 +68,14 @@ public class DataDescriptorParser {
             public Collection<IFieldDefinition> getFieldDefinitions() {
                 return fieldDef;
             }
-        };
-    }
-
-    public IDataDefinition getDataDefinition() {
-        return dataDefinition;
+        });
     }
 
     private enum Section {HEADER, IRRELEVANT, DEFINITION, INDEX}
+
+    public interface IDataInsertor {
+        void insert(String shelf, IDataDefinition dataDefinition);
+    }
 
     private class LineProcessor implements ILineProcessor {
 
