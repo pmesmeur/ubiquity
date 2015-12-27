@@ -8,5 +8,3 @@
  description | text                   |                                                          | extended |              | 
 Indexes:
     "artist_type_pkey" PRIMARY KEY, btree (id)
-Has OIDs: no
-

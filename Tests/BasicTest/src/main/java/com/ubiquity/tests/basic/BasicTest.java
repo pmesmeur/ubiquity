@@ -3,6 +3,8 @@ package com.ubiquity.tests.basic;
 import com.ubiquity.core.datastore.DataStore;
 import com.ubiquity.core.datastore.IDataDefinition;
 
+import java.io.File;
+
 public class BasicTest {
 
     private final DataStore dataStore;
@@ -17,7 +19,16 @@ public class BasicTest {
     }
 
     private void run() {
-        parseAndInsert("Tests/BasicTest/src/main/resources/musicbrainz/Area.dsc");
+        String dirName = "Tests/BasicTest/src/main/resources/musicbrainz";
+        final File folder = new File(dirName);
+
+        for (final File fileEntry : folder.listFiles()) {
+            String fileName = fileEntry.getName();
+
+            if (fileName.endsWith(".dsc")) {
+                parseAndInsert(dirName + "/" + fileName);
+            }
+        }
     }
 
     private IDataDefinition parseAndInsert(String s) {

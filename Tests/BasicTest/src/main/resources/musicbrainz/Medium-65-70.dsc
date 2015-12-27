@@ -8,6 +8,6 @@
  track_count   | integer                  | not null default 0                                  | plain    |              |
 Indexes:
     "medium_pkey" PRIMARY KEY, btree (id)
-    "medium_idx_release_position" btree (release, "position")
+    "medium_idx_release_position" btree (release)
     "medium_idx_track_count" btree (track_count)
 

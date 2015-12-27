@@ -10,7 +10,5 @@ Indexes:
     "release_pkey" PRIMARY KEY, btree (id)
     "release_idx_artist_credit" btree (artist_credit)
     "release_idx_name" btree (name)
-Check constraints:
-    "release_edits_pending_check" CHECK (edits_pending >= 0)
-Has OIDs: no
+
 

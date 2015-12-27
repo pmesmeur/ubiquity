@@ -8,5 +8,4 @@
  description | text                   |                                                                | extended |              | 
 Indexes:
     "release_packaging_pkey" PRIMARY KEY, btree (id)
-Has OIDs: no
 

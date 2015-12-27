@@ -13,8 +13,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.ubiquity.core.datastore.IFieldDefinition.DataType.INTEGER;
-import static com.ubiquity.core.datastore.IFieldDefinition.DataType.STRING;
+import static com.ubiquity.core.datastore.IFieldDefinition.DataType.*;
 import static com.ubiquity.core.datastore.IFieldDefinition.Kind.*;
 
 public class DataDescriptorParser {
@@ -181,11 +180,14 @@ public class DataDescriptorParser {
         private DataType strTypeToDataType(String strType) {
             assert strType != null;
 
-            if (strType.equals("integer"))
+            if (strType.equals("integer") || strType.equals("smallint"))
                 return INTEGER;
 
-            if (strType.contains("character varying"))
+            if (strType.contains("text") || strType.contains("character varying"))
                 return STRING;
+
+            if (strType.contains("boolean"))
+                return BOOLEAN;
 
             throw new IllegalArgumentException("Don't know data-type \"" + strType + "\"");
         }
