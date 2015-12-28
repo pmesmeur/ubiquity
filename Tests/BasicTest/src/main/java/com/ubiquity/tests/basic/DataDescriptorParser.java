@@ -1,10 +1,8 @@
 package com.ubiquity.tests.basic;
 
 
-import com.ubiquity.core.datastore.IDataDefinition;
-import com.ubiquity.core.datastore.IFieldDefinition;
-import com.ubiquity.core.datastore.IFieldDefinition.DataType;
-import com.ubiquity.core.datastore.IFieldDefinition.Kind;
+import static com.ubiquity.core.datastore.IFieldDefinition.DataType.*;
+import static com.ubiquity.core.datastore.IFieldDefinition.Kind.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,8 +11,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.ubiquity.core.datastore.IFieldDefinition.DataType.*;
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.*;
+import com.ubiquity.core.datastore.IDataDefinition;
+import com.ubiquity.core.datastore.IFieldDefinition;
+import com.ubiquity.core.datastore.IFieldDefinition.DataType;
+import com.ubiquity.core.datastore.IFieldDefinition.Kind;
 
 public class DataDescriptorParser {
 
@@ -99,7 +99,6 @@ public class DataDescriptorParser {
                     processIndex(line);
                 case IRRELEVANT:
                 default:
-                    ;
             }
 
             lineIndex++;
