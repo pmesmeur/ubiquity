@@ -1,12 +1,12 @@
 package com.ubiquity.core.datastore.utils;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import com.ubiquity.core.datastore.IDataDefinition;
 import com.ubiquity.core.datastore.IFieldDefinition;
 import com.ubiquity.core.datastore.IFieldDefinition.DataType;
 import com.ubiquity.core.datastore.IFieldDefinition.Kind;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 public class DataDefinitionBuilder {
 
@@ -15,10 +15,13 @@ public class DataDefinitionBuilder {
 
     public IDataDefinition build() {
         return new IDataDefinition() {
+
+            @Override
             public String getIdentifier() {
                 return identifier;
             }
 
+            @Override
             public Collection<IFieldDefinition> getFieldDefinitions() {
                 return fieldDefinitions;
             }
@@ -45,14 +48,17 @@ public class DataDefinitionBuilder {
         public DataDefinitionBuilder build() {
             fieldDefinitions.add(new IFieldDefinition() {
 
+                @Override
                 public String getName() {
                     return name;
                 }
 
+                @Override
                 public DataType getType() {
                     return dataType;
                 }
 
+                @Override
                 public Kind getKind() {
                     return kind;
                 }

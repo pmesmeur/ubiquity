@@ -1,17 +1,19 @@
 package com.ubiquity.core.datastore;
 
-import com.ubiquity.core.datastore.exceptions.DataShelfNotFoundException;
-import junit.framework.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import static com.ubiquity.core.datastore.IFieldDefinition.DataType.STRING;
+import static com.ubiquity.core.datastore.IFieldDefinition.Kind.PRIMARY;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
-import static com.ubiquity.core.datastore.IFieldDefinition.DataType.STRING;
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.PRIMARY;
-import static org.junit.Assert.assertNotNull;
+import junit.framework.Assert;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import com.ubiquity.core.datastore.exceptions.DataShelfNotFoundException;
 
 public class DataStoreTest {
 
@@ -40,10 +42,12 @@ public class DataStoreTest {
         }
     }
 
+
     private void testDataShelfInsertion(String identifier) {
         DataShelf dataShelf1 = dataStore.insertDataShelf(identifier);
         Assert.assertEquals(dataShelf1, dataStore.getDataShelf(identifier));
     }
+
 
     @Test(expected = DataShelfNotFoundException.class)
     public void testGetUnexistingShelf() {
@@ -85,20 +89,24 @@ public class DataStoreTest {
         dataStore.insertData("ThisShelfDoesNotExist", new DataDefinition());
     }
 
+
     @Test(expected = AssertionError.class)
     public void testInsertDataWithEmptyIdentifier() {
         dataStore.insertData("", new DataDefinition());
     }
+
 
     @Test(expected = AssertionError.class)
     public void testInsertDataWithNullIdentifier() {
         dataStore.insertData(null, new DataDefinition());
     }
 
+
     @Test(expected = AssertionError.class)
     public void testInsertDataWithNullDefinition() {
         dataStore.insertData("ThisShelfDoesNotExist", null);
     }
+
 
     private class DataDefinition implements IDataDefinition {
 

@@ -57,10 +57,13 @@ public class DataDescriptorParser {
         }
 
         dataInsertor.insert(shelf, new IDataDefinition() {
+
+            @Override
             public String getIdentifier() {
                 return name;
             }
 
+            @Override
             public Collection<IFieldDefinition> getFieldDefinitions() {
                 return fieldDef;
             }
@@ -83,6 +86,7 @@ public class DataDescriptorParser {
             lineIndex = 0;
         }
 
+        @Override
         public void processLine(String line) {
             switch (getSection(line)) {
                 case HEADER:
@@ -229,14 +233,17 @@ public class DataDescriptorParser {
             this.kind = OPTIONAL;
         }
 
+        @Override
         public String getName() {
             return name;
         }
 
+        @Override
         public DataType getType() {
             return type;
         }
 
+        @Override
         public Kind getKind() {
             return kind;
         }

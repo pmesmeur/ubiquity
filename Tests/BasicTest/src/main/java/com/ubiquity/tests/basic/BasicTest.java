@@ -53,6 +53,7 @@ public class BasicTest implements DataParser.TypeProvider {
         dataInsertor.parseAndInsertData(DIR_NAME + "/" + dataFileName);
     }
 
+    @Override
     public IFieldDefinition.DataType getType(String shelf, String identifier, String field) {
         assert!Strings.isNullOrEmpty(shelf);
         assert!Strings.isNullOrEmpty(identifier);
@@ -89,6 +90,7 @@ public class BasicTest implements DataParser.TypeProvider {
             dataParser.parse(fileName, BasicTest.this, this);
         }
 
+        @Override
         public void insert(String shelf, IDataDefinition dataDefinition) {
             this.shelf = shelf;
             this.identifier = dataDefinition.getIdentifier();
@@ -98,6 +100,7 @@ public class BasicTest implements DataParser.TypeProvider {
             System.out.println("Data: {" + shelf + "," + identifier + "}");
         }
 
+        @Override
         public void insert(Map<String, Object> dataFields) {
             try {
                 dataStore.getDataShelf(shelf).getData(identifier).insert(dataFields);
