@@ -6,7 +6,6 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 import org.junit.Test;
@@ -58,6 +57,20 @@ public class EntryTest {
 
         entryValues.put("Field1", new String("Ubiquity"));
         entryValues.put("Field2", new Double(1.));
+        entryValues.put("Field4", new Integer(27));
+        entryValues.put("Field5", new Boolean(true));
+        entryValues.put("Field6", new HashMap<String, String>());
+
+        new Entry(createBasicEntryDataDefinition(), entryValues);
+    }
+
+    @Test(expected = MissingMandatoryFieldException.class)
+    public void testCreatingEntryWithMissingMandatoryFieldHavingNullValue() {
+        Map<String, Object> entryValues = new HashMap<String, Object>();
+
+        entryValues.put("Field1", new String("Ubiquity"));
+        entryValues.put("Field2", new Double(1.));
+        entryValues.put("Field3", null);
         entryValues.put("Field4", new Integer(27));
         entryValues.put("Field5", new Boolean(true));
         entryValues.put("Field6", new HashMap<String, String>());

@@ -44,6 +44,10 @@ public class Data {
         }
     }
 
+    public IDataDefinition getDefinition() {
+        return dataDefinition;
+    }
+
     public void insert(Map<String, Object> entryValues) {
         Entry entry = new Entry(dataDefinition, entryValues);
         populateIndexes(entryValues, entry);

@@ -62,7 +62,11 @@ public class Entry {
         DataType dataType = fieldDefinition.getType();
         Object fieldValue = values.get(fieldName);
 
-        if (dataType != DataType.OBJECT) {
+        if (fieldValue == null && fieldDefinition.getKind().isMandatory()) {
+            throw new MissingMandatoryFieldException(fieldName);
+        }
+
+        if (fieldValue != null && dataType != DataType.OBJECT) {
             fieldValue = checkAndgetImmutableValue(fieldName, dataType, fieldValue);
         }
 
@@ -109,7 +113,6 @@ public class Entry {
             case OBJECT:
             default:
                 /// Not supposed to come here
-
         }
 
         return result;
