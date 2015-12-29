@@ -22,18 +22,14 @@ public class DataDescriptorParser {
     private String name;
     private Map<String, FieldDefinition> fieldDefinitions;
 
-    public DataDescriptorParser() {
-        init();
-    }
 
-    private void init() {
+    public DataDescriptorParser() {
         this.shelf = null;
         this.name = null;
         this.fieldDefinitions = new HashMap<String, FieldDefinition>();
     }
 
     public void parse(String fileName, IDataInsertor dataInsertor) {
-        init();
         TextFileReader textFileReader = new TextFileReader();
 
         try {
@@ -71,7 +67,9 @@ public class DataDescriptorParser {
         });
     }
 
+
     private enum Section {HEADER, IRRELEVANT, DEFINITION, INDEX}
+
 
     public interface IDataInsertor {
         void insert(String shelf, IDataDefinition dataDefinition);

@@ -25,6 +25,7 @@ public class DataParser {
         this.identifier = identifier;
     }
 
+
     public void parse(String fileName, TypeProvider typeProvider, IDataInsertor dataInsertor) {
         TextFileReader textFileReader = new TextFileReader();
 
@@ -36,6 +37,7 @@ public class DataParser {
             e.printStackTrace();
         }
     }
+
 
     private void parseImpl(String fileName, TextFileReader textFileReader, TypeProvider typeProvider, IDataInsertor dataInsertor) throws IOException {
         textFileReader.open(fileName);
@@ -51,6 +53,7 @@ public class DataParser {
     public interface TypeProvider {
         DataType getType(String shelf, String identifier, String field);
     }
+
 
     private class LineProcessor implements ILineProcessor {
 
@@ -81,29 +84,36 @@ public class DataParser {
             String[] columnsName = line.split("\\|");
 
             for (int index = 0 ; index < columnsName.length ; index++) {
-                String columnName = columnsName[index].trim();
-
-                columns.add(columnName);
-                columnsType.put(columnName, typeProvider.getType(shelf, identifier, columnName));
+                processHeaderColumn(columnsName[index]);
             }
+        }
+
+        private void processHeaderColumn(String headerColumn) {
+            String columnName = headerColumn.trim();
+
+            columns.add(columnName);
+            columnsType.put(columnName, typeProvider.getType(shelf, identifier, columnName));
         }
 
         private void processDataLine(String line) {
             String[] columnsvalue = line.split("\\|");
 
             if (columnsvalue.length == columns.size()) {
-                Map<String, Object> dataFields = new HashMap<String, Object>();
-
-                for (int index = 0; index < columnsvalue.length; index++) {
-                    String columnName = columns.get(index);
-                    DataType columnType = columnsType.get(columnName);
-                    String columnValue = columnsvalue[index].trim();
-
-                    dataFields.put(columnName, typeConvertion(columnValue, columnType));
-                }
-
-                dataInsertor.insert(dataFields);
+                dataInsertor.insert(getDataLineValues(columnsvalue));
             }
+        }
+
+        private Map<String, Object> getDataLineValues(String[] columnsvalue) {
+            Map<String, Object> dataFields = new HashMap<String, Object>();
+
+            for (int index = 0; index < columnsvalue.length; index++) {
+                String columnName = columns.get(index);
+                DataType columnType = columnsType.get(columnName);
+                String columnValue = columnsvalue[index].trim();
+
+                dataFields.put(columnName, typeConvertion(columnValue, columnType));
+            }
+            return dataFields;
         }
 
         private Object typeConvertion(String columnValue, DataType columnType) {

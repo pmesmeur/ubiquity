@@ -32,31 +32,25 @@ public class BasicTest implements DataParser.TypeProvider {
         scanFolder(folder);
     }
 
+
     private void scanFolder(File folder) {
         for (File fileEntry : folder.listFiles()) {
             String fileName = fileEntry.getName();
-            DataInsertor dataInsertor = new DataInsertor();
 
             if (fileName.endsWith(".dsc")) {
-                String fullFileName = DIR_NAME + "/" + fileName;
-                parseAndInsertDataDescriptor(fullFileName, dataInsertor);
-
-                String dataFileName = fullFileName.replace(".dsc", ".txt");
-                parseAndInsertData(dataFileName, dataInsertor);
+                insertData(fileName);
             }
         }
     }
 
-    private void parseAndInsertDataDescriptor(String fileName,
-            DataDescriptorParser.IDataInsertor dataInsertor) {
-        DataDescriptorParser dataDescriptorParser = new DataDescriptorParser();
-        dataDescriptorParser.parse(fileName, dataInsertor);
-    }
 
-    private void parseAndInsertData(String fileName, DataInsertor dataInsertor) {
-        DataParser dataParser = new DataParser(dataInsertor.getShelf(),
-                dataInsertor.getIdentifier());
-        dataParser.parse(fileName, this, dataInsertor);
+    private void insertData(String dscFileName) {
+        DataInsertor dataInsertor = new DataInsertor();
+
+        dataInsertor.parseAndInsertDataDescriptor(DIR_NAME + "/" + dscFileName);
+
+        String dataFileName = dscFileName.replace(".dsc", ".txt");
+        dataInsertor.parseAndInsertData(DIR_NAME + "/" + dataFileName);
     }
 
     public IFieldDefinition.DataType getType(String shelf, String identifier, String field) {
@@ -85,6 +79,16 @@ public class BasicTest implements DataParser.TypeProvider {
         public DataInsertor() {
         }
 
+        private void parseAndInsertDataDescriptor(String fileName) {
+            DataDescriptorParser dataDescriptorParser = new DataDescriptorParser();
+            dataDescriptorParser.parse(fileName, this);
+        }
+
+        private void parseAndInsertData(String fileName) {
+            DataParser dataParser = new DataParser(shelf, identifier);
+            dataParser.parse(fileName, BasicTest.this, this);
+        }
+
         public void insert(String shelf, IDataDefinition dataDefinition) {
             this.shelf = shelf;
             this.identifier = dataDefinition.getIdentifier();
@@ -102,14 +106,6 @@ public class BasicTest implements DataParser.TypeProvider {
             }
         }
 
-        public String getShelf() {
-            return shelf;
-        }
-
-        public String getIdentifier() {
-            return identifier;
-        }
     }
-
 
 }
