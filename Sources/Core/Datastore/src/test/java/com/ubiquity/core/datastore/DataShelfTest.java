@@ -1,12 +1,13 @@
 package com.ubiquity.core.datastore;
 
-import com.ubiquity.core.datastore.exceptions.DataAlreadyExistsException;
-import com.ubiquity.core.datastore.exceptions.DataNotFoundException;
+import static com.ubiquity.core.datastore.IFieldTemplate.Kind.PRIMARY;
+import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.createEntryDataDefinition;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.PRIMARY;
-import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.createEntryDataDefinition;
+import com.ubiquity.core.datastore.exceptions.DataAlreadyExistsException;
+import com.ubiquity.core.datastore.exceptions.DataNotFoundException;
 
 public class DataShelfTest {
 

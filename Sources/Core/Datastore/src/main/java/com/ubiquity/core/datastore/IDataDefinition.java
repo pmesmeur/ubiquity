@@ -4,5 +4,6 @@ import java.util.Collection;
 
 public interface IDataDefinition {
     String getIdentifier();
-    Collection<IFieldDefinition> getFieldDefinitions();
+
+    Collection<IFieldTemplate> getFieldDefinitions();
 }

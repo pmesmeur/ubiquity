@@ -1,6 +1,6 @@
 package com.ubiquity.core.datastore;
 
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.PRIMARY;
+import static com.ubiquity.core.datastore.IFieldTemplate.Kind.PRIMARY;
 import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.*;
 
 import java.time.Duration;

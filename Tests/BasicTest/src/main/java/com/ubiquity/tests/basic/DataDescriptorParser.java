@@ -1,8 +1,8 @@
 package com.ubiquity.tests.basic;
 
 
-import static com.ubiquity.core.datastore.IFieldDefinition.DataType.*;
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.*;
+import static com.ubiquity.core.datastore.IFieldTemplate.DataType.*;
+import static com.ubiquity.core.datastore.IFieldTemplate.Kind.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,21 +12,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.ubiquity.core.datastore.IDataDefinition;
-import com.ubiquity.core.datastore.IFieldDefinition;
-import com.ubiquity.core.datastore.IFieldDefinition.DataType;
-import com.ubiquity.core.datastore.IFieldDefinition.Kind;
+import com.ubiquity.core.datastore.IFieldTemplate;
+import com.ubiquity.core.datastore.IFieldTemplate.DataType;
+import com.ubiquity.core.datastore.IFieldTemplate.Kind;
 
 public class DataDescriptorParser {
 
     private String shelf;
     private String name;
-    private Map<String, FieldDefinition> fieldDefinitions;
+    private Map<String, FieldTemplate> fieldDefinitions;
 
 
     public DataDescriptorParser() {
         this.shelf = null;
         this.name = null;
-        this.fieldDefinitions = new HashMap<String, FieldDefinition>();
+        this.fieldDefinitions = new HashMap<String, FieldTemplate>();
     }
 
     public void parse(String fileName, IDataInsertor dataInsertor) {
@@ -50,9 +50,9 @@ public class DataDescriptorParser {
     }
 
     private void insertAllData(IDataInsertor dataInsertor) {
-        final Collection<IFieldDefinition> fieldDef = new ArrayList<IFieldDefinition>();
+        final Collection<IFieldTemplate> fieldDef = new ArrayList<IFieldTemplate>();
 
-        for (IFieldDefinition iter : fieldDefinitions.values()) {
+        for (IFieldTemplate iter : fieldDefinitions.values()) {
             fieldDef.add(iter);
         }
 
@@ -64,7 +64,7 @@ public class DataDescriptorParser {
             }
 
             @Override
-            public Collection<IFieldDefinition> getFieldDefinitions() {
+            public Collection<IFieldTemplate> getFieldDefinitions() {
                 return fieldDef;
             }
         });
@@ -132,7 +132,7 @@ public class DataDescriptorParser {
             String strType = getFieldType(line);
             DataType dataType = strTypeToDataType(strType);
 
-            fieldDefinitions.put(fieldName, new FieldDefinition(fieldName, dataType));
+            fieldDefinitions.put(fieldName, new FieldTemplate(fieldName, dataType));
         }
 
         private String getFieldName(String line) {
@@ -221,13 +221,13 @@ public class DataDescriptorParser {
         }
     }
 
-    private class FieldDefinition implements IFieldDefinition {
+    private class FieldTemplate implements IFieldTemplate {
 
         private final String name;
         private final DataType type;
         private Kind kind;
 
-        public FieldDefinition(String name, DataType type) {
+        public FieldTemplate(String name, DataType type) {
             this.name = name;
             this.type = type;
             this.kind = OPTIONAL;

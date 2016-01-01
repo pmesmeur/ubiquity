@@ -1,17 +1,13 @@
 package com.ubiquity.core.datastore;
 
-import static com.ubiquity.core.datastore.IFieldDefinition.DataType.BOOLEAN;
-import static com.ubiquity.core.datastore.IFieldDefinition.DataType.DOUBLE;
-import static com.ubiquity.core.datastore.IFieldDefinition.DataType.OBJECT;
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.INDEXED;
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.MANDATORY;
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.PRIMARY;
+import static com.ubiquity.core.datastore.IFieldTemplate.DataType.*;
+import static com.ubiquity.core.datastore.IFieldTemplate.Kind.*;
 
-import com.ubiquity.core.datastore.exceptions.DoubleTypeCannotBeUniqueException;
 import org.junit.Test;
 
-import com.ubiquity.core.datastore.exceptions.ObjectTypeCannotBeIndexException;
+import com.ubiquity.core.datastore.exceptions.DoubleTypeCannotBeUniqueException;
 import com.ubiquity.core.datastore.exceptions.NoPrimaryFieldException;
+import com.ubiquity.core.datastore.exceptions.ObjectTypeCannotBeIndexException;
 import com.ubiquity.core.datastore.utils.DataDefinitionBuilder;
 
 public class DataDefinitionValidatorTest {

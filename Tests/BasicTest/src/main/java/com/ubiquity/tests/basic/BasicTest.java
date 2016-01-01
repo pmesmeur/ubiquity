@@ -7,7 +7,7 @@ import java.util.Map;
 import com.google.common.base.Strings;
 import com.ubiquity.core.datastore.DataStore;
 import com.ubiquity.core.datastore.IDataDefinition;
-import com.ubiquity.core.datastore.IFieldDefinition;
+import com.ubiquity.core.datastore.IFieldTemplate;
 import com.ubiquity.core.datastore.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
 
 public class BasicTest implements DataParser.TypeProvider {
@@ -54,15 +54,15 @@ public class BasicTest implements DataParser.TypeProvider {
     }
 
     @Override
-    public IFieldDefinition.DataType getType(String shelf, String identifier, String field) {
+    public IFieldTemplate.DataType getType(String shelf, String identifier, String field) {
         assert!Strings.isNullOrEmpty(shelf);
         assert!Strings.isNullOrEmpty(identifier);
         assert!Strings.isNullOrEmpty(field);
 
-        Collection<IFieldDefinition> fieldsDef = dataStore.getDataShelf(shelf).getData(identifier)
+        Collection<IFieldTemplate> fieldsDef = dataStore.getDataShelf(shelf).getData(identifier)
                 .getDefinition().getFieldDefinitions();
 
-        for (IFieldDefinition fieldDef : fieldsDef) {
+        for (IFieldTemplate fieldDef : fieldsDef) {
             if (fieldDef.getName().equals(field)) {
                 return fieldDef.getType();
             }

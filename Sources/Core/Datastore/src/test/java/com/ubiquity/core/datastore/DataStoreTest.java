@@ -1,7 +1,7 @@
 package com.ubiquity.core.datastore;
 
-import static com.ubiquity.core.datastore.IFieldDefinition.DataType.STRING;
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.PRIMARY;
+import static com.ubiquity.core.datastore.IFieldTemplate.DataType.STRING;
+import static com.ubiquity.core.datastore.IFieldTemplate.Kind.PRIMARY;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
@@ -110,11 +110,11 @@ public class DataStoreTest {
 
     private class DataDefinition implements IDataDefinition {
 
-        private final Collection<IFieldDefinition> fieldDefinitions;
+        private final Collection<IFieldTemplate> fieldDefinitions;
 
         public DataDefinition() {
-            this.fieldDefinitions = new ArrayList<IFieldDefinition>();
-            fieldDefinitions.add(new IFieldDefinition() {
+            this.fieldDefinitions = new ArrayList<IFieldTemplate>();
+            fieldDefinitions.add(new IFieldTemplate() {
                 @Override
                 public String getName() {
                     return "DummyField";
@@ -138,7 +138,7 @@ public class DataStoreTest {
         }
 
         @Override
-        public Collection<IFieldDefinition> getFieldDefinitions() {
+        public Collection<IFieldTemplate> getFieldDefinitions() {
             return fieldDefinitions;
         }
     }

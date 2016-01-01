@@ -1,6 +1,11 @@
 package com.ubiquity.core.datastore;
 
-public interface IFieldDefinition {
+public interface IFieldTemplate {
+            String getName();
+
+    DataType getType();
+
+    Kind getKind();
     enum DataType { INTEGER,
         DOUBLE,
         STRING,
@@ -11,7 +16,6 @@ public interface IFieldDefinition {
         TIME,
         DURATION
     }
-
     enum Kind {
         PRIMARY(true, true, true),
         INDEXED(true, true, false),
@@ -40,9 +44,5 @@ public interface IFieldDefinition {
             return isUnique;
         }
     }
-
-    String getName();
-    DataType getType();
-    Kind getKind();
 
 }

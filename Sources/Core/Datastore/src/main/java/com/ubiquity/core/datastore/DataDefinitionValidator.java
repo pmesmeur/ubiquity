@@ -1,14 +1,14 @@
 package com.ubiquity.core.datastore;
 
-import static com.ubiquity.core.datastore.IFieldDefinition.DataType.DOUBLE;
-import static com.ubiquity.core.datastore.IFieldDefinition.DataType.OBJECT;
+import static com.ubiquity.core.datastore.IFieldTemplate.DataType.DOUBLE;
+import static com.ubiquity.core.datastore.IFieldTemplate.DataType.OBJECT;
 
 import java.util.Collection;
 
 import com.google.common.base.Strings;
 import com.ubiquity.core.datastore.exceptions.DoubleTypeCannotBeUniqueException;
-import com.ubiquity.core.datastore.exceptions.ObjectTypeCannotBeIndexException;
 import com.ubiquity.core.datastore.exceptions.NoPrimaryFieldException;
+import com.ubiquity.core.datastore.exceptions.ObjectTypeCannotBeIndexException;
 
 class DataDefinitionValidator {
 
@@ -29,13 +29,13 @@ class DataDefinitionValidator {
 
 
     private static void validateFieldDefinitions(String identifier,
-            Collection<IFieldDefinition> fieldDefinitions) {
+            Collection<IFieldTemplate> fieldDefinitions) {
         assert fieldDefinitions != null;
         assert fieldDefinitions.size() > 0;
 
         boolean hasAtLeastOneUniqueField = false;
 
-        for (IFieldDefinition fieldDefinition : fieldDefinitions) {
+        for (IFieldTemplate fieldDefinition : fieldDefinitions) {
             hasAtLeastOneUniqueField |= fieldDefinition.getKind().isUnique();
             validateFieldDefinition(fieldDefinition);
         }
@@ -45,7 +45,7 @@ class DataDefinitionValidator {
         }
     }
 
-    private static void validateFieldDefinition(IFieldDefinition fieldDefinition) {
+    private static void validateFieldDefinition(IFieldTemplate fieldDefinition) {
         String fieldName = fieldDefinition.getName();
         assert!Strings.isNullOrEmpty(fieldName);
 

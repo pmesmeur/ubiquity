@@ -6,7 +6,7 @@ import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Map;
 
-import com.ubiquity.core.datastore.IFieldDefinition.DataType;
+import com.ubiquity.core.datastore.IFieldTemplate.DataType;
 import com.ubiquity.core.datastore.exceptions.EntryDoesNotFitDataDefinitionException;
 import com.ubiquity.core.datastore.exceptions.MissingMandatoryFieldException;
 import com.ubiquity.core.datastore.exceptions.WrongFieldTypeException;
@@ -19,17 +19,17 @@ public class Entry {
         assert dataDefinition != null;
         assert values != null;
 
-        Collection<IFieldDefinition> fieldDefinitions = dataDefinition.getFieldDefinitions();
+        Collection<IFieldTemplate> fieldDefinitions = dataDefinition.getFieldDefinitions();
         this.fields = new Object[fieldDefinitions.size()];
         populateFields(fieldDefinitions, values);
     }
 
-    private void populateFields(Collection<IFieldDefinition> fieldDefinitions,
+    private void populateFields(Collection<IFieldTemplate> fieldDefinitions,
             Map<String, Object> values) {
         int index = 0;
         int nbInserted = 0;
 
-        for (IFieldDefinition fieldDefinition : fieldDefinitions) {
+        for (IFieldTemplate fieldDefinition : fieldDefinitions) {
             if (populateField(fieldDefinition, index++, values)) {
                 nbInserted++;
             }
@@ -40,7 +40,7 @@ public class Entry {
         }
     }
 
-    private boolean populateField(IFieldDefinition fieldDefinition, int index,
+    private boolean populateField(IFieldTemplate fieldDefinition, int index,
             Map<String, Object> values) {
         boolean inserted = false;
         if (values.containsKey(fieldDefinition.getName())) {
@@ -53,11 +53,11 @@ public class Entry {
         return inserted;
     }
 
-    private boolean isFieldMandatory(IFieldDefinition fieldDefinition) {
+    private boolean isFieldMandatory(IFieldTemplate fieldDefinition) {
         return fieldDefinition.getKind().isMandatory();
     }
 
-    private Object fieldValue(IFieldDefinition fieldDefinition, Map<String, Object> values) {
+    private Object fieldValue(IFieldTemplate fieldDefinition, Map<String, Object> values) {
         String fieldName = fieldDefinition.getName();
         DataType dataType = fieldDefinition.getType();
         Object fieldValue = values.get(fieldName);

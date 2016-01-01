@@ -1,8 +1,8 @@
 package com.ubiquity.core.datastore.utils;
 
-import static com.ubiquity.core.datastore.IFieldDefinition.DataType.*;
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind;
-import static com.ubiquity.core.datastore.IFieldDefinition.Kind.*;
+import static com.ubiquity.core.datastore.IFieldTemplate.DataType.*;
+import static com.ubiquity.core.datastore.IFieldTemplate.Kind;
+import static com.ubiquity.core.datastore.IFieldTemplate.Kind.*;
 
 import com.ubiquity.core.datastore.IDataDefinition;
 

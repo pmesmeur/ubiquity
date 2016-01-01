@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.ubiquity.core.datastore.IDataDefinition;
-import com.ubiquity.core.datastore.IFieldDefinition;
-import com.ubiquity.core.datastore.IFieldDefinition.DataType;
-import com.ubiquity.core.datastore.IFieldDefinition.Kind;
+import com.ubiquity.core.datastore.IFieldTemplate;
+import com.ubiquity.core.datastore.IFieldTemplate.DataType;
+import com.ubiquity.core.datastore.IFieldTemplate.Kind;
 
 public class DataDefinitionBuilder {
 
     private String identifier;
-    private ArrayList<IFieldDefinition> fieldDefinitions = new ArrayList<IFieldDefinition>();
+    private ArrayList<IFieldTemplate> fieldDefinitions = new ArrayList<IFieldTemplate>();
 
     public IDataDefinition build() {
         return new IDataDefinition() {
@@ -22,7 +22,7 @@ public class DataDefinitionBuilder {
             }
 
             @Override
-            public Collection<IFieldDefinition> getFieldDefinitions() {
+            public Collection<IFieldTemplate> getFieldDefinitions() {
                 return fieldDefinitions;
             }
         };
@@ -46,7 +46,7 @@ public class DataDefinitionBuilder {
         private Kind kind;
 
         public DataDefinitionBuilder build() {
-            fieldDefinitions.add(new IFieldDefinition() {
+            fieldDefinitions.add(new IFieldTemplate() {
 
                 @Override
                 public String getName() {

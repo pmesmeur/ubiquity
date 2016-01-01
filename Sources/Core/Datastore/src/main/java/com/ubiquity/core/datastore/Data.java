@@ -29,15 +29,15 @@ public class Data {
     private static Map<String, IIndex> buildIndexes(IDataDefinition dataDefinition) {
         Map<String, IIndex> indexes = new HashMap<String, IIndex>();
 
-        for (IFieldDefinition fieldDefinition : dataDefinition.getFieldDefinitions()) {
+        for (IFieldTemplate fieldDefinition : dataDefinition.getFieldDefinitions()) {
             buildIndex(indexes, fieldDefinition);
         }
 
         return (indexes);
     }
 
-    private static void buildIndex(Map<String, IIndex> indexes, IFieldDefinition fieldDefinition) {
-        IFieldDefinition.Kind kind = fieldDefinition.getKind();
+    private static void buildIndex(Map<String, IIndex> indexes, IFieldTemplate fieldDefinition) {
+        IFieldTemplate.Kind kind = fieldDefinition.getKind();
         if (kind.isIndexed()) {
             indexes.put(fieldDefinition.getName(),
                     IndexFactory.createIndex(kind.isUnique() ? UNIQUE : MULTIPLE));
