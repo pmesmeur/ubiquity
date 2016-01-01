@@ -11,10 +11,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ubiquity.core.datastore.IDataDefinition;
 import com.ubiquity.core.datastore.IFieldTemplate;
 import com.ubiquity.core.datastore.IFieldTemplate.Kind;
 import com.ubiquity.core.datastore.IFieldTemplate.Type;
+import com.ubiquity.core.datastore.IRecordTemplate;
 
 public class DataDescriptorParser {
 
@@ -56,7 +56,7 @@ public class DataDescriptorParser {
             fieldTemplates.add(iter);
         }
 
-        dataInsertor.insert(shelf, new IDataDefinition() {
+        dataInsertor.insert(shelf, new IRecordTemplate() {
 
             @Override
             public String getIdentifier() {
@@ -75,7 +75,7 @@ public class DataDescriptorParser {
 
 
     public interface IDataInsertor {
-        void insert(String shelf, IDataDefinition dataDefinition);
+                void insert(String shelf, IRecordTemplate recordTemplate);
     }
 
     private class LineProcessor implements ILineProcessor {

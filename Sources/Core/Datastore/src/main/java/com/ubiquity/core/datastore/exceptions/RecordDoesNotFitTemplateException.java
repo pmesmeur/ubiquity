@@ -1,7 +1,7 @@
 package com.ubiquity.core.datastore.exceptions;
 
-public class EntryDoesNotFitDataDefinitionException extends UbiquityException {
-    public EntryDoesNotFitDataDefinitionException() {
+public class RecordDoesNotFitTemplateException extends UbiquityException {
+    public RecordDoesNotFitTemplateException() {
         super("some fields were provided bus did not fit the data definition");
     }
 }

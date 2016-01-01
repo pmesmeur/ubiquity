@@ -14,22 +14,22 @@ import com.ubiquity.core.datastore.indexes.IndexFactory;
 
 public class Data {
 
-    private final IDataDefinition dataDefinition;
+    private final IRecordTemplate recordTemplate;
     private final Collection<Entry> entries;
     private final Map<String, IIndex> indexes;
 
-    public Data(IDataDefinition dataDefinition) {
-        DataDefinitionValidator.validate(dataDefinition);
+    public Data(IRecordTemplate recordTemplate) {
+        RecordTemplateValidator.validate(recordTemplate);
 
-        this.dataDefinition = dataDefinition; /// TODO: make a copy
+        this.recordTemplate = recordTemplate; /// TODO: make a copy
         this.entries = new ArrayList<Entry>();
-        this.indexes = buildIndexes(dataDefinition);
+        this.indexes = buildIndexes(recordTemplate);
     }
 
-    private static Map<String, IIndex> buildIndexes(IDataDefinition dataDefinition) {
+    private static Map<String, IIndex> buildIndexes(IRecordTemplate recordTemplate) {
         Map<String, IIndex> indexes = new HashMap<String, IIndex>();
 
-        for (IFieldTemplate fieldTemplate : dataDefinition.getFieldTemplates()) {
+        for (IFieldTemplate fieldTemplate : recordTemplate.getFieldTemplates()) {
             buildIndex(indexes, fieldTemplate);
         }
 
@@ -44,12 +44,12 @@ public class Data {
         }
     }
 
-    public IDataDefinition getDefinition() {
-        return dataDefinition;
+    public IRecordTemplate getDefinition() {
+        return recordTemplate;
     }
 
     public void insert(Map<String, Object> entryValues) {
-        Entry entry = new Entry(dataDefinition, entryValues);
+        Entry entry = new Entry(recordTemplate, entryValues);
         populateIndexes(entryValues, entry);
         entries.add(entry);
     }

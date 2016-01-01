@@ -1,7 +1,7 @@
 package com.ubiquity.core.datastore;
 
 import static com.ubiquity.core.datastore.IFieldTemplate.Kind.PRIMARY;
-import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.createEntryDataDefinition;
+import static com.ubiquity.core.datastore.utils.RecordTemplateHelper.createRecordTempalte;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -36,10 +36,10 @@ public class DataShelfTest {
     public void testInsertExistingData() {
         DataShelf dataShelf = DataShelf.create(DATA_SHELF_ID);
 
-        IDataDefinition dataDefinition = createEntryDataDefinition(PRIMARY);
+        IRecordTemplate recordTempalte = createRecordTempalte(PRIMARY);
 
-        dataShelf.insertData(dataDefinition);
-        dataShelf.insertData(dataDefinition);
+        dataShelf.insertData(recordTempalte);
+        dataShelf.insertData(recordTempalte);
     }
 
     @Test(expected = AssertionError.class)

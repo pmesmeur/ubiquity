@@ -10,17 +10,17 @@ import com.ubiquity.core.datastore.exceptions.DoubleTypeCannotBeUniqueException;
 import com.ubiquity.core.datastore.exceptions.NoPrimaryFieldException;
 import com.ubiquity.core.datastore.exceptions.ObjectTypeCannotBeIndexException;
 
-class DataDefinitionValidator {
+class RecordTemplateValidator {
 
-    private DataDefinitionValidator() {
+    private RecordTemplateValidator() {
     }
 
-    public static void validate(IDataDefinition dataDefinition) {
-        assert dataDefinition != null;
+    public static void validate(IRecordTemplate recordTemplate) {
+        assert recordTemplate != null;
 
-        validateIdentifier(dataDefinition.getIdentifier());
-        validateFieldTempates(dataDefinition.getIdentifier(),
-                dataDefinition.getFieldTemplates());
+        validateIdentifier(recordTemplate.getIdentifier());
+        validateFieldTempates(recordTemplate.getIdentifier(),
+                recordTemplate.getFieldTemplates());
     }
 
     private static void validateIdentifier(String identifier) {

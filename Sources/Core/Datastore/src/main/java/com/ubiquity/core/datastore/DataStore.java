@@ -1,11 +1,11 @@
 package com.ubiquity.core.datastore;
 
-import com.google.common.base.Strings;
-import com.ubiquity.core.datastore.exceptions.DataShelfNotFoundException;
-
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+
+import com.google.common.base.Strings;
+import com.ubiquity.core.datastore.exceptions.DataShelfNotFoundException;
 
 
 public class DataStore {
@@ -34,11 +34,11 @@ public class DataStore {
     }
 
 
-    public void insertData(String shelf, IDataDefinition dataDefinition) {
+    public void insertData(String shelf, IRecordTemplate recordTemplate) {
         assert !Strings.isNullOrEmpty(shelf);
-        assert dataDefinition != null;
+        assert recordTemplate != null;
 
         DataShelf dataShelf = getDataShelf(shelf);
-        dataShelf.insertData(dataDefinition);
+        dataShelf.insertData(recordTemplate);
     }
 }

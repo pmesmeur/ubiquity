@@ -6,8 +6,8 @@ import java.util.Map;
 
 import com.google.common.base.Strings;
 import com.ubiquity.core.datastore.DataStore;
-import com.ubiquity.core.datastore.IDataDefinition;
 import com.ubiquity.core.datastore.IFieldTemplate;
+import com.ubiquity.core.datastore.IRecordTemplate;
 import com.ubiquity.core.datastore.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
 
 public class BasicTest implements DataParser.TypeProvider {
@@ -92,12 +92,12 @@ public class BasicTest implements DataParser.TypeProvider {
         }
 
         @Override
-        public void insert(String shelf, IDataDefinition dataDefinition) {
+        public void insert(String shelf, IRecordTemplate recordTemplate) {
             this.shelf = shelf;
-            this.identifier = dataDefinition.getIdentifier();
+            this.identifier = recordTemplate.getIdentifier();
 
             dataStore.insertDataShelf(shelf);
-            dataStore.insertData(shelf, dataDefinition);
+            dataStore.insertData(shelf, recordTemplate);
             System.out.println("Data: {" + shelf + "," + identifier + "}");
         }
 

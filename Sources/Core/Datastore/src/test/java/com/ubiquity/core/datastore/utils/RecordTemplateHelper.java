@@ -4,18 +4,18 @@ import static com.ubiquity.core.datastore.IFieldTemplate.Kind;
 import static com.ubiquity.core.datastore.IFieldTemplate.Kind.*;
 import static com.ubiquity.core.datastore.IFieldTemplate.Type.*;
 
-import com.ubiquity.core.datastore.IDataDefinition;
+import com.ubiquity.core.datastore.IRecordTemplate;
 
-public class DataDefinitionHelper {
+public class RecordTemplateHelper {
 
-    public static IDataDefinition createBasicEntryDataDefinition() {
-        return createEntryDataDefinition(INDEXED);
+    public static IRecordTemplate createBasicRecordTemplate() {
+        return createRecordTempalte(INDEXED);
     }
 
-    public static IDataDefinition createEntryDataDefinition(Kind kind) {
-        DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
+    public static IRecordTemplate createRecordTempalte(Kind kind) {
+        RecordTemplateBuilder recordTemplateBuilder = new RecordTemplateBuilder();
 
-        return dataDefinitionBuilder.withIdentifier("BasicData")
+        return recordTemplateBuilder.withIdentifier("BasicData")
                 .addFieldTemplate()
                 .withName("Field1")
                 .withType(STRING)
@@ -64,10 +64,10 @@ public class DataDefinitionHelper {
             .build();
     }
 
-    public static IDataDefinition createPrimaryOptionalEntry() {
-        DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
+    public static IRecordTemplate createPrimaryOptionalRecordTemplate() {
+        RecordTemplateBuilder recordTemplateBuilder = new RecordTemplateBuilder();
 
-        return dataDefinitionBuilder.withIdentifier("BasicData")
+        return recordTemplateBuilder.withIdentifier("BasicData")
                 .addFieldTemplate()
                 .withName("Field1")
                 .withType(STRING)

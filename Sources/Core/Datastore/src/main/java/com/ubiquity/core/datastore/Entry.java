@@ -7,19 +7,19 @@ import java.util.Collection;
 import java.util.Map;
 
 import com.ubiquity.core.datastore.IFieldTemplate.Type;
-import com.ubiquity.core.datastore.exceptions.EntryDoesNotFitDataDefinitionException;
 import com.ubiquity.core.datastore.exceptions.MissingMandatoryFieldException;
+import com.ubiquity.core.datastore.exceptions.RecordDoesNotFitTemplateException;
 import com.ubiquity.core.datastore.exceptions.WrongFieldTypeException;
 
 public class Entry {
 
     private final Object fields[];
 
-    public Entry(IDataDefinition dataDefinition, Map<String, Object> values) {
-        assert dataDefinition != null;
+    public Entry(IRecordTemplate recordTemplate, Map<String, Object> values) {
+        assert recordTemplate != null;
         assert values != null;
 
-        Collection<IFieldTemplate> fieldTemplates = dataDefinition.getFieldTemplates();
+        Collection<IFieldTemplate> fieldTemplates = recordTemplate.getFieldTemplates();
         this.fields = new Object[fieldTemplates.size()];
         populateFields(fieldTemplates, values);
     }
@@ -36,7 +36,7 @@ public class Entry {
         }
 
         if (nbInserted != values.size()) {
-            throw new EntryDoesNotFitDataDefinitionException();
+            throw new RecordDoesNotFitTemplateException();
         }
     }
 

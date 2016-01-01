@@ -71,34 +71,34 @@ public class DataStoreTest {
     @Test
     public void testInsertData() {
         final String DATA_SHELF_NAME = "The.Data.Shelf";
-        DataDefinition dataDefinition = new DataDefinition();
+        RecordTemplate recordTemplate = new RecordTemplate();
 
         dataStore.insertDataShelf(DATA_SHELF_NAME);
-        dataStore.insertData(DATA_SHELF_NAME, dataDefinition);
+        dataStore.insertData(DATA_SHELF_NAME, recordTemplate);
 
         DataShelf dataShelf = dataStore.getDataShelf(DATA_SHELF_NAME);
         assertNotNull(dataShelf);
 
-        Data data = dataShelf.getData(dataDefinition.getIdentifier());
+        Data data = dataShelf.getData(recordTemplate.getIdentifier());
         assertNotNull(data);
     }
 
 
     @Test(expected = DataShelfNotFoundException.class)
     public void testInsertDataOnUnknownShelf() {
-        dataStore.insertData("ThisShelfDoesNotExist", new DataDefinition());
+        dataStore.insertData("ThisShelfDoesNotExist", new RecordTemplate());
     }
 
 
     @Test(expected = AssertionError.class)
     public void testInsertDataWithEmptyIdentifier() {
-        dataStore.insertData("", new DataDefinition());
+        dataStore.insertData("", new RecordTemplate());
     }
 
 
     @Test(expected = AssertionError.class)
     public void testInsertDataWithNullIdentifier() {
-        dataStore.insertData(null, new DataDefinition());
+        dataStore.insertData(null, new RecordTemplate());
     }
 
 
@@ -108,11 +108,11 @@ public class DataStoreTest {
     }
 
 
-    private class DataDefinition implements IDataDefinition {
+    private class RecordTemplate implements IRecordTemplate {
 
         private final Collection<IFieldTemplate> fieldTemplate;
 
-        public DataDefinition() {
+        public RecordTemplate() {
             this.fieldTemplate = new ArrayList<IFieldTemplate>();
             fieldTemplate.add(new IFieldTemplate() {
                 @Override

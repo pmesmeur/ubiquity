@@ -1,7 +1,7 @@
 package com.ubiquity.core.datastore;
 
 import static com.ubiquity.core.datastore.IFieldTemplate.Kind.PRIMARY;
-import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.*;
+import static com.ubiquity.core.datastore.utils.RecordTemplateHelper.*;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -12,20 +12,20 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.ubiquity.core.datastore.exceptions.EntryDoesNotFitDataDefinitionException;
+import com.ubiquity.core.datastore.exceptions.RecordDoesNotFitTemplateException;
 import com.ubiquity.core.datastore.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
 import com.ubiquity.core.datastore.indexes.IIndex;
 
 public class DataTest {
 
     @Test(expected = AssertionError.class)
-    public void testCreateWithNullDataDefinition() {
+    public void testCreateWithNullRecordTemplate() {
         new Data(null);
     }
 
     @Test
     public void testInsertEntry() {
-        Data data = new Data(createBasicEntryDataDefinition());
+        Data data = new Data(createBasicRecordTemplate());
         Map<String, Object> entryValues = createEntryValues();
 
         data.insert(entryValues);
@@ -53,7 +53,7 @@ public class DataTest {
 
     @Test
     public void testIndexesCreated() {
-        Data data = new Data(createBasicEntryDataDefinition());
+        Data data = new Data(createBasicRecordTemplate());
         Map<String, IIndex> indexes = data.getIndexes();
 
         Assert.assertEquals(8, indexes.size());
@@ -70,7 +70,7 @@ public class DataTest {
 
     @Test
     public void testEntryIndexed() {
-        Data data = new Data(createBasicEntryDataDefinition());
+        Data data = new Data(createBasicRecordTemplate());
         data.insert(createEntryValues("HelloWorld"));
         data.insert(createEntryValues("Foo"));
         data.insert(createEntryValues("Bar"));
@@ -85,7 +85,7 @@ public class DataTest {
 
     @Test(expected = ValueOfPrimaryFieldAlreadyInsertedException.class)
     public void testDoubleEntryOnPrimaryField() {
-        Data data = new Data(createPrimaryOptionalEntry());
+        Data data = new Data(createPrimaryOptionalRecordTemplate());
         Map<String, Object> entryValues = createPrimaryOptionalEntryValues();
         data.insert(entryValues);
         data.insert(entryValues);
@@ -102,7 +102,7 @@ public class DataTest {
 
     @Test
     public void testSizeOfIndexesWhenErrorOnPrimaryField() {
-        Data data = new Data(createEntryDataDefinition(PRIMARY));
+        Data data = new Data(createRecordTempalte(PRIMARY));
         data.insert(createEntryValues("Field1", 1., 'A', 1, Boolean.FALSE, data, LocalDate.MIN, LocalTime.MIN, Duration.ZERO));
         try {
             data.insert(createEntryValues("Field2", 2., 'B', 1, Boolean.TRUE, data, LocalDate.MAX, LocalTime.MAX, Duration.ZERO));
@@ -132,9 +132,9 @@ public class DataTest {
         return entryValues;
     }
 
-    @Test(expected = EntryDoesNotFitDataDefinitionException.class)
-    public void testInsertEntryThatDoesNotFitDataDefinition() {
-        Data data = new Data(createPrimaryOptionalEntry());
+    @Test(expected = RecordDoesNotFitTemplateException.class)
+    public void testInsertRecordThatDoesNotFitTemplate() {
+        Data data = new Data(createPrimaryOptionalRecordTemplate());
         Map<String, Object> entryValues = createEntryValues();
 
         data.insert(entryValues);

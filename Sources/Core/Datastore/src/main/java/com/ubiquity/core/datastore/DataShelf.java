@@ -1,11 +1,11 @@
 package com.ubiquity.core.datastore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.google.common.base.Strings;
 import com.ubiquity.core.datastore.exceptions.DataAlreadyExistsException;
 import com.ubiquity.core.datastore.exceptions.DataNotFoundException;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public final class DataShelf {
 
@@ -33,15 +33,15 @@ public final class DataShelf {
         return identifier;
     }
 
-    public void insertData(IDataDefinition dataDefinition) {
-        checkDataDefinition(dataDefinition);
+    public void insertData(IRecordTemplate recordTemplate) {
+        checkRecordTemplate(recordTemplate);
 
-        String identifier = dataDefinition.getIdentifier();
+        String identifier = recordTemplate.getIdentifier();
         if (data.containsKey(identifier)) {
             throw new DataAlreadyExistsException(identifier);
         }
 
-        data.put(identifier, new Data(dataDefinition));
+        data.put(identifier, new Data(recordTemplate));
     }
 
     public Data getData(String identifier) {
@@ -55,9 +55,9 @@ public final class DataShelf {
         return result;
     }
 
-    private void checkDataDefinition(IDataDefinition dataDefinition) {
-        assert dataDefinition != null;
-        assert!Strings.isNullOrEmpty(dataDefinition.getIdentifier());
+    private void checkRecordTemplate(IRecordTemplate recordTemplate) {
+        assert recordTemplate != null;
+        assert!Strings.isNullOrEmpty(recordTemplate.getIdentifier());
     }
 
 }

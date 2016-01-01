@@ -3,18 +3,18 @@ package com.ubiquity.core.datastore.utils;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.ubiquity.core.datastore.IDataDefinition;
 import com.ubiquity.core.datastore.IFieldTemplate;
 import com.ubiquity.core.datastore.IFieldTemplate.Kind;
 import com.ubiquity.core.datastore.IFieldTemplate.Type;
+import com.ubiquity.core.datastore.IRecordTemplate;
 
-public class DataDefinitionBuilder {
+public class RecordTemplateBuilder {
 
     private String identifier;
     private ArrayList<IFieldTemplate> fieldTemplates = new ArrayList<IFieldTemplate>();
 
-    public IDataDefinition build() {
-        return new IDataDefinition() {
+    public IRecordTemplate build() {
+        return new IRecordTemplate() {
 
             @Override
             public String getIdentifier() {
@@ -29,7 +29,7 @@ public class DataDefinitionBuilder {
     }
 
 
-    public DataDefinitionBuilder withIdentifier(String identifier) {
+    public RecordTemplateBuilder withIdentifier(String identifier) {
         this.identifier = identifier;
         return this;
     }
@@ -45,7 +45,7 @@ public class DataDefinitionBuilder {
         private Type type;
         private Kind kind;
 
-        public DataDefinitionBuilder build() {
+        public RecordTemplateBuilder build() {
             fieldTemplates.add(new IFieldTemplate() {
 
                 @Override
@@ -64,7 +64,7 @@ public class DataDefinitionBuilder {
                 }
 
             });
-            return DataDefinitionBuilder.this;
+            return RecordTemplateBuilder.this;
         }
 
         public FieldTemplateBuilder withName(String name) {

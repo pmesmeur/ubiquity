@@ -1,6 +1,6 @@
 package com.ubiquity.core.datastore;
 
-import static com.ubiquity.core.datastore.utils.DataDefinitionHelper.createBasicEntryDataDefinition;
+import static com.ubiquity.core.datastore.utils.RecordTemplateHelper.createBasicRecordTemplate;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -16,7 +16,7 @@ import com.ubiquity.core.datastore.exceptions.WrongFieldTypeException;
 public class EntryTest {
 
     @Test(expected = AssertionError.class)
-    public void testCreatingEntryWithNullDataDefinition() {
+    public void testCreatingRecordWithNullTemplate() {
         Map<String, Object> entryValues = new HashMap<String, Object>();
 
         entryValues.put("Field1", new String("Ubiquity"));
@@ -31,7 +31,7 @@ public class EntryTest {
 
     @Test(expected = AssertionError.class)
     public void testCreatingEntryWithNullValues() {
-        new Entry(createBasicEntryDataDefinition(), null);
+        new Entry(createBasicRecordTemplate(), null);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class EntryTest {
         entryValues.put("Field8", LocalTime.MAX);
         entryValues.put("Field9", Duration.ZERO);
 
-        new Entry(createBasicEntryDataDefinition(), entryValues);
+        new Entry(createBasicRecordTemplate(), entryValues);
     }
 
     @Test(expected = MissingMandatoryFieldException.class)
@@ -61,7 +61,7 @@ public class EntryTest {
         entryValues.put("Field5", new Boolean(true));
         entryValues.put("Field6", new HashMap<String, String>());
 
-        new Entry(createBasicEntryDataDefinition(), entryValues);
+        new Entry(createBasicRecordTemplate(), entryValues);
     }
 
     @Test(expected = MissingMandatoryFieldException.class)
@@ -75,7 +75,7 @@ public class EntryTest {
         entryValues.put("Field5", new Boolean(true));
         entryValues.put("Field6", new HashMap<String, String>());
 
-        new Entry(createBasicEntryDataDefinition(), entryValues);
+        new Entry(createBasicRecordTemplate(), entryValues);
     }
 
     @Test(expected = WrongFieldTypeException.class)
@@ -89,7 +89,7 @@ public class EntryTest {
         entryValues.put("Field5", new Boolean(true));
         entryValues.put("Field6", new HashMap<String, String>());
 
-        new Entry(createBasicEntryDataDefinition(), entryValues);
+        new Entry(createBasicRecordTemplate(), entryValues);
     }
 
 }
