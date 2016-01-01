@@ -1,7 +1,7 @@
 package com.ubiquity.core.datastore;
 
-import static com.ubiquity.core.datastore.IFieldTemplate.DataType.STRING;
 import static com.ubiquity.core.datastore.IFieldTemplate.Kind.PRIMARY;
+import static com.ubiquity.core.datastore.IFieldTemplate.Type.STRING;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
@@ -121,7 +121,7 @@ public class DataStoreTest {
                 }
 
                 @Override
-                public DataType getType() {
+                public Type getType() {
                     return STRING;
                 }
 

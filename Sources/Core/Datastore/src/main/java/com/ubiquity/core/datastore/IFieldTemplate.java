@@ -3,10 +3,12 @@ package com.ubiquity.core.datastore;
 public interface IFieldTemplate {
             String getName();
 
-    DataType getType();
+    Type getType();
 
     Kind getKind();
-    enum DataType { INTEGER,
+
+    enum Type {
+        INTEGER,
         DOUBLE,
         STRING,
         BOOLEAN,

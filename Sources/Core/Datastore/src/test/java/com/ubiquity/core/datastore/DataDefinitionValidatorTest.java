@@ -1,7 +1,7 @@
 package com.ubiquity.core.datastore;
 
-import static com.ubiquity.core.datastore.IFieldTemplate.DataType.*;
 import static com.ubiquity.core.datastore.IFieldTemplate.Kind.*;
+import static com.ubiquity.core.datastore.IFieldTemplate.Type.*;
 
 import org.junit.Test;
 

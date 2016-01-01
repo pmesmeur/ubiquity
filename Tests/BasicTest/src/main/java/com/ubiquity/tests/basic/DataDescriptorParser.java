@@ -1,8 +1,8 @@
 package com.ubiquity.tests.basic;
 
 
-import static com.ubiquity.core.datastore.IFieldTemplate.DataType.*;
 import static com.ubiquity.core.datastore.IFieldTemplate.Kind.*;
+import static com.ubiquity.core.datastore.IFieldTemplate.Type.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,8 +13,8 @@ import java.util.Map;
 
 import com.ubiquity.core.datastore.IDataDefinition;
 import com.ubiquity.core.datastore.IFieldTemplate;
-import com.ubiquity.core.datastore.IFieldTemplate.DataType;
 import com.ubiquity.core.datastore.IFieldTemplate.Kind;
+import com.ubiquity.core.datastore.IFieldTemplate.Type;
 
 public class DataDescriptorParser {
 
@@ -130,9 +130,9 @@ public class DataDescriptorParser {
         private void processDefinition(String line) {
             String fieldName = getFieldName(line);
             String strType = getFieldType(line);
-            DataType dataType = strTypeToDataType(strType);
+            Type type = strTypeToDataType(strType);
 
-            fieldDefinitions.put(fieldName, new FieldTemplate(fieldName, dataType));
+            fieldDefinitions.put(fieldName, new FieldTemplate(fieldName, type));
         }
 
         private String getFieldName(String line) {
@@ -169,7 +169,7 @@ public class DataDescriptorParser {
             return fieldKind;
         }
 
-        private DataType strTypeToDataType(String strType) {
+        private Type strTypeToDataType(String strType) {
             assert strType != null;
 
             if (strType.equals("integer") || strType.equals("smallint"))
@@ -224,10 +224,10 @@ public class DataDescriptorParser {
     private class FieldTemplate implements IFieldTemplate {
 
         private final String name;
-        private final DataType type;
+        private final Type type;
         private Kind kind;
 
-        public FieldTemplate(String name, DataType type) {
+        public FieldTemplate(String name, Type type) {
             this.name = name;
             this.type = type;
             this.kind = OPTIONAL;
@@ -239,7 +239,7 @@ public class DataDescriptorParser {
         }
 
         @Override
-        public DataType getType() {
+        public Type getType() {
             return type;
         }
 

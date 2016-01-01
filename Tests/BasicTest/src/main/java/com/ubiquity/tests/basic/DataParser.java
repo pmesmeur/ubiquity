@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.common.base.Strings;
-import com.ubiquity.core.datastore.IFieldTemplate.DataType;
+import com.ubiquity.core.datastore.IFieldTemplate.Type;
 
 public class DataParser {
 
@@ -51,7 +51,7 @@ public class DataParser {
 
 
     public interface TypeProvider {
-        DataType getType(String shelf, String identifier, String field);
+                Type getType(String shelf, String identifier, String field);
     }
 
 
@@ -61,14 +61,14 @@ public class DataParser {
         private final TypeProvider typeProvider;
         private int lineIndex;
         private List<String> columns;
-        private Map<String, DataType> columnsType;
+        private Map<String, Type> columnsType;
 
         public LineProcessor(IDataInsertor dataInsertor, TypeProvider typeProvider) {
             this.dataInsertor = dataInsertor;
             this.typeProvider = typeProvider;
             this.lineIndex = 0;
             this.columns = new ArrayList<String>();
-            this.columnsType = new HashMap<String, DataType>();
+            this.columnsType = new HashMap<String, Type>();
         }
 
         @Override
@@ -109,7 +109,7 @@ public class DataParser {
 
             for (int index = 0; index < columnsvalue.length; index++) {
                 String columnName = columns.get(index);
-                DataType columnType = columnsType.get(columnName);
+                Type columnType = columnsType.get(columnName);
                 String columnValue = columnsvalue[index].trim();
 
                 dataFields.put(columnName, typeConvertion(columnValue, columnType));
@@ -117,8 +117,8 @@ public class DataParser {
             return dataFields;
         }
 
-        private Object typeConvertion(String columnValue, DataType columnType) {
-            if (columnType != DataType.STRING && Strings.isNullOrEmpty(columnValue)) {
+        private Object typeConvertion(String columnValue, Type columnType) {
+            if (columnType != Type.STRING && Strings.isNullOrEmpty(columnValue)) {
                 return null;
             }
 

@@ -6,7 +6,7 @@ import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Map;
 
-import com.ubiquity.core.datastore.IFieldTemplate.DataType;
+import com.ubiquity.core.datastore.IFieldTemplate.Type;
 import com.ubiquity.core.datastore.exceptions.EntryDoesNotFitDataDefinitionException;
 import com.ubiquity.core.datastore.exceptions.MissingMandatoryFieldException;
 import com.ubiquity.core.datastore.exceptions.WrongFieldTypeException;
@@ -59,24 +59,24 @@ public class Entry {
 
     private Object fieldValue(IFieldTemplate fieldDefinition, Map<String, Object> values) {
         String fieldName = fieldDefinition.getName();
-        DataType dataType = fieldDefinition.getType();
+        Type type = fieldDefinition.getType();
         Object fieldValue = values.get(fieldName);
 
         if (fieldValue == null && fieldDefinition.getKind().isMandatory()) {
             throw new MissingMandatoryFieldException(fieldName);
         }
 
-        if (fieldValue != null && dataType != DataType.OBJECT) {
-            fieldValue = checkAndgetImmutableValue(fieldName, dataType, fieldValue);
+        if (fieldValue != null && type != Type.OBJECT) {
+            fieldValue = checkAndgetImmutableValue(fieldName, type, fieldValue);
         }
 
         return fieldValue;
     }
 
-    private Object checkAndgetImmutableValue(String fieldName, DataType dataType, Object fieldValue) {
+    private Object checkAndgetImmutableValue(String fieldName, Type type, Object fieldValue) {
         Object result = null;
 
-        switch (dataType) {
+        switch (type) {
 
             case DOUBLE:
                 result = checkAndGetImmutableDoubleValue(fieldName, fieldValue);

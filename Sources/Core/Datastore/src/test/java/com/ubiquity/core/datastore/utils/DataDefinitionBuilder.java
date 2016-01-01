@@ -5,8 +5,8 @@ import java.util.Collection;
 
 import com.ubiquity.core.datastore.IDataDefinition;
 import com.ubiquity.core.datastore.IFieldTemplate;
-import com.ubiquity.core.datastore.IFieldTemplate.DataType;
 import com.ubiquity.core.datastore.IFieldTemplate.Kind;
+import com.ubiquity.core.datastore.IFieldTemplate.Type;
 
 public class DataDefinitionBuilder {
 
@@ -42,7 +42,7 @@ public class DataDefinitionBuilder {
 
     public class FieldDefinitionBuilder {
         private String name;
-        private DataType dataType;
+        private Type type;
         private Kind kind;
 
         public DataDefinitionBuilder build() {
@@ -54,8 +54,8 @@ public class DataDefinitionBuilder {
                 }
 
                 @Override
-                public DataType getType() {
-                    return dataType;
+                public Type getType() {
+                    return type;
                 }
 
                 @Override
@@ -72,8 +72,8 @@ public class DataDefinitionBuilder {
             return this;
         }
 
-        public FieldDefinitionBuilder withType(DataType dataType) {
-            this.dataType = dataType;
+        public FieldDefinitionBuilder withType(Type type) {
+            this.type = type;
             return this;
         }
 

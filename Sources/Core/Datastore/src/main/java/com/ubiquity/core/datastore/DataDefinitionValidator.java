@@ -1,7 +1,7 @@
 package com.ubiquity.core.datastore;
 
-import static com.ubiquity.core.datastore.IFieldTemplate.DataType.DOUBLE;
-import static com.ubiquity.core.datastore.IFieldTemplate.DataType.OBJECT;
+import static com.ubiquity.core.datastore.IFieldTemplate.Type.DOUBLE;
+import static com.ubiquity.core.datastore.IFieldTemplate.Type.OBJECT;
 
 import java.util.Collection;
 

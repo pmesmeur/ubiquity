@@ -54,7 +54,7 @@ public class BasicTest implements DataParser.TypeProvider {
     }
 
     @Override
-    public IFieldTemplate.DataType getType(String shelf, String identifier, String field) {
+    public IFieldTemplate.Type getType(String shelf, String identifier, String field) {
         assert!Strings.isNullOrEmpty(shelf);
         assert!Strings.isNullOrEmpty(identifier);
         assert!Strings.isNullOrEmpty(field);
