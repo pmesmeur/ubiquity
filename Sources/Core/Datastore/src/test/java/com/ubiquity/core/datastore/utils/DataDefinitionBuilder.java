@@ -11,7 +11,7 @@ import com.ubiquity.core.datastore.IFieldTemplate.Type;
 public class DataDefinitionBuilder {
 
     private String identifier;
-    private ArrayList<IFieldTemplate> fieldDefinitions = new ArrayList<IFieldTemplate>();
+    private ArrayList<IFieldTemplate> fieldTemplates = new ArrayList<IFieldTemplate>();
 
     public IDataDefinition build() {
         return new IDataDefinition() {
@@ -22,8 +22,8 @@ public class DataDefinitionBuilder {
             }
 
             @Override
-            public Collection<IFieldTemplate> getFieldDefinitions() {
-                return fieldDefinitions;
+            public Collection<IFieldTemplate> getFieldTemplates() {
+                return fieldTemplates;
             }
         };
     }
@@ -35,18 +35,18 @@ public class DataDefinitionBuilder {
     }
 
 
-    public FieldDefinitionBuilder addFieldDefinition() {
-        return new FieldDefinitionBuilder();
+    public FieldTemplateBuilder addFieldTemplate() {
+        return new FieldTemplateBuilder();
     }
 
 
-    public class FieldDefinitionBuilder {
+    public class FieldTemplateBuilder {
         private String name;
         private Type type;
         private Kind kind;
 
         public DataDefinitionBuilder build() {
-            fieldDefinitions.add(new IFieldTemplate() {
+            fieldTemplates.add(new IFieldTemplate() {
 
                 @Override
                 public String getName() {
@@ -67,17 +67,17 @@ public class DataDefinitionBuilder {
             return DataDefinitionBuilder.this;
         }
 
-        public FieldDefinitionBuilder withName(String name) {
+        public FieldTemplateBuilder withName(String name) {
             this.name = name;
             return this;
         }
 
-        public FieldDefinitionBuilder withType(Type type) {
+        public FieldTemplateBuilder withType(Type type) {
             this.type = type;
             return this;
         }
 
-        public FieldDefinitionBuilder withKind(Kind kind) {
+        public FieldTemplateBuilder withKind(Kind kind) {
             this.kind = kind;
             return this;
         }

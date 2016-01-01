@@ -59,12 +59,13 @@ public class BasicTest implements DataParser.TypeProvider {
         assert!Strings.isNullOrEmpty(identifier);
         assert!Strings.isNullOrEmpty(field);
 
-        Collection<IFieldTemplate> fieldsDef = dataStore.getDataShelf(shelf).getData(identifier)
-                .getDefinition().getFieldDefinitions();
+        Collection<IFieldTemplate> fieldTemplates = dataStore.getDataShelf(shelf)
+                .getData(identifier)
+                .getDefinition().getFieldTemplates();
 
-        for (IFieldTemplate fieldDef : fieldsDef) {
-            if (fieldDef.getName().equals(field)) {
-                return fieldDef.getType();
+        for (IFieldTemplate fieldTemplate : fieldTemplates) {
+            if (fieldTemplate.getName().equals(field)) {
+                return fieldTemplate.getType();
             }
         }
 

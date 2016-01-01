@@ -19,18 +19,18 @@ public class Entry {
         assert dataDefinition != null;
         assert values != null;
 
-        Collection<IFieldTemplate> fieldDefinitions = dataDefinition.getFieldDefinitions();
-        this.fields = new Object[fieldDefinitions.size()];
-        populateFields(fieldDefinitions, values);
+        Collection<IFieldTemplate> fieldTemplates = dataDefinition.getFieldTemplates();
+        this.fields = new Object[fieldTemplates.size()];
+        populateFields(fieldTemplates, values);
     }
 
-    private void populateFields(Collection<IFieldTemplate> fieldDefinitions,
+    private void populateFields(Collection<IFieldTemplate> fieldTemplates,
             Map<String, Object> values) {
         int index = 0;
         int nbInserted = 0;
 
-        for (IFieldTemplate fieldDefinition : fieldDefinitions) {
-            if (populateField(fieldDefinition, index++, values)) {
+        for (IFieldTemplate fieldTemplate : fieldTemplates) {
+            if (populateField(fieldTemplate, index++, values)) {
                 nbInserted++;
             }
         }
@@ -40,29 +40,29 @@ public class Entry {
         }
     }
 
-    private boolean populateField(IFieldTemplate fieldDefinition, int index,
+    private boolean populateField(IFieldTemplate fieldTemplate, int index,
             Map<String, Object> values) {
         boolean inserted = false;
-        if (values.containsKey(fieldDefinition.getName())) {
-            fields[index] = fieldValue(fieldDefinition, values);
+        if (values.containsKey(fieldTemplate.getName())) {
+            fields[index] = fieldValue(fieldTemplate, values);
             inserted = true;
-        } else if (isFieldMandatory(fieldDefinition)) {
-            throw new MissingMandatoryFieldException(fieldDefinition.getName());
+        } else if (isFieldMandatory(fieldTemplate)) {
+            throw new MissingMandatoryFieldException(fieldTemplate.getName());
         }
 
         return inserted;
     }
 
-    private boolean isFieldMandatory(IFieldTemplate fieldDefinition) {
-        return fieldDefinition.getKind().isMandatory();
+    private boolean isFieldMandatory(IFieldTemplate fieldTemplate) {
+        return fieldTemplate.getKind().isMandatory();
     }
 
-    private Object fieldValue(IFieldTemplate fieldDefinition, Map<String, Object> values) {
-        String fieldName = fieldDefinition.getName();
-        Type type = fieldDefinition.getType();
+    private Object fieldValue(IFieldTemplate fieldTemplate, Map<String, Object> values) {
+        String fieldName = fieldTemplate.getName();
+        Type type = fieldTemplate.getType();
         Object fieldValue = values.get(fieldName);
 
-        if (fieldValue == null && fieldDefinition.getKind().isMandatory()) {
+        if (fieldValue == null && fieldTemplate.getKind().isMandatory()) {
             throw new MissingMandatoryFieldException(fieldName);
         }
 

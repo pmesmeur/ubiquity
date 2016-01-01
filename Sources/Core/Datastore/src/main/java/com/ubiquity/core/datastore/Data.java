@@ -29,17 +29,17 @@ public class Data {
     private static Map<String, IIndex> buildIndexes(IDataDefinition dataDefinition) {
         Map<String, IIndex> indexes = new HashMap<String, IIndex>();
 
-        for (IFieldTemplate fieldDefinition : dataDefinition.getFieldDefinitions()) {
-            buildIndex(indexes, fieldDefinition);
+        for (IFieldTemplate fieldTemplate : dataDefinition.getFieldTemplates()) {
+            buildIndex(indexes, fieldTemplate);
         }
 
         return (indexes);
     }
 
-    private static void buildIndex(Map<String, IIndex> indexes, IFieldTemplate fieldDefinition) {
-        IFieldTemplate.Kind kind = fieldDefinition.getKind();
+    private static void buildIndex(Map<String, IIndex> indexes, IFieldTemplate fieldTemplate) {
+        IFieldTemplate.Kind kind = fieldTemplate.getKind();
         if (kind.isIndexed()) {
-            indexes.put(fieldDefinition.getName(),
+            indexes.put(fieldTemplate.getName(),
                     IndexFactory.createIndex(kind.isUnique() ? UNIQUE : MULTIPLE));
         }
     }

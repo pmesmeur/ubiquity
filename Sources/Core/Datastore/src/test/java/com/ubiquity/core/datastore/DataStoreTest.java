@@ -110,11 +110,11 @@ public class DataStoreTest {
 
     private class DataDefinition implements IDataDefinition {
 
-        private final Collection<IFieldTemplate> fieldDefinitions;
+        private final Collection<IFieldTemplate> fieldTemplate;
 
         public DataDefinition() {
-            this.fieldDefinitions = new ArrayList<IFieldTemplate>();
-            fieldDefinitions.add(new IFieldTemplate() {
+            this.fieldTemplate = new ArrayList<IFieldTemplate>();
+            fieldTemplate.add(new IFieldTemplate() {
                 @Override
                 public String getName() {
                     return "DummyField";
@@ -138,8 +138,8 @@ public class DataStoreTest {
         }
 
         @Override
-        public Collection<IFieldTemplate> getFieldDefinitions() {
-            return fieldDefinitions;
+        public Collection<IFieldTemplate> getFieldTemplates() {
+            return fieldTemplate;
         }
     }
 

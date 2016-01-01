@@ -15,7 +15,7 @@ public class DataDefinitionValidatorTest {
     @Test
     public void testSuccess() {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
-        dataDefinitionBuilder.withIdentifier("Identifier").addFieldDefinition()
+        dataDefinitionBuilder.withIdentifier("Identifier").addFieldTemplate()
                 .withName("Field").withType(BOOLEAN).withKind(PRIMARY)
                 .build();
         DataDefinitionValidator
@@ -30,7 +30,7 @@ public class DataDefinitionValidatorTest {
     @Test(expected = AssertionError.class)
     public void testNullIdentifier() {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
-        dataDefinitionBuilder.withIdentifier(null).addFieldDefinition()
+        dataDefinitionBuilder.withIdentifier(null).addFieldTemplate()
                 .withName("Field").withType(BOOLEAN).withKind(PRIMARY)
                 .build();
         DataDefinitionValidator
@@ -40,7 +40,7 @@ public class DataDefinitionValidatorTest {
     @Test(expected = AssertionError.class)
     public void testEmptyIdentifier() {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
-        dataDefinitionBuilder.withIdentifier("").addFieldDefinition()
+        dataDefinitionBuilder.withIdentifier("").addFieldTemplate()
                 .withName("Field").withType(BOOLEAN).withKind(PRIMARY)
                 .build();
         DataDefinitionValidator
@@ -57,7 +57,7 @@ public class DataDefinitionValidatorTest {
     @Test(expected = ObjectTypeCannotBeIndexException.class)
     public void testIndexedFieldObject() {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
-        dataDefinitionBuilder.withIdentifier("Identifier").addFieldDefinition()
+        dataDefinitionBuilder.withIdentifier("Identifier").addFieldTemplate()
                 .withName("Field").withType(OBJECT).withKind(INDEXED)
                 .build();
         DataDefinitionValidator
@@ -67,7 +67,7 @@ public class DataDefinitionValidatorTest {
     @Test(expected = DoubleTypeCannotBeUniqueException.class)
     public void testUniqueFieldObject() {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
-        dataDefinitionBuilder.withIdentifier("Identifier").addFieldDefinition()
+        dataDefinitionBuilder.withIdentifier("Identifier").addFieldTemplate()
                 .withName("Field").withType(DOUBLE).withKind(PRIMARY)
                 .build();
         DataDefinitionValidator
@@ -77,7 +77,7 @@ public class DataDefinitionValidatorTest {
     @Test(expected = NoPrimaryFieldException.class)
     public void testExceptionIfNoPrimaryField() {
         DataDefinitionBuilder dataDefinitionBuilder = new DataDefinitionBuilder();
-        dataDefinitionBuilder.withIdentifier("Identifier").addFieldDefinition()
+        dataDefinitionBuilder.withIdentifier("Identifier").addFieldTemplate()
                 .withName("Field").withType(OBJECT).withKind(MANDATORY)
                 .build();
         DataDefinitionValidator

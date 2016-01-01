@@ -19,8 +19,8 @@ class DataDefinitionValidator {
         assert dataDefinition != null;
 
         validateIdentifier(dataDefinition.getIdentifier());
-        validateFieldDefinitions(dataDefinition.getIdentifier(),
-                dataDefinition.getFieldDefinitions());
+        validateFieldTempates(dataDefinition.getIdentifier(),
+                dataDefinition.getFieldTemplates());
     }
 
     private static void validateIdentifier(String identifier) {
@@ -28,16 +28,16 @@ class DataDefinitionValidator {
     }
 
 
-    private static void validateFieldDefinitions(String identifier,
-            Collection<IFieldTemplate> fieldDefinitions) {
-        assert fieldDefinitions != null;
-        assert fieldDefinitions.size() > 0;
+    private static void validateFieldTempates(String identifier,
+            Collection<IFieldTemplate> fieldTemplates) {
+        assert fieldTemplates != null;
+        assert fieldTemplates.size() > 0;
 
         boolean hasAtLeastOneUniqueField = false;
 
-        for (IFieldTemplate fieldDefinition : fieldDefinitions) {
-            hasAtLeastOneUniqueField |= fieldDefinition.getKind().isUnique();
-            validateFieldDefinition(fieldDefinition);
+        for (IFieldTemplate fieldTemplate : fieldTemplates) {
+            hasAtLeastOneUniqueField |= fieldTemplate.getKind().isUnique();
+            validateFieldTemplate(fieldTemplate);
         }
 
         if (!hasAtLeastOneUniqueField) {
@@ -45,18 +45,18 @@ class DataDefinitionValidator {
         }
     }
 
-    private static void validateFieldDefinition(IFieldTemplate fieldDefinition) {
-        String fieldName = fieldDefinition.getName();
+    private static void validateFieldTemplate(IFieldTemplate fieldTemplate) {
+        String fieldName = fieldTemplate.getName();
         assert!Strings.isNullOrEmpty(fieldName);
 
-        if (fieldDefinition.getKind().isIndexed()) {
-            if (fieldDefinition.getType() == OBJECT) {
+        if (fieldTemplate.getKind().isIndexed()) {
+            if (fieldTemplate.getType() == OBJECT) {
                 throw new ObjectTypeCannotBeIndexException(fieldName);
             }
         }
 
-        if (fieldDefinition.getKind().isUnique()) {
-            if (fieldDefinition.getType() == DOUBLE) {
+        if (fieldTemplate.getKind().isUnique()) {
+            if (fieldTemplate.getType() == DOUBLE) {
                 throw new DoubleTypeCannotBeUniqueException(fieldName);
             }
         }

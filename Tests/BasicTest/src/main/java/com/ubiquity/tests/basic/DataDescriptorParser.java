@@ -20,13 +20,13 @@ public class DataDescriptorParser {
 
     private String shelf;
     private String name;
-    private Map<String, FieldTemplate> fieldDefinitions;
+    private Map<String, FieldTemplate> fieldTemplates;
 
 
     public DataDescriptorParser() {
         this.shelf = null;
         this.name = null;
-        this.fieldDefinitions = new HashMap<String, FieldTemplate>();
+        this.fieldTemplates = new HashMap<String, FieldTemplate>();
     }
 
     public void parse(String fileName, IDataInsertor dataInsertor) {
@@ -50,10 +50,10 @@ public class DataDescriptorParser {
     }
 
     private void insertAllData(IDataInsertor dataInsertor) {
-        final Collection<IFieldTemplate> fieldDef = new ArrayList<IFieldTemplate>();
+        final Collection<IFieldTemplate> fieldTemplates = new ArrayList<IFieldTemplate>();
 
-        for (IFieldTemplate iter : fieldDefinitions.values()) {
-            fieldDef.add(iter);
+        for (IFieldTemplate iter : this.fieldTemplates.values()) {
+            fieldTemplates.add(iter);
         }
 
         dataInsertor.insert(shelf, new IDataDefinition() {
@@ -64,8 +64,8 @@ public class DataDescriptorParser {
             }
 
             @Override
-            public Collection<IFieldTemplate> getFieldDefinitions() {
-                return fieldDef;
+            public Collection<IFieldTemplate> getFieldTemplates() {
+                return fieldTemplates;
             }
         });
     }
@@ -132,7 +132,7 @@ public class DataDescriptorParser {
             String strType = getFieldType(line);
             Type type = strTypeToDataType(strType);
 
-            fieldDefinitions.put(fieldName, new FieldTemplate(fieldName, type));
+            fieldTemplates.put(fieldName, new FieldTemplate(fieldName, type));
         }
 
         private String getFieldName(String line) {
@@ -149,7 +149,7 @@ public class DataDescriptorParser {
             String fieldName = getFieldNameFromIndexLine(line);
             Kind kind = getFieldKindFromIndexLine(line);
 
-            fieldDefinitions.get(fieldName).setKind(kind);
+            fieldTemplates.get(fieldName).setKind(kind);
         }
 
         private String getFieldNameFromIndexLine(String line) {

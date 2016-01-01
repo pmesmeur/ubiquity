@@ -5,5 +5,5 @@ import java.util.Collection;
 public interface IDataDefinition {
     String getIdentifier();
 
-    Collection<IFieldTemplate> getFieldDefinitions();
+    Collection<IFieldTemplate> getFieldTemplates();
 }
