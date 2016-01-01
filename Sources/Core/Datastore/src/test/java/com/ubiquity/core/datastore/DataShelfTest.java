@@ -12,7 +12,6 @@ import com.ubiquity.core.datastore.exceptions.RegisterNotFoundException;
 public class DataShelfTest {
 
     final String DATA_SHELF_ID = "DataShelfIdentifier";
-    final String DATA_TYPE_ID = "DataTypeIdentifier";
 
     @Test(expected = AssertionError.class)
     public void testNullIdentifier() {
@@ -51,6 +50,6 @@ public class DataShelfTest {
     @Test(expected = RegisterNotFoundException.class)
     public void testGetRegisterWithUnknownIdentifier() {
         DataShelf dataShelf = DataShelf.create("DataShelfIdentifier");
-        dataShelf.getRegister("DataIdentifier");
+        dataShelf.getRegister("UnknownRegisterIdentifier");
     }
 }

@@ -15,7 +15,7 @@ public class RecordTemplateHelper {
     public static IRecordTemplate createRecordTempalte(Kind kind) {
         RecordTemplateBuilder recordTemplateBuilder = new RecordTemplateBuilder();
 
-        return recordTemplateBuilder.withIdentifier("BasicData")
+        return recordTemplateBuilder.withIdentifier("BasicRegister")
                 .addFieldTemplate()
                 .withName("Field1")
                 .withType(STRING)
@@ -67,7 +67,7 @@ public class RecordTemplateHelper {
     public static IRecordTemplate createPrimaryOptionalRecordTemplate() {
         RecordTemplateBuilder recordTemplateBuilder = new RecordTemplateBuilder();
 
-        return recordTemplateBuilder.withIdentifier("BasicData")
+        return recordTemplateBuilder.withIdentifier("BasicRegister")
                 .addFieldTemplate()
                 .withName("Field1")
                 .withType(STRING)
