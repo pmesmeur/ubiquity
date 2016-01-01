@@ -1,7 +1,7 @@
 package com.ubiquity.core.datastore.exceptions;
 
-public class DataAlreadyExistsException extends UbiquityException {
-    public DataAlreadyExistsException(String identifier) {
+public class RegisterAlreadyExistsException extends UbiquityException {
+    public RegisterAlreadyExistsException(String identifier) {
         super("Data-type of identifier \"" + identifier + "\" already exists");
     }
 }

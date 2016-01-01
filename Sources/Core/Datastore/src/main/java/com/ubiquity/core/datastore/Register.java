@@ -12,13 +12,13 @@ import com.ubiquity.core.datastore.indexes.IIndex;
 import com.ubiquity.core.datastore.indexes.IndexFactory;
 
 
-public class Data {
+public class Register {
 
     private final IRecordTemplate recordTemplate;
     private final Collection<Entry> entries;
     private final Map<String, IIndex> indexes;
 
-    public Data(IRecordTemplate recordTemplate) {
+    public Register(IRecordTemplate recordTemplate) {
         RecordTemplateValidator.validate(recordTemplate);
 
         this.recordTemplate = recordTemplate; /// TODO: make a copy

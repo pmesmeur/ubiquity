@@ -60,7 +60,7 @@ public class BasicTest implements DataParser.TypeProvider {
         assert!Strings.isNullOrEmpty(field);
 
         Collection<IFieldTemplate> fieldTemplates = dataStore.getDataShelf(shelf)
-                .getData(identifier)
+                .getRegister(identifier)
                 .getDefinition().getFieldTemplates();
 
         for (IFieldTemplate fieldTemplate : fieldTemplates) {
@@ -97,14 +97,14 @@ public class BasicTest implements DataParser.TypeProvider {
             this.identifier = recordTemplate.getIdentifier();
 
             dataStore.insertDataShelf(shelf);
-            dataStore.insertData(shelf, recordTemplate);
+            dataStore.insertRegister(shelf, recordTemplate);
             System.out.println("Data: {" + shelf + "," + identifier + "}");
         }
 
         @Override
         public void insert(Map<String, Object> dataFields) {
             try {
-                dataStore.getDataShelf(shelf).getData(identifier).insert(dataFields);
+                dataStore.getDataShelf(shelf).getRegister(identifier).insert(dataFields);
             }
  catch (ValueOfPrimaryFieldAlreadyInsertedException e) {
             }

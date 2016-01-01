@@ -74,37 +74,37 @@ public class DataStoreTest {
         RecordTemplate recordTemplate = new RecordTemplate();
 
         dataStore.insertDataShelf(DATA_SHELF_NAME);
-        dataStore.insertData(DATA_SHELF_NAME, recordTemplate);
+        dataStore.insertRegister(DATA_SHELF_NAME, recordTemplate);
 
         DataShelf dataShelf = dataStore.getDataShelf(DATA_SHELF_NAME);
         assertNotNull(dataShelf);
 
-        Data data = dataShelf.getData(recordTemplate.getIdentifier());
-        assertNotNull(data);
+        Register register = dataShelf.getRegister(recordTemplate.getIdentifier());
+        assertNotNull(register);
     }
 
 
     @Test(expected = DataShelfNotFoundException.class)
     public void testInsertDataOnUnknownShelf() {
-        dataStore.insertData("ThisShelfDoesNotExist", new RecordTemplate());
+        dataStore.insertRegister("ThisShelfDoesNotExist", new RecordTemplate());
     }
 
 
     @Test(expected = AssertionError.class)
-    public void testInsertDataWithEmptyIdentifier() {
-        dataStore.insertData("", new RecordTemplate());
+    public void testInsertRecordWithEmptyIdentifier() {
+        dataStore.insertRegister("", new RecordTemplate());
     }
 
 
     @Test(expected = AssertionError.class)
-    public void testInsertDataWithNullIdentifier() {
-        dataStore.insertData(null, new RecordTemplate());
+    public void testInsertRecordWithNullIdentifier() {
+        dataStore.insertRegister(null, new RecordTemplate());
     }
 
 
     @Test(expected = AssertionError.class)
-    public void testInsertDataWithNullDefinition() {
-        dataStore.insertData("ThisShelfDoesNotExist", null);
+    public void testInsertRecordWithNullDefinition() {
+        dataStore.insertRegister("ThisShelfDoesNotExist", null);
     }
 
 

@@ -4,18 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.common.base.Strings;
-import com.ubiquity.core.datastore.exceptions.DataAlreadyExistsException;
-import com.ubiquity.core.datastore.exceptions.DataNotFoundException;
+import com.ubiquity.core.datastore.exceptions.RegisterAlreadyExistsException;
+import com.ubiquity.core.datastore.exceptions.RegisterNotFoundException;
 
 public final class DataShelf {
 
     private final String identifier;
-    private final Map<String, Data> data;
+    private final Map<String, Register> registers;
 
     private DataShelf(String identifier) {
         checkIdentifier(identifier);
         this.identifier = identifier;
-        this.data = new HashMap<String, Data>();
+        this.registers = new HashMap<String, Register>();
     }
 
     public static DataShelf create(String identifier) {
@@ -33,23 +33,23 @@ public final class DataShelf {
         return identifier;
     }
 
-    public void insertData(IRecordTemplate recordTemplate) {
+    public void insertRegister(IRecordTemplate recordTemplate) {
         checkRecordTemplate(recordTemplate);
 
         String identifier = recordTemplate.getIdentifier();
-        if (data.containsKey(identifier)) {
-            throw new DataAlreadyExistsException(identifier);
+        if (registers.containsKey(identifier)) {
+            throw new RegisterAlreadyExistsException(identifier);
         }
 
-        data.put(identifier, new Data(recordTemplate));
+        registers.put(identifier, new Register(recordTemplate));
     }
 
-    public Data getData(String identifier) {
+    public Register getRegister(String identifier) {
         assert identifier != null;
 
-        Data result = data.get(identifier);
+        Register result = registers.get(identifier);
         if (result == null) {
-            throw new DataNotFoundException(identifier);
+            throw new RegisterNotFoundException(identifier);
         }
 
         return result;

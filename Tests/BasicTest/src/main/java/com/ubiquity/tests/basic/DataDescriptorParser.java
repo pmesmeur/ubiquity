@@ -181,7 +181,7 @@ public class DataDescriptorParser {
             if (strType.contains("boolean"))
                 return BOOLEAN;
 
-            throw new IllegalArgumentException("Don't know data-type \"" + strType + "\"");
+            throw new IllegalArgumentException("Don't know field-type \"" + strType + "\"");
         }
 
         private String getFullDataName(String line) {

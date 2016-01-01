@@ -34,11 +34,11 @@ public class DataStore {
     }
 
 
-    public void insertData(String shelf, IRecordTemplate recordTemplate) {
+    public void insertRegister(String shelf, IRecordTemplate recordTemplate) {
         assert !Strings.isNullOrEmpty(shelf);
         assert recordTemplate != null;
 
         DataShelf dataShelf = getDataShelf(shelf);
-        dataShelf.insertData(recordTemplate);
+        dataShelf.insertRegister(recordTemplate);
     }
 }

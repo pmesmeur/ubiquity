@@ -6,8 +6,8 @@ import static com.ubiquity.core.datastore.utils.RecordTemplateHelper.createRecor
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.ubiquity.core.datastore.exceptions.DataAlreadyExistsException;
-import com.ubiquity.core.datastore.exceptions.DataNotFoundException;
+import com.ubiquity.core.datastore.exceptions.RegisterAlreadyExistsException;
+import com.ubiquity.core.datastore.exceptions.RegisterNotFoundException;
 
 public class DataShelfTest {
 
@@ -32,25 +32,25 @@ public class DataShelfTest {
         Assert.assertArrayEquals(DATA_SHELF_ID.getBytes(), dataShelf.getIdentifier().getBytes());
     }
 
-    @Test(expected = DataAlreadyExistsException.class)
-    public void testInsertExistingData() {
+    @Test(expected = RegisterAlreadyExistsException.class)
+    public void testInsertExistingRegister() {
         DataShelf dataShelf = DataShelf.create(DATA_SHELF_ID);
 
         IRecordTemplate recordTempalte = createRecordTempalte(PRIMARY);
 
-        dataShelf.insertData(recordTempalte);
-        dataShelf.insertData(recordTempalte);
+        dataShelf.insertRegister(recordTempalte);
+        dataShelf.insertRegister(recordTempalte);
     }
 
     @Test(expected = AssertionError.class)
-    public void testGetDataWithNullIdentifier() {
+    public void testGetRegisterWithNullIdentifier() {
         DataShelf dataShelf = DataShelf.create("DataShelfIdentifier");
-        dataShelf.getData(null);
+        dataShelf.getRegister(null);
     }
 
-    @Test(expected = DataNotFoundException.class)
-    public void testGetDataWithUnknownIdentifier() {
+    @Test(expected = RegisterNotFoundException.class)
+    public void testGetRegisterWithUnknownIdentifier() {
         DataShelf dataShelf = DataShelf.create("DataShelfIdentifier");
-        dataShelf.getData("DataIdentifier");
+        dataShelf.getRegister("DataIdentifier");
     }
 }

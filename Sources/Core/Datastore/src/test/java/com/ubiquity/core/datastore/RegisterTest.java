@@ -16,19 +16,19 @@ import com.ubiquity.core.datastore.exceptions.RecordDoesNotFitTemplateException;
 import com.ubiquity.core.datastore.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
 import com.ubiquity.core.datastore.indexes.IIndex;
 
-public class DataTest {
+public class RegisterTest {
 
     @Test(expected = AssertionError.class)
     public void testCreateWithNullRecordTemplate() {
-        new Data(null);
+        new Register(null);
     }
 
     @Test
     public void testInsertEntry() {
-        Data data = new Data(createBasicRecordTemplate());
+        Register register = new Register(createBasicRecordTemplate());
         Map<String, Object> entryValues = createEntryValues();
 
-        data.insert(entryValues);
+        register.insert(entryValues);
     }
 
     private Map<String, Object> createEntryValues() {
@@ -53,8 +53,8 @@ public class DataTest {
 
     @Test
     public void testIndexesCreated() {
-        Data data = new Data(createBasicRecordTemplate());
-        Map<String, IIndex> indexes = data.getIndexes();
+        Register register = new Register(createBasicRecordTemplate());
+        Map<String, IIndex> indexes = register.getIndexes();
 
         Assert.assertEquals(8, indexes.size());
         Assert.assertTrue(indexes.containsKey("Field1"));
@@ -70,25 +70,25 @@ public class DataTest {
 
     @Test
     public void testEntryIndexed() {
-        Data data = new Data(createBasicRecordTemplate());
-        data.insert(createEntryValues("HelloWorld"));
-        data.insert(createEntryValues("Foo"));
-        data.insert(createEntryValues("Bar"));
+        Register register = new Register(createBasicRecordTemplate());
+        register.insert(createEntryValues("HelloWorld"));
+        register.insert(createEntryValues("Foo"));
+        register.insert(createEntryValues("Bar"));
 
-        Assert.assertEquals(3, data.getEntries().size());
+        Assert.assertEquals(3, register.getEntries().size());
 
-        Map<String, IIndex> indexes = data.getIndexes();
+        Map<String, IIndex> indexes = register.getIndexes();
         for (IIndex index : indexes.values()) {
-            Assert.assertTrue(index.getEntry().size() == data.getEntries().size());
+            Assert.assertTrue(index.getEntry().size() == register.getEntries().size());
         }
     }
 
     @Test(expected = ValueOfPrimaryFieldAlreadyInsertedException.class)
     public void testDoubleEntryOnPrimaryField() {
-        Data data = new Data(createPrimaryOptionalRecordTemplate());
+        Register register = new Register(createPrimaryOptionalRecordTemplate());
         Map<String, Object> entryValues = createPrimaryOptionalEntryValues();
-        data.insert(entryValues);
-        data.insert(entryValues);
+        register.insert(entryValues);
+        register.insert(entryValues);
     }
 
     private Map<String, Object> createPrimaryOptionalEntryValues() {
@@ -102,14 +102,16 @@ public class DataTest {
 
     @Test
     public void testSizeOfIndexesWhenErrorOnPrimaryField() {
-        Data data = new Data(createRecordTempalte(PRIMARY));
-        data.insert(createEntryValues("Field1", 1., 'A', 1, Boolean.FALSE, data, LocalDate.MIN, LocalTime.MIN, Duration.ZERO));
+        Register register = new Register(createRecordTempalte(PRIMARY));
+        register.insert(createEntryValues("Field1", 1., 'A', 1, Boolean.FALSE, register,
+                LocalDate.MIN, LocalTime.MIN, Duration.ZERO));
         try {
-            data.insert(createEntryValues("Field2", 2., 'B', 1, Boolean.TRUE, data, LocalDate.MAX, LocalTime.MAX, Duration.ZERO));
+            register.insert(createEntryValues("Field2", 2., 'B', 1, Boolean.TRUE, register,
+                    LocalDate.MAX, LocalTime.MAX, Duration.ZERO));
         } catch (ValueOfPrimaryFieldAlreadyInsertedException e) {
         }
 
-        for (Map.Entry<String, IIndex> indexEntry : data.getIndexes().entrySet()) {
+        for (Map.Entry<String, IIndex> indexEntry : register.getIndexes().entrySet()) {
             IIndex index = indexEntry.getValue();
             Assert.assertEquals(1, index.getEntry().size());
         }
@@ -134,10 +136,10 @@ public class DataTest {
 
     @Test(expected = RecordDoesNotFitTemplateException.class)
     public void testInsertRecordThatDoesNotFitTemplate() {
-        Data data = new Data(createPrimaryOptionalRecordTemplate());
+        Register register = new Register(createPrimaryOptionalRecordTemplate());
         Map<String, Object> entryValues = createEntryValues();
 
-        data.insert(entryValues);
+        register.insert(entryValues);
     }
 
 }
