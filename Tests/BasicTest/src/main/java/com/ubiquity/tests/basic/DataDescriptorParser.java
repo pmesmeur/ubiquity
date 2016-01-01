@@ -130,7 +130,7 @@ public class DataDescriptorParser {
         private void processDefinition(String line) {
             String fieldName = getFieldName(line);
             String strType = getFieldType(line);
-            Type type = strTypeToDataType(strType);
+            Type type = strTypeToFieldType(strType);
 
             fieldTemplates.put(fieldName, new FieldTemplate(fieldName, type));
         }
@@ -169,7 +169,7 @@ public class DataDescriptorParser {
             return fieldKind;
         }
 
-        private Type strTypeToDataType(String strType) {
+        private Type strTypeToFieldType(String strType) {
             assert strType != null;
 
             if (strType.equals("integer") || strType.equals("smallint"))
