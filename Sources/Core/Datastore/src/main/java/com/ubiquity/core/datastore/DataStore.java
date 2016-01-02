@@ -5,40 +5,40 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.google.common.base.Strings;
-import com.ubiquity.core.datastore.exceptions.RegisteryNotFoundException;
+import com.ubiquity.core.datastore.exceptions.RegistryNotFoundException;
 
 
 public class DataStore {
 
-    private final Map<String, Registry> Registeries = new ConcurrentHashMap<String, Registry>();
+    private final Map<String, Registry> Registries = new ConcurrentHashMap<String, Registry>();
 
 
-    public Registry insertRegistery(String identifier) {
-        Registry Registery = Registry.create(identifier);
-        Registeries.put(identifier, Registery);
-        return Registery;
+    public Registry insertRegistry(String identifier) {
+        Registry registry = Registry.create(identifier);
+        Registries.put(identifier, registry);
+        return registry;
     }
 
 
-    public Registry getRegistery(String identifier) {
-        Registry Registery = Registeries.get(identifier);
-        if (Registery == null) {
-            throw new RegisteryNotFoundException(identifier);
+    public Registry getRegistry(String identifier) {
+        Registry registry = Registries.get(identifier);
+        if (registry == null) {
+            throw new RegistryNotFoundException(identifier);
         }
-        return Registery;
+        return registry;
     }
 
 
-    public Set<String> getAllRegisteriesId() {
-        return Registeries.keySet();
+    public Set<String> getAllRegistriesId() {
+        return Registries.keySet();
     }
 
 
-    public void insertRegister(String registery, IRecordTemplate recordTemplate) {
-        assert!Strings.isNullOrEmpty(registery);
+    public void insertRegister(String registryId, IRecordTemplate recordTemplate) {
+        assert!Strings.isNullOrEmpty(registryId);
         assert recordTemplate != null;
 
-        Registry Registery = getRegistery(registery);
-        Registery.insertRegister(recordTemplate);
+        Registry registry = getRegistry(registryId);
+        registry.insertRegister(recordTemplate);
     }
 }

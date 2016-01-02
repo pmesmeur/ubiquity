@@ -13,7 +13,7 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ubiquity.core.datastore.exceptions.RegisteryNotFoundException;
+import com.ubiquity.core.datastore.exceptions.RegistryNotFoundException;
 
 public class DataStoreTest {
 
@@ -28,65 +28,65 @@ public class DataStoreTest {
 
 
     @Test
-    public void testRegisteriesInsert() {
-        testRegisteryInsertions(NB_INSERTIONS);
+    public void testRegistriesInsert() {
+        testRegistryInsertions(NB_INSERTIONS);
 
-        Set<String> RegisteriesId = dataStore.getAllRegisteriesId();
-        Assert.assertEquals(RegisteriesId.size(), NB_INSERTIONS);
+        Set<String> RegistriesId = dataStore.getAllRegistriesId();
+        Assert.assertEquals(RegistriesId.size(), NB_INSERTIONS);
     }
 
 
-    private void testRegisteryInsertions(int quantity) {
+    private void testRegistryInsertions(int quantity) {
         for (int index = 0; index < quantity; index++) {
-            testRegisteryInsertion("id" + index);
+            testRegistryInsertion("id" + index);
         }
     }
 
 
-    private void testRegisteryInsertion(String identifier) {
-        Registry Registery1 = dataStore.insertRegistery(identifier);
-        Assert.assertEquals(Registery1, dataStore.getRegistery(identifier));
+    private void testRegistryInsertion(String identifier) {
+        Registry registry1 = dataStore.insertRegistry(identifier);
+        Assert.assertEquals(registry1, dataStore.getRegistry(identifier));
     }
 
 
-    @Test(expected = RegisteryNotFoundException.class)
-    public void testGetUnexistingRegistery() {
-        testRegisteryInsertions(NB_INSERTIONS);
-        dataStore.getRegistery("hello-world");
-    }
-
-
-    @Test(expected = AssertionError.class)
-    public void testNullNamedRegisteryInsert() {
-        dataStore.insertRegistery(null);
+    @Test(expected = RegistryNotFoundException.class)
+    public void testGetUnexistingRegistry() {
+        testRegistryInsertions(NB_INSERTIONS);
+        dataStore.getRegistry("hello-world");
     }
 
 
     @Test(expected = AssertionError.class)
-    public void testEmptyNamedRegisteryInsert() {
-        dataStore.insertRegistery("");
+    public void testNullNamedRegistryInsert() {
+        dataStore.insertRegistry(null);
+    }
+
+
+    @Test(expected = AssertionError.class)
+    public void testEmptyNamedRegistryInsert() {
+        dataStore.insertRegistry("");
     }
 
 
     @Test
     public void testInsertData() {
-        final String DATA_REGISTERY_NAME = "The.Data.Registery";
+        final String DATA_Registry_NAME = "The.Data.Registry";
         RecordTemplate recordTemplate = new RecordTemplate();
 
-        dataStore.insertRegistery(DATA_REGISTERY_NAME);
-        dataStore.insertRegister(DATA_REGISTERY_NAME, recordTemplate);
+        dataStore.insertRegistry(DATA_Registry_NAME);
+        dataStore.insertRegister(DATA_Registry_NAME, recordTemplate);
 
-        Registry Registery = dataStore.getRegistery(DATA_REGISTERY_NAME);
-        assertNotNull(Registery);
+        Registry registry = dataStore.getRegistry(DATA_Registry_NAME);
+        assertNotNull(registry);
 
-        Register register = Registery.getRegister(recordTemplate.getIdentifier());
+        Register register = registry.getRegister(recordTemplate.getIdentifier());
         assertNotNull(register);
     }
 
 
-    @Test(expected = RegisteryNotFoundException.class)
-    public void testInsertDataOnUnknownRegistery() {
-        dataStore.insertRegister("ThisRegisteryDoesNotExist", new RecordTemplate());
+    @Test(expected = RegistryNotFoundException.class)
+    public void testInsertDataOnUnknownRegistry() {
+        dataStore.insertRegister("ThisRegistryDoesNotExist", new RecordTemplate());
     }
 
 
@@ -104,7 +104,7 @@ public class DataStoreTest {
 
     @Test(expected = AssertionError.class)
     public void testInsertRecordWithNullDefinition() {
-        dataStore.insertRegister("ThisRegisteryDoesNotExist", null);
+        dataStore.insertRegister("ThisRegistryDoesNotExist", null);
     }
 
 

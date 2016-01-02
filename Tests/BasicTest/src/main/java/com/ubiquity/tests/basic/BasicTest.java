@@ -54,12 +54,12 @@ public class BasicTest implements DataParser.TypeProvider {
     }
 
     @Override
-    public IFieldTemplate.Type getType(String registery, String identifier, String field) {
-        assert!Strings.isNullOrEmpty(registery);
+    public IFieldTemplate.Type getType(String registry, String identifier, String field) {
+        assert!Strings.isNullOrEmpty(registry);
         assert!Strings.isNullOrEmpty(identifier);
         assert!Strings.isNullOrEmpty(field);
 
-        Collection<IFieldTemplate> fieldTemplates = dataStore.getRegistery(registery)
+        Collection<IFieldTemplate> fieldTemplates = dataStore.getRegistry(registry)
                 .getRegister(identifier)
                 .getDefinition().getFieldTemplates();
 
@@ -75,7 +75,7 @@ public class BasicTest implements DataParser.TypeProvider {
     private class DataInsertor
             implements DataDescriptorParser.IDataInsertor, DataParser.IDataInsertor {
 
-        private String registery;
+        private String registry;
         private String identifier;
 
         public DataInsertor() {
@@ -87,24 +87,24 @@ public class BasicTest implements DataParser.TypeProvider {
         }
 
         private void parseAndInsertData(String fileName) {
-            DataParser dataParser = new DataParser(registery, identifier);
+            DataParser dataParser = new DataParser(registry, identifier);
             dataParser.parse(fileName, BasicTest.this, this);
         }
 
         @Override
-        public void insert(String registery, IRecordTemplate recordTemplate) {
-            this.registery = registery;
+        public void insert(String registry, IRecordTemplate recordTemplate) {
+            this.registry = registry;
             this.identifier = recordTemplate.getIdentifier();
 
-            dataStore.insertRegistery(registery);
-            dataStore.insertRegister(registery, recordTemplate);
-            System.out.println("Data: {" + registery + "," + identifier + "}");
+            dataStore.insertRegistry(registry);
+            dataStore.insertRegister(registry, recordTemplate);
+            System.out.println("Data: {" + registry + "," + identifier + "}");
         }
 
         @Override
         public void insert(Map<String, Object> dataFields) {
             try {
-                dataStore.getRegistery(registery).getRegister(identifier).insert(dataFields);
+                dataStore.getRegistry(registry).getRegister(identifier).insert(dataFields);
             }
  catch (ValueOfPrimaryFieldAlreadyInsertedException e) {
             }

@@ -9,9 +9,9 @@ import org.junit.Test;
 import com.ubiquity.core.datastore.exceptions.RegisterAlreadyExistsException;
 import com.ubiquity.core.datastore.exceptions.RegisterNotFoundException;
 
-public class RegisteryTest {
+public class RegistryTest {
 
-    final String DATA_REGISTERY_ID = "RegisteryIdentifier";
+    final String DATA_Registry_ID = "RegistryIdentifier";
 
     @Test(expected = AssertionError.class)
     public void testNullIdentifier() {
@@ -25,32 +25,32 @@ public class RegisteryTest {
 
     @Test
     public void testGetIdentifier() {
-        Registry Registery = Registry.create(DATA_REGISTERY_ID);
-        Assert.assertNotNull(Registery);
+        Registry registry = Registry.create(DATA_Registry_ID);
+        Assert.assertNotNull(registry);
 
-        Assert.assertArrayEquals(DATA_REGISTERY_ID.getBytes(),
-                Registery.getIdentifier().getBytes());
+        Assert.assertArrayEquals(DATA_Registry_ID.getBytes(),
+                registry.getIdentifier().getBytes());
     }
 
     @Test(expected = RegisterAlreadyExistsException.class)
     public void testInsertExistingRegister() {
-        Registry Registery = Registry.create(DATA_REGISTERY_ID);
+        Registry registry = Registry.create(DATA_Registry_ID);
 
         IRecordTemplate recordTempalte = createRecordTempalte(PRIMARY);
 
-        Registery.insertRegister(recordTempalte);
-        Registery.insertRegister(recordTempalte);
+        registry.insertRegister(recordTempalte);
+        registry.insertRegister(recordTempalte);
     }
 
     @Test(expected = AssertionError.class)
     public void testGetRegisterWithNullIdentifier() {
-        Registry Registery = Registry.create("RegisteryIdentifier");
-        Registery.getRegister(null);
+        Registry registry = Registry.create("RegistryIdentifier");
+        registry.getRegister(null);
     }
 
     @Test(expected = RegisterNotFoundException.class)
     public void testGetRegisterWithUnknownIdentifier() {
-        Registry Registery = Registry.create("RegisteryIdentifier");
-        Registery.getRegister("UnknownRegisterIdentifier");
+        Registry registry = Registry.create("RegistryIdentifier");
+        registry.getRegister("UnknownRegisterIdentifier");
     }
 }
