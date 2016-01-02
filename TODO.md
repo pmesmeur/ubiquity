@@ -1,7 +1,6 @@
 ### TODO
 
-"identifier" vs "name"
-add a test to ensure that data is correctly inserted via DataStore.insertData()
+add a test to ensure that a register is correctly inserted via DataStore.insertRegister()
 Registry.checkDataDefinition(): assert useless
 LOG
 Warnings
