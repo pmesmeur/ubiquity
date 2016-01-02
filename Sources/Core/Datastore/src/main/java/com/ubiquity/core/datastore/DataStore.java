@@ -10,18 +10,18 @@ import com.ubiquity.core.datastore.exceptions.RegistryNotFoundException;
 
 public class DataStore {
 
-    private final Map<String, Registry> Registries = new ConcurrentHashMap<String, Registry>();
+    private final Map<String, Registry> registries = new ConcurrentHashMap<String, Registry>();
 
 
     public Registry insertRegistry(String identifier) {
         Registry registry = Registry.create(identifier);
-        Registries.put(identifier, registry);
+        registries.put(identifier, registry);
         return registry;
     }
 
 
     public Registry getRegistry(String identifier) {
-        Registry registry = Registries.get(identifier);
+        Registry registry = registries.get(identifier);
         if (registry == null) {
             throw new RegistryNotFoundException(identifier);
         }
@@ -30,7 +30,7 @@ public class DataStore {
 
 
     public Set<String> getAllRegistriesId() {
-        return Registries.keySet();
+        return registries.keySet();
     }
 
 
