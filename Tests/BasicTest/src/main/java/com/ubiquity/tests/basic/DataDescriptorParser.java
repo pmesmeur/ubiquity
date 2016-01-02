@@ -19,13 +19,13 @@ import com.ubiquity.core.datastore.IRecordTemplate;
 public class DataDescriptorParser {
 
     private String registry;
-    private String name;
+    private String identifier;
     private Map<String, FieldTemplate> fieldTemplates;
 
 
     public DataDescriptorParser() {
         this.registry = null;
-        this.name = null;
+        this.identifier = null;
         this.fieldTemplates = new HashMap<String, FieldTemplate>();
     }
 
@@ -60,7 +60,7 @@ public class DataDescriptorParser {
 
             @Override
             public String getIdentifier() {
-                return name;
+                return identifier;
             }
 
             @Override
@@ -122,20 +122,20 @@ public class DataDescriptorParser {
         }
 
         private void processHeader(String line) {
-            String fullDataName = getFullDataName(line);
-            registry = getStore(fullDataName);
-            name = getName(fullDataName);
+            String fullDataIdentifier = getFullDataIdentifier(line);
+            registry = getStore(fullDataIdentifier);
+            identifier = getIdentifier(fullDataIdentifier);
         }
 
         private void processDefinition(String line) {
-            String fieldName = getFieldName(line);
+            String identifier = getFieldIdentifier(line);
             String strType = getFieldType(line);
             Type type = strTypeToFieldType(strType);
 
-            fieldTemplates.put(fieldName, new FieldTemplate(fieldName, type));
+            fieldTemplates.put(identifier, new FieldTemplate(identifier, type));
         }
 
-        private String getFieldName(String line) {
+        private String getFieldIdentifier(String line) {
             String[] values = line.split("\\|");
             return values[0].trim();
         }
@@ -184,7 +184,7 @@ public class DataDescriptorParser {
             throw new IllegalArgumentException("Don't know field-type \"" + strType + "\"");
         }
 
-        private String getFullDataName(String line) {
+        private String getFullDataIdentifier(String line) {
             String[] values = line.split("\\\"");
             return values[1];
         }
@@ -206,7 +206,7 @@ public class DataDescriptorParser {
             return result;
         }
 
-        private String getName(String fullDataName) {
+        private String getIdentifier(String fullDataName) {
             String result = "";
             String[] values = fullDataName.split("\\.");
 
@@ -223,19 +223,19 @@ public class DataDescriptorParser {
 
     private class FieldTemplate implements IFieldTemplate {
 
-        private final String name;
+        private final String identifier;
         private final Type type;
         private Kind kind;
 
-        public FieldTemplate(String name, Type type) {
-            this.name = name;
+        public FieldTemplate(String identifier, Type type) {
+            this.identifier = identifier;
             this.type = type;
             this.kind = OPTIONAL;
         }
 
         @Override
-        public String getName() {
-            return name;
+        public String getIdentifier() {
+            return identifier;
         }
 
         @Override

@@ -43,11 +43,11 @@ public class Record {
     private boolean populateField(IFieldTemplate fieldTemplate, int index,
             Map<String, Object> values) {
         boolean inserted = false;
-        if (values.containsKey(fieldTemplate.getName())) {
+        if (values.containsKey(fieldTemplate.getIdentifier())) {
             fields[index] = fieldValue(fieldTemplate, values);
             inserted = true;
         } else if (isFieldMandatory(fieldTemplate)) {
-            throw new MissingMandatoryFieldException(fieldTemplate.getName());
+            throw new MissingMandatoryFieldException(fieldTemplate.getIdentifier());
         }
 
         return inserted;
@@ -58,7 +58,7 @@ public class Record {
     }
 
     private Object fieldValue(IFieldTemplate fieldTemplate, Map<String, Object> values) {
-        String fieldName = fieldTemplate.getName();
+        String fieldName = fieldTemplate.getIdentifier();
         Type type = fieldTemplate.getType();
         Object fieldValue = values.get(fieldName);
 

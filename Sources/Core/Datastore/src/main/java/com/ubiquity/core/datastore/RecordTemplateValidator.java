@@ -46,7 +46,7 @@ class RecordTemplateValidator {
     }
 
     private static void validateFieldTemplate(IFieldTemplate fieldTemplate) {
-        String fieldName = fieldTemplate.getName();
+        String fieldName = fieldTemplate.getIdentifier();
         assert!Strings.isNullOrEmpty(fieldName);
 
         if (fieldTemplate.getKind().isIndexed()) {

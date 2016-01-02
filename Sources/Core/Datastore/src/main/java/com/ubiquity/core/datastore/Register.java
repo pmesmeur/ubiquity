@@ -39,7 +39,7 @@ public class Register {
     private static void buildIndex(Map<String, IIndex> indexes, IFieldTemplate fieldTemplate) {
         IFieldTemplate.Kind kind = fieldTemplate.getKind();
         if (kind.isIndexed()) {
-            indexes.put(fieldTemplate.getName(),
+            indexes.put(fieldTemplate.getIdentifier(),
                     IndexFactory.createIndex(kind.isUnique() ? UNIQUE : MULTIPLE));
         }
     }

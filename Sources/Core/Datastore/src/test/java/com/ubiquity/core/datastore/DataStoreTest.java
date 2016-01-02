@@ -116,7 +116,7 @@ public class DataStoreTest {
             this.fieldTemplate = new ArrayList<IFieldTemplate>();
             fieldTemplate.add(new IFieldTemplate() {
                 @Override
-                public String getName() {
+                public String getIdentifier() {
                     return "DummyField";
                 }
 

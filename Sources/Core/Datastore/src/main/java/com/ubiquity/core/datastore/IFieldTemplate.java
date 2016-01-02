@@ -1,7 +1,7 @@
 package com.ubiquity.core.datastore;
 
 public interface IFieldTemplate {
-            String getName();
+            String getIdentifier();
 
     Type getType();
 

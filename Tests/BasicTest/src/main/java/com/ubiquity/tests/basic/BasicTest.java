@@ -64,7 +64,7 @@ public class BasicTest implements DataParser.TypeProvider {
                 .getDefinition().getFieldTemplates();
 
         for (IFieldTemplate fieldTemplate : fieldTemplates) {
-            if (fieldTemplate.getName().equals(field)) {
+            if (fieldTemplate.getIdentifier().equals(field)) {
                 return fieldTemplate.getType();
             }
         }

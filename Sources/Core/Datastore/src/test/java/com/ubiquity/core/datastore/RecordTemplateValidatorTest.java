@@ -16,7 +16,7 @@ public class RecordTemplateValidatorTest {
     public void testSuccess() {
         RecordTemplateBuilder recordTemplateBuilder = new RecordTemplateBuilder();
         recordTemplateBuilder.withIdentifier("Identifier").addFieldTemplate()
-                .withName("Field").withType(BOOLEAN).withKind(PRIMARY)
+                .withIdentifier("Field").withType(BOOLEAN).withKind(PRIMARY)
                 .build();
         RecordTemplateValidator
                 .validate(recordTemplateBuilder.build());
@@ -31,7 +31,7 @@ public class RecordTemplateValidatorTest {
     public void testNullIdentifier() {
         RecordTemplateBuilder recordTemplateBuilder = new RecordTemplateBuilder();
         recordTemplateBuilder.withIdentifier(null).addFieldTemplate()
-                .withName("Field").withType(BOOLEAN).withKind(PRIMARY)
+                .withIdentifier("Field").withType(BOOLEAN).withKind(PRIMARY)
                 .build();
         RecordTemplateValidator
                 .validate(recordTemplateBuilder.build());
@@ -41,7 +41,7 @@ public class RecordTemplateValidatorTest {
     public void testEmptyIdentifier() {
         RecordTemplateBuilder recordTemplateBuilder = new RecordTemplateBuilder();
         recordTemplateBuilder.withIdentifier("").addFieldTemplate()
-                .withName("Field").withType(BOOLEAN).withKind(PRIMARY)
+                .withIdentifier("Field").withType(BOOLEAN).withKind(PRIMARY)
                 .build();
         RecordTemplateValidator
                 .validate(recordTemplateBuilder.build());
@@ -58,7 +58,7 @@ public class RecordTemplateValidatorTest {
     public void testIndexedFieldObject() {
         RecordTemplateBuilder recordTemplateBuilder = new RecordTemplateBuilder();
         recordTemplateBuilder.withIdentifier("Identifier").addFieldTemplate()
-                .withName("Field").withType(OBJECT).withKind(INDEXED)
+                .withIdentifier("Field").withType(OBJECT).withKind(INDEXED)
                 .build();
         RecordTemplateValidator
                 .validate(recordTemplateBuilder.build());
@@ -68,7 +68,7 @@ public class RecordTemplateValidatorTest {
     public void testUniqueFieldObject() {
         RecordTemplateBuilder recordTemplateBuilder = new RecordTemplateBuilder();
         recordTemplateBuilder.withIdentifier("Identifier").addFieldTemplate()
-                .withName("Field").withType(DOUBLE).withKind(PRIMARY)
+                .withIdentifier("Field").withType(DOUBLE).withKind(PRIMARY)
                 .build();
         RecordTemplateValidator
                 .validate(recordTemplateBuilder.build());
@@ -78,7 +78,7 @@ public class RecordTemplateValidatorTest {
     public void testExceptionIfNoPrimaryField() {
         RecordTemplateBuilder recordTemplateBuilder = new RecordTemplateBuilder();
         recordTemplateBuilder.withIdentifier("Identifier").addFieldTemplate()
-                .withName("Field").withType(OBJECT).withKind(MANDATORY)
+                .withIdentifier("Field").withType(OBJECT).withKind(MANDATORY)
                 .build();
         RecordTemplateValidator
                 .validate(recordTemplateBuilder.build());

@@ -41,7 +41,7 @@ public class RecordTemplateBuilder {
 
 
     public class FieldTemplateBuilder {
-        private String name;
+        private String identifier;
         private Type type;
         private Kind kind;
 
@@ -49,8 +49,8 @@ public class RecordTemplateBuilder {
             fieldTemplates.add(new IFieldTemplate() {
 
                 @Override
-                public String getName() {
-                    return name;
+                public String getIdentifier() {
+                    return identifier;
                 }
 
                 @Override
@@ -67,8 +67,8 @@ public class RecordTemplateBuilder {
             return RecordTemplateBuilder.this;
         }
 
-        public FieldTemplateBuilder withName(String name) {
-            this.name = name;
+        public FieldTemplateBuilder withIdentifier(String identifier) {
+            this.identifier = identifier;
             return this;
         }
 
