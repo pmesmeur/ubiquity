@@ -1,4 +1,4 @@
-package com.ubiquity.tests.basic;
+package com.ubiquity.demos.musicbrainz;
 
 import java.io.File;
 import java.util.Collection;
@@ -10,20 +10,20 @@ import com.ubiquity.core.datastore.IFieldTemplate;
 import com.ubiquity.core.datastore.IRecordTemplate;
 import com.ubiquity.core.datastore.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
 
-public class BasicTest implements DataParser.TypeProvider {
+public class MusicbrainzDemo implements DataParser.TypeProvider {
 
     private final DataStore dataStore;
-    String DIR_NAME = "Tests/BasicTest/src/main/resources/musicbrainz";
+    String DIR_NAME = "Demos/MusicbrainzDemo/src/main/resources/musicbrainz";
 
 
-    protected BasicTest() {
+    protected MusicbrainzDemo() {
         dataStore = new DataStore();
     }
 
 
     public static void main(String[] args) {
-        BasicTest basicTest = new BasicTest();
-        basicTest.run();
+        MusicbrainzDemo musicbrainzDemo = new MusicbrainzDemo();
+        musicbrainzDemo.run();
     }
 
 
@@ -88,7 +88,7 @@ public class BasicTest implements DataParser.TypeProvider {
 
         private void parseAndInsertData(String fileName) {
             DataParser dataParser = new DataParser(registry, identifier);
-            dataParser.parse(fileName, BasicTest.this, this);
+            dataParser.parse(fileName, MusicbrainzDemo.this, this);
         }
 
         @Override

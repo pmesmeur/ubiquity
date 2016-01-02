@@ -1,4 +1,4 @@
-package com.ubiquity.tests.basic;
+package com.ubiquity.demos.musicbrainz;
 
 
 import java.io.FileNotFoundException;
