@@ -24,7 +24,7 @@
     </build>
     <modules>
         <module>Sources</module>
-        <module>Tests</module>
+        <module>Demos</module>
     </modules>
 
 </project>

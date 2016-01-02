@@ -10,12 +10,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ubiquity-tests</artifactId>
+    <artifactId>ubiquity-demos</artifactId>
     <packaging>pom</packaging>
-    <name>Ubiquity :: Tests</name>
+    <name>Ubiquity :: Demos</name>
 
     <modules>
-        <module>BasicTest</module>
+        <module>MusicbrainzDemo</module>
     </modules>
 
 </project>
