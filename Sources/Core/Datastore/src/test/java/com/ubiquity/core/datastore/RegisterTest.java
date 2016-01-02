@@ -24,31 +24,31 @@ public class RegisterTest {
     }
 
     @Test
-    public void testInsertEntry() {
+    public void testInsertRecord() {
         Register register = new Register(createBasicRecordTemplate());
-        Map<String, Object> entryValues = createEntryValues();
+        Map<String, Object> recordFields = createRecordFields();
 
-        register.insert(entryValues);
+        register.insert(recordFields);
     }
 
-    private Map<String, Object> createEntryValues() {
-        return createEntryValues("Ubiquity");
+    private Map<String, Object> createRecordFields() {
+        return createRecordFields("Ubiquity");
     }
 
-    private Map<String, Object> createEntryValues(String primariyFieldValue) {
+    private Map<String, Object> createRecordFields(String primariyFieldValue) {
         assert primariyFieldValue != null;
-        Map<String, Object> entryValues = new HashMap<String, Object>();
+        Map<String, Object> recordFields = new HashMap<String, Object>();
 
-        entryValues.put("Field1", new String(primariyFieldValue));
-        entryValues.put("Field2", new Double(1.));
-        entryValues.put("Field3", new Character('c'));
-        entryValues.put("Field4", new Integer(27));
-        entryValues.put("Field5", new Boolean(true));
-        entryValues.put("Field6", new HashMap<String, String>());
-        entryValues.put("Field7", LocalDate.MAX);
-        entryValues.put("Field8", LocalTime.MAX);
-        entryValues.put("Field9", Duration.ZERO);
-        return entryValues;
+        recordFields.put("Field1", new String(primariyFieldValue));
+        recordFields.put("Field2", new Double(1.));
+        recordFields.put("Field3", new Character('c'));
+        recordFields.put("Field4", new Integer(27));
+        recordFields.put("Field5", new Boolean(true));
+        recordFields.put("Field6", new HashMap<String, String>());
+        recordFields.put("Field7", LocalDate.MAX);
+        recordFields.put("Field8", LocalTime.MAX);
+        recordFields.put("Field9", Duration.ZERO);
+        return recordFields;
     }
 
     @Test
@@ -69,77 +69,78 @@ public class RegisterTest {
     }
 
     @Test
-    public void testEntryIndexed() {
+    public void testRecordIndexed() {
         Register register = new Register(createBasicRecordTemplate());
-        register.insert(createEntryValues("HelloWorld"));
-        register.insert(createEntryValues("Foo"));
-        register.insert(createEntryValues("Bar"));
+        register.insert(createRecordFields("HelloWorld"));
+        register.insert(createRecordFields("Foo"));
+        register.insert(createRecordFields("Bar"));
 
         Assert.assertEquals(3, register.getEntries().size());
 
         Map<String, IIndex> indexes = register.getIndexes();
         for (IIndex index : indexes.values()) {
-            Assert.assertTrue(index.getEntry().size() == register.getEntries().size());
+            Assert.assertTrue(index.getRecords().size() == register.getEntries().size());
         }
     }
 
     @Test(expected = ValueOfPrimaryFieldAlreadyInsertedException.class)
-    public void testDoubleEntryOnPrimaryField() {
+    public void testDoubleRecordOnPrimaryField() {
         Register register = new Register(createPrimaryOptionalRecordTemplate());
-        Map<String, Object> entryValues = createPrimaryOptionalEntryValues();
-        register.insert(entryValues);
-        register.insert(entryValues);
+        Map<String, Object> recordFields = createPrimaryOptionalRecordFields();
+        register.insert(recordFields);
+        register.insert(recordFields);
     }
 
-    private Map<String, Object> createPrimaryOptionalEntryValues() {
-        Map<String, Object> entryValues = new HashMap<String, Object>();
+    private Map<String, Object> createPrimaryOptionalRecordFields() {
+        Map<String, Object> recordFields = new HashMap<String, Object>();
 
-        entryValues.put("Field1", new String("Ubiquity"));
-        entryValues.put("Field2", new Double(1.));
+        recordFields.put("Field1", new String("Ubiquity"));
+        recordFields.put("Field2", new Double(1.));
 
-        return entryValues;
+        return recordFields;
     }
 
     @Test
     public void testSizeOfIndexesWhenErrorOnPrimaryField() {
         Register register = new Register(createRecordTempalte(PRIMARY));
-        register.insert(createEntryValues("Field1", 1., 'A', 1, Boolean.FALSE, register,
+        register.insert(createRecordFields("Field1", 1., 'A', 1, Boolean.FALSE, register,
                 LocalDate.MIN, LocalTime.MIN, Duration.ZERO));
         try {
-            register.insert(createEntryValues("Field2", 2., 'B', 1, Boolean.TRUE, register,
+            register.insert(createRecordFields("Field2", 2., 'B', 1, Boolean.TRUE, register,
                     LocalDate.MAX, LocalTime.MAX, Duration.ZERO));
         } catch (ValueOfPrimaryFieldAlreadyInsertedException e) {
         }
 
         for (Map.Entry<String, IIndex> indexEntry : register.getIndexes().entrySet()) {
             IIndex index = indexEntry.getValue();
-            Assert.assertEquals(1, index.getEntry().size());
+            Assert.assertEquals(1, index.getRecords().size());
         }
     }
 
-    private Map<String, Object> createEntryValues(String field1, Double field2, Character field3,
-            Integer field4, Boolean field5, Object field6, LocalDate field7, LocalTime field8, Duration field9) {
-        Map<String, Object> entryValues = new HashMap<String, Object>();
+    private Map<String, Object> createRecordFields(String field1, Double field2, Character field3,
+            Integer field4, Boolean field5, Object field6, LocalDate field7, LocalTime field8,
+            Duration field9) {
+        Map<String, Object> recordFields = new HashMap<String, Object>();
 
-        entryValues.put("Field1", field1);
-        entryValues.put("Field2", field2);
-        entryValues.put("Field3", field3);
-        entryValues.put("Field4", field4);
-        entryValues.put("Field5", field5);
-        entryValues.put("Field6", field6);
-        entryValues.put("Field7", field7);
-        entryValues.put("Field8", field8);
-        entryValues.put("Field9", field9);
+        recordFields.put("Field1", field1);
+        recordFields.put("Field2", field2);
+        recordFields.put("Field3", field3);
+        recordFields.put("Field4", field4);
+        recordFields.put("Field5", field5);
+        recordFields.put("Field6", field6);
+        recordFields.put("Field7", field7);
+        recordFields.put("Field8", field8);
+        recordFields.put("Field9", field9);
 
-        return entryValues;
+        return recordFields;
     }
 
     @Test(expected = RecordDoesNotFitTemplateException.class)
     public void testInsertRecordThatDoesNotFitTemplate() {
         Register register = new Register(createPrimaryOptionalRecordTemplate());
-        Map<String, Object> entryValues = createEntryValues();
+        Map<String, Object> recordFields = createRecordFields();
 
-        register.insert(entryValues);
+        register.insert(recordFields);
     }
 
 }

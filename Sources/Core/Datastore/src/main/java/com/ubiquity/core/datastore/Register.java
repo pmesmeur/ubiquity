@@ -15,14 +15,14 @@ import com.ubiquity.core.datastore.indexes.IndexFactory;
 public class Register {
 
     private final IRecordTemplate recordTemplate;
-    private final Collection<Entry> entries;
+    private final Collection<Record> entries;
     private final Map<String, IIndex> indexes;
 
     public Register(IRecordTemplate recordTemplate) {
         RecordTemplateValidator.validate(recordTemplate);
 
         this.recordTemplate = recordTemplate; /// TODO: make a copy
-        this.entries = new ArrayList<Entry>();
+        this.entries = new ArrayList<Record>();
         this.indexes = buildIndexes(recordTemplate);
     }
 
@@ -48,50 +48,50 @@ public class Register {
         return recordTemplate;
     }
 
-    public void insert(Map<String, Object> entryValues) {
-        Entry entry = new Entry(recordTemplate, entryValues);
-        populateIndexes(entryValues, entry);
-        entries.add(entry);
+    public void insert(Map<String, Object> recordFields) {
+        Record record = new Record(recordTemplate, recordFields);
+        populateIndexes(recordFields, record);
+        entries.add(record);
     }
 
-    private void populateIndexes(Map<String, Object> entryValues, Entry entry) {
+    private void populateIndexes(Map<String, Object> recordFields, Record record) {
         try {
             for (Map.Entry<String, IIndex> indexEntry : indexes.entrySet()) {
-                populateIndex(indexEntry, entryValues, entry);
+                populateIndex(indexEntry, recordFields, record);
             }
         }
 
         catch (RuntimeException e) {
             for (Map.Entry<String, IIndex> indexEntry : indexes.entrySet()) {
-                unpopulateIndex(indexEntry, entryValues, entry);
+                unpopulateIndex(indexEntry, recordFields, record);
             }
             throw e;
         }
     }
 
     private void populateIndex(Map.Entry<String, IIndex> indexEntry,
-            Map<String, Object> entryValues, Entry entry) {
+            Map<String, Object> recordFields, Record record) {
         String attributeName = indexEntry.getKey();
         IIndex index = indexEntry.getValue();
 
-        Object indexedObject = entryValues.get(attributeName);
-        index.insertEntry(indexedObject, entry);
+        Object indexedObject = recordFields.get(attributeName);
+        index.insertRecord(indexedObject, record);
     }
 
     private void unpopulateIndex(Map.Entry<String, IIndex> indexEntry,
-            Map<String, Object> entryValues, Entry entry) {
+            Map<String, Object> entryValues, Record record) {
         String attributeName = indexEntry.getKey();
         IIndex index = indexEntry.getValue();
 
         Object indexedObject = entryValues.get(attributeName);
-        index.removeEntry(indexedObject, entry);
+        index.removeRecord(indexedObject, record);
     }
 
     protected Map<String, IIndex> getIndexes() {
         return indexes;
     }
 
-    protected Collection<Entry> getEntries() {
+    protected Collection<Record> getEntries() {
         return entries;
     }
 }

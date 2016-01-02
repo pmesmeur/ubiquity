@@ -2,12 +2,12 @@ package com.ubiquity.core.datastore.indexes;
 
 import java.util.Collection;
 
-import com.ubiquity.core.datastore.Entry;
+import com.ubiquity.core.datastore.Record;
 
 public interface IIndex {
-            void insertEntry(Object indexedValue, Entry indexedEntry);
+            void insertRecord(Object indexedValue, Record indexedRecord);
 
-    void removeEntry(Object indexedValue, Entry indexedEntry);
+    void removeRecord(Object indexedValue, Record indexedRecord);
 
-    Collection<Entry> getEntry();
+    Collection<Record> getRecords();
 }

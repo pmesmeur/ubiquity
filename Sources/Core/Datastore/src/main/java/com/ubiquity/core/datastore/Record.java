@@ -11,11 +11,11 @@ import com.ubiquity.core.datastore.exceptions.MissingMandatoryFieldException;
 import com.ubiquity.core.datastore.exceptions.RecordDoesNotFitTemplateException;
 import com.ubiquity.core.datastore.exceptions.WrongFieldTypeException;
 
-public class Entry {
+public class Record {
 
     private final Object fields[];
 
-    public Entry(IRecordTemplate recordTemplate, Map<String, Object> values) {
+    public Record(IRecordTemplate recordTemplate, Map<String, Object> values) {
         assert recordTemplate != null;
         assert values != null;
 
