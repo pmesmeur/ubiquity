@@ -13,15 +13,15 @@ import com.ubiquity.core.datastore.IFieldTemplate.Type;
 
 public class DataParser {
 
-    private final String shelf;
+    private final String registery;
     private final String identifier;
 
 
-    public DataParser(String shelf, String identifier) {
-        assert !Strings.isNullOrEmpty(shelf);
+    public DataParser(String registery, String identifier) {
+        assert!Strings.isNullOrEmpty(registery);
         assert !Strings.isNullOrEmpty(identifier);
 
-        this.shelf = shelf;
+        this.registery = registery;
         this.identifier = identifier;
     }
 
@@ -51,7 +51,7 @@ public class DataParser {
 
 
     public interface TypeProvider {
-                Type getType(String shelf, String identifier, String field);
+                Type getType(String registery, String identifier, String field);
     }
 
 
@@ -93,7 +93,7 @@ public class DataParser {
             String columnName = headerColumn.trim();
 
             columns.add(columnName);
-            columnsType.put(columnName, typeProvider.getType(shelf, identifier, columnName));
+            columnsType.put(columnName, typeProvider.getType(registery, identifier, columnName));
         }
 
         private void processDataLine(String line) {

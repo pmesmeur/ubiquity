@@ -18,13 +18,13 @@ import com.ubiquity.core.datastore.IRecordTemplate;
 
 public class DataDescriptorParser {
 
-    private String shelf;
+    private String registery;
     private String name;
     private Map<String, FieldTemplate> fieldTemplates;
 
 
     public DataDescriptorParser() {
-        this.shelf = null;
+        this.registery = null;
         this.name = null;
         this.fieldTemplates = new HashMap<String, FieldTemplate>();
     }
@@ -56,7 +56,7 @@ public class DataDescriptorParser {
             fieldTemplates.add(iter);
         }
 
-        dataInsertor.insert(shelf, new IRecordTemplate() {
+        dataInsertor.insert(registery, new IRecordTemplate() {
 
             @Override
             public String getIdentifier() {
@@ -75,7 +75,7 @@ public class DataDescriptorParser {
 
 
     public interface IDataInsertor {
-                void insert(String shelf, IRecordTemplate recordTemplate);
+                void insert(String registery, IRecordTemplate recordTemplate);
     }
 
     private class LineProcessor implements ILineProcessor {
@@ -123,7 +123,7 @@ public class DataDescriptorParser {
 
         private void processHeader(String line) {
             String fullDataName = getFullDataName(line);
-            shelf = getStore(fullDataName);
+            registery = getStore(fullDataName);
             name = getName(fullDataName);
         }
 

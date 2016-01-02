@@ -7,19 +7,19 @@ import com.google.common.base.Strings;
 import com.ubiquity.core.datastore.exceptions.RegisterAlreadyExistsException;
 import com.ubiquity.core.datastore.exceptions.RegisterNotFoundException;
 
-public final class DataShelf {
+public final class Registry {
 
     private final String identifier;
     private final Map<String, Register> registers;
 
-    private DataShelf(String identifier) {
+    private Registry(String identifier) {
         checkIdentifier(identifier);
         this.identifier = identifier;
         this.registers = new HashMap<String, Register>();
     }
 
-    public static DataShelf create(String identifier) {
-        return new DataShelf(identifier);
+    public static Registry create(String identifier) {
+        return new Registry(identifier);
     }
 
     private static void checkIdentifier(String identifier) {

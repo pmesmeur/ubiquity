@@ -9,47 +9,48 @@ import org.junit.Test;
 import com.ubiquity.core.datastore.exceptions.RegisterAlreadyExistsException;
 import com.ubiquity.core.datastore.exceptions.RegisterNotFoundException;
 
-public class DataShelfTest {
+public class RegisteryTest {
 
-    final String DATA_SHELF_ID = "DataShelfIdentifier";
+    final String DATA_REGISTERY_ID = "RegisteryIdentifier";
 
     @Test(expected = AssertionError.class)
     public void testNullIdentifier() {
-        DataShelf.create(null);
+        Registry.create(null);
     }
 
     @Test(expected = AssertionError.class)
     public void testEmptyIdentifier() {
-        DataShelf.create("");
+        Registry.create("");
     }
 
     @Test
     public void testGetIdentifier() {
-        DataShelf dataShelf = DataShelf.create(DATA_SHELF_ID);
-        Assert.assertNotNull(dataShelf);
+        Registry Registery = Registry.create(DATA_REGISTERY_ID);
+        Assert.assertNotNull(Registery);
 
-        Assert.assertArrayEquals(DATA_SHELF_ID.getBytes(), dataShelf.getIdentifier().getBytes());
+        Assert.assertArrayEquals(DATA_REGISTERY_ID.getBytes(),
+                Registery.getIdentifier().getBytes());
     }
 
     @Test(expected = RegisterAlreadyExistsException.class)
     public void testInsertExistingRegister() {
-        DataShelf dataShelf = DataShelf.create(DATA_SHELF_ID);
+        Registry Registery = Registry.create(DATA_REGISTERY_ID);
 
         IRecordTemplate recordTempalte = createRecordTempalte(PRIMARY);
 
-        dataShelf.insertRegister(recordTempalte);
-        dataShelf.insertRegister(recordTempalte);
+        Registery.insertRegister(recordTempalte);
+        Registery.insertRegister(recordTempalte);
     }
 
     @Test(expected = AssertionError.class)
     public void testGetRegisterWithNullIdentifier() {
-        DataShelf dataShelf = DataShelf.create("DataShelfIdentifier");
-        dataShelf.getRegister(null);
+        Registry Registery = Registry.create("RegisteryIdentifier");
+        Registery.getRegister(null);
     }
 
     @Test(expected = RegisterNotFoundException.class)
     public void testGetRegisterWithUnknownIdentifier() {
-        DataShelf dataShelf = DataShelf.create("DataShelfIdentifier");
-        dataShelf.getRegister("UnknownRegisterIdentifier");
+        Registry Registery = Registry.create("RegisteryIdentifier");
+        Registery.getRegister("UnknownRegisterIdentifier");
     }
 }

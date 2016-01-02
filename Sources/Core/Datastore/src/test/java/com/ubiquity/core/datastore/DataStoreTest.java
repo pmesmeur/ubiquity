@@ -13,7 +13,7 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ubiquity.core.datastore.exceptions.DataShelfNotFoundException;
+import com.ubiquity.core.datastore.exceptions.RegisteryNotFoundException;
 
 public class DataStoreTest {
 
@@ -28,65 +28,65 @@ public class DataStoreTest {
 
 
     @Test
-    public void testShelvesInsert() {
-        testDataShelfInsertions(NB_INSERTIONS);
+    public void testRegisteriesInsert() {
+        testRegisteryInsertions(NB_INSERTIONS);
 
-        Set<String> dataShelvesId = dataStore.getAllShelvesId();
-        Assert.assertEquals(dataShelvesId.size(), NB_INSERTIONS);
+        Set<String> RegisteriesId = dataStore.getAllRegisteriesId();
+        Assert.assertEquals(RegisteriesId.size(), NB_INSERTIONS);
     }
 
 
-    private void testDataShelfInsertions(int quantity) {
+    private void testRegisteryInsertions(int quantity) {
         for (int index = 0; index < quantity; index++) {
-            testDataShelfInsertion("id" + index);
+            testRegisteryInsertion("id" + index);
         }
     }
 
 
-    private void testDataShelfInsertion(String identifier) {
-        DataShelf dataShelf1 = dataStore.insertDataShelf(identifier);
-        Assert.assertEquals(dataShelf1, dataStore.getDataShelf(identifier));
+    private void testRegisteryInsertion(String identifier) {
+        Registry Registery1 = dataStore.insertRegistery(identifier);
+        Assert.assertEquals(Registery1, dataStore.getRegistery(identifier));
     }
 
 
-    @Test(expected = DataShelfNotFoundException.class)
-    public void testGetUnexistingShelf() {
-        testDataShelfInsertions(NB_INSERTIONS);
-        dataStore.getDataShelf("hello-world");
-    }
-
-
-    @Test(expected = AssertionError.class)
-    public void testNullNamedShelfInsert() {
-        dataStore.insertDataShelf(null);
+    @Test(expected = RegisteryNotFoundException.class)
+    public void testGetUnexistingRegistery() {
+        testRegisteryInsertions(NB_INSERTIONS);
+        dataStore.getRegistery("hello-world");
     }
 
 
     @Test(expected = AssertionError.class)
-    public void testEmptyNamedShelfInsert() {
-        dataStore.insertDataShelf("");
+    public void testNullNamedRegisteryInsert() {
+        dataStore.insertRegistery(null);
+    }
+
+
+    @Test(expected = AssertionError.class)
+    public void testEmptyNamedRegisteryInsert() {
+        dataStore.insertRegistery("");
     }
 
 
     @Test
     public void testInsertData() {
-        final String DATA_SHELF_NAME = "The.Data.Shelf";
+        final String DATA_REGISTERY_NAME = "The.Data.Registery";
         RecordTemplate recordTemplate = new RecordTemplate();
 
-        dataStore.insertDataShelf(DATA_SHELF_NAME);
-        dataStore.insertRegister(DATA_SHELF_NAME, recordTemplate);
+        dataStore.insertRegistery(DATA_REGISTERY_NAME);
+        dataStore.insertRegister(DATA_REGISTERY_NAME, recordTemplate);
 
-        DataShelf dataShelf = dataStore.getDataShelf(DATA_SHELF_NAME);
-        assertNotNull(dataShelf);
+        Registry Registery = dataStore.getRegistery(DATA_REGISTERY_NAME);
+        assertNotNull(Registery);
 
-        Register register = dataShelf.getRegister(recordTemplate.getIdentifier());
+        Register register = Registery.getRegister(recordTemplate.getIdentifier());
         assertNotNull(register);
     }
 
 
-    @Test(expected = DataShelfNotFoundException.class)
-    public void testInsertDataOnUnknownShelf() {
-        dataStore.insertRegister("ThisShelfDoesNotExist", new RecordTemplate());
+    @Test(expected = RegisteryNotFoundException.class)
+    public void testInsertDataOnUnknownRegistery() {
+        dataStore.insertRegister("ThisRegisteryDoesNotExist", new RecordTemplate());
     }
 
 
@@ -104,7 +104,7 @@ public class DataStoreTest {
 
     @Test(expected = AssertionError.class)
     public void testInsertRecordWithNullDefinition() {
-        dataStore.insertRegister("ThisShelfDoesNotExist", null);
+        dataStore.insertRegister("ThisRegisteryDoesNotExist", null);
     }
 
 
