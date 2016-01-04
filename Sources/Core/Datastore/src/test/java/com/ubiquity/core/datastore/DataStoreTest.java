@@ -1,19 +1,17 @@
 package com.ubiquity.core.datastore;
 
-import static com.ubiquity.core.datastore.IFieldTemplate.Kind.PRIMARY;
-import static com.ubiquity.core.datastore.IFieldTemplate.Type.STRING;
-import static org.junit.Assert.assertNotNull;
+import com.ubiquity.core.datastore.exceptions.RegistryNotFoundException;
+import junit.framework.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
-import junit.framework.Assert;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import com.ubiquity.core.datastore.exceptions.RegistryNotFoundException;
+import static com.ubiquity.core.datastore.IFieldTemplate.Kind.PRIMARY;
+import static com.ubiquity.core.datastore.IFieldTemplate.Type.STRING;
+import static org.junit.Assert.assertNotNull;
 
 public class DataStoreTest {
 
@@ -70,13 +68,13 @@ public class DataStoreTest {
 
     @Test
     public void testInsertData() {
-        final String DATA_Registry_NAME = "The.Data.Registry";
+        final String DATA_REGISTRY_NAME = "The.Data.Registry";
         RecordTemplate recordTemplate = new RecordTemplate();
 
-        dataStore.insertRegistry(DATA_Registry_NAME);
-        dataStore.insertRegister(DATA_Registry_NAME, recordTemplate);
+        dataStore.insertRegistry(DATA_REGISTRY_NAME);
+        dataStore.insertRegister(DATA_REGISTRY_NAME, recordTemplate);
 
-        Registry registry = dataStore.getRegistry(DATA_Registry_NAME);
+        Registry registry = dataStore.getRegistry(DATA_REGISTRY_NAME);
         assertNotNull(registry);
 
         Register register = registry.getRegister(recordTemplate.getIdentifier());
