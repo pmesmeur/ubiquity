@@ -2,7 +2,7 @@ package com.ubiquity.datastorage.kernel;
 
 import com.ubiquity.datastorage.kernel.exceptions.MissingMandatoryFieldException;
 import com.ubiquity.datastorage.kernel.exceptions.WrongFieldTypeException;
-import com.ubiquity.datastorage.kernel.utils.RecordTemplateHelper;
+import com.ubiquity.datastorage.utils.RecordTemplateHelper;
 import org.junit.Test;
 
 import java.time.Duration;

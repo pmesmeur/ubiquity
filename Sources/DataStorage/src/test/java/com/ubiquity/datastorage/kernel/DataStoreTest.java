@@ -1,6 +1,7 @@
 package com.ubiquity.datastorage.kernel;
 
 import com.ubiquity.datastorage.kernel.exceptions.RegistryNotFoundException;
+import com.ubiquity.datastorage.utils.RecordTemplate;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -103,42 +104,6 @@ public class DataStoreTest {
     @Test(expected = AssertionError.class)
     public void testInsertRecordWithNullDefinition() {
         dataStore.insertRegister("ThisRegistryDoesNotExist", null);
-    }
-
-
-    private class RecordTemplate implements IRecordTemplate {
-
-        private final Collection<IFieldTemplate> fieldTemplate;
-
-        public RecordTemplate() {
-            this.fieldTemplate = new ArrayList<IFieldTemplate>();
-            fieldTemplate.add(new IFieldTemplate() {
-                @Override
-                public String getIdentifier() {
-                    return "DummyField";
-                }
-
-                @Override
-                public Type getType() {
-                    return STRING;
-                }
-
-                @Override
-                public Kind getKind() {
-                    return PRIMARY;
-                }
-            });
-        }
-
-        @Override
-        public String getIdentifier() {
-            return "AnIdentifier";
-        }
-
-        @Override
-        public Collection<IFieldTemplate> getFieldTemplates() {
-            return fieldTemplate;
-        }
     }
 
 }

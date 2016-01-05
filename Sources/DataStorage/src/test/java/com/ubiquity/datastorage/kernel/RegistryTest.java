@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import static com.ubiquity.datastorage.kernel.IFieldTemplate.Kind.PRIMARY;
-import static com.ubiquity.datastorage.kernel.utils.RecordTemplateHelper.createRecordTempalte;
+import static com.ubiquity.datastorage.utils.RecordTemplateHelper.createRecordTempalte;
 
 public class RegistryTest {
 

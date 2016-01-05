@@ -1,4 +1,4 @@
-package com.ubiquity.datastorage.kernel.utils;
+package com.ubiquity.datastorage.utils;
 
 import com.ubiquity.datastorage.kernel.IFieldTemplate;
 import com.ubiquity.datastorage.kernel.IRecordTemplate;

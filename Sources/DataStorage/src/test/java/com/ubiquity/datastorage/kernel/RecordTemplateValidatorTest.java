@@ -3,7 +3,7 @@ package com.ubiquity.datastorage.kernel;
 import com.ubiquity.datastorage.kernel.exceptions.DoubleTypeCannotBeUniqueException;
 import com.ubiquity.datastorage.kernel.exceptions.NoPrimaryFieldException;
 import com.ubiquity.datastorage.kernel.exceptions.ObjectTypeCannotBeIndexException;
-import com.ubiquity.datastorage.kernel.utils.RecordTemplateBuilder;
+import com.ubiquity.datastorage.utils.RecordTemplateBuilder;
 import org.junit.Test;
 
 import static com.ubiquity.datastorage.kernel.IFieldTemplate.Kind.*;

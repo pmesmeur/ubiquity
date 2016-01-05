@@ -3,7 +3,7 @@ package com.ubiquity.datastorage.kernel;
 import com.ubiquity.datastorage.kernel.exceptions.RecordDoesNotFitTemplateException;
 import com.ubiquity.datastorage.kernel.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
 import com.ubiquity.datastorage.kernel.indexes.IIndex;
-import com.ubiquity.datastorage.kernel.utils.RecordTemplateHelper;
+import com.ubiquity.datastorage.utils.RecordTemplateHelper;
 import org.junit.Assert;
 import org.junit.Test;
 
