@@ -5,10 +5,10 @@ import java.util.Collection;
 import java.util.Map;
 
 import com.google.common.base.Strings;
-import com.ubiquity.core.datastore.DataStore;
-import com.ubiquity.core.datastore.IFieldTemplate;
-import com.ubiquity.core.datastore.IRecordTemplate;
-import com.ubiquity.core.datastore.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
+import com.ubiquity.datastorage.kernel.DataStore;
+import com.ubiquity.datastorage.kernel.IFieldTemplate;
+import com.ubiquity.datastorage.kernel.IRecordTemplate;
+import com.ubiquity.datastorage.kernel.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
 
 public class MusicbrainzDemo implements DataParser.TypeProvider {
 

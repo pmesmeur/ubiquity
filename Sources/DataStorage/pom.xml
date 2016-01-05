@@ -4,22 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <relativePath>../pom.xml</relativePath>
-        <artifactId>ubiquity-demos</artifactId>
+        <artifactId>ubiquity-root</artifactId>
         <groupId>com.ubiquity</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ubiquity-demo-musicbrainz</artifactId>
-    <name>Ubiquity :: Demos :: Musicbrainz</name>
+    <artifactId>ubiquity-datastorage</artifactId>
+    <packaging>pom</packaging>
+    <name>Ubiquity :: Root :: DataStorage</name>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.ubiquity</groupId>
-            <artifactId>ubiquity-datastorage-kernel</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
-
+    <modules>
+        <module>Kernel</module>
+    </modules>
 
 </project>

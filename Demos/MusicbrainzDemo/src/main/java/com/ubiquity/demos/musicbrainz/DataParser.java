@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.common.base.Strings;
-import com.ubiquity.core.datastore.IFieldTemplate.Type;
+import com.ubiquity.datastorage.kernel.IFieldTemplate.Type;
 
 public class DataParser {
 

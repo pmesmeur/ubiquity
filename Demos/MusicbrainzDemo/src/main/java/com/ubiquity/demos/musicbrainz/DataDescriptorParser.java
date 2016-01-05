@@ -1,8 +1,8 @@
 package com.ubiquity.demos.musicbrainz;
 
 
-import static com.ubiquity.core.datastore.IFieldTemplate.Kind.*;
-import static com.ubiquity.core.datastore.IFieldTemplate.Type.*;
+import static com.ubiquity.datastorage.kernel.IFieldTemplate.Kind.*;
+import static com.ubiquity.datastorage.kernel.IFieldTemplate.Type.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,10 +11,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ubiquity.core.datastore.IFieldTemplate;
-import com.ubiquity.core.datastore.IFieldTemplate.Kind;
-import com.ubiquity.core.datastore.IFieldTemplate.Type;
-import com.ubiquity.core.datastore.IRecordTemplate;
+import com.ubiquity.datastorage.kernel.IFieldTemplate;
+import com.ubiquity.datastorage.kernel.IFieldTemplate.Kind;
+import com.ubiquity.datastorage.kernel.IFieldTemplate.Type;
+import com.ubiquity.datastorage.kernel.IRecordTemplate;
 
 public class DataDescriptorParser {
 
