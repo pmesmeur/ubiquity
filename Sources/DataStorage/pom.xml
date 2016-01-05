@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ubiquity-core</artifactId>
+    <artifactId>ubiquity-datastorage</artifactId>
     <packaging>pom</packaging>
     <name>Ubiquity :: Root :: DataStorage</name>
 

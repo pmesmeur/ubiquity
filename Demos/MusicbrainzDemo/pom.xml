@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.ubiquity</groupId>
-            <artifactId>ubiquity-core-datastore</artifactId>
+            <artifactId>ubiquity-datastorage-kernel</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
