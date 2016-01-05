@@ -15,7 +15,7 @@
     <name>Ubiquity :: Root :: DataStorage</name>
 
     <modules>
-        <module>Datastore</module>
+        <module>Kernel</module>
     </modules>
 
 </project>
