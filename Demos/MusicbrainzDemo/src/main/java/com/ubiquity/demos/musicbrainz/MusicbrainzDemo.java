@@ -5,19 +5,19 @@ import java.util.Collection;
 import java.util.Map;
 
 import com.google.common.base.Strings;
-import com.ubiquity.datastorage.kernel.DataStore;
+import com.ubiquity.datastorage.DataStorage;
 import com.ubiquity.datastorage.kernel.IFieldTemplate;
 import com.ubiquity.datastorage.kernel.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
 
 public class MusicbrainzDemo implements DataParser.TypeProvider {
 
-    private final DataStore dataStore;
+    private final DataStorage dataStorage;
     String DIR_NAME = "Demos/MusicbrainzDemo/src/main/resources/musicbrainz";
 
 
     protected MusicbrainzDemo() {
-        dataStore = new DataStore();
+        dataStorage = new DataStorage();
     }
 
 
@@ -59,7 +59,7 @@ public class MusicbrainzDemo implements DataParser.TypeProvider {
         assert!Strings.isNullOrEmpty(identifier);
         assert!Strings.isNullOrEmpty(field);
 
-        Collection<IFieldTemplate> fieldTemplates = dataStore.getRegistry(registry)
+        Collection<IFieldTemplate> fieldTemplates = dataStorage.getRegistry(registry)
                 .getRegister(identifier)
                 .getDefinition().getFieldTemplates();
 
@@ -96,15 +96,15 @@ public class MusicbrainzDemo implements DataParser.TypeProvider {
             this.registry = registry;
             this.identifier = recordTemplate.getIdentifier();
 
-            dataStore.insertRegistry(registry);
-            dataStore.insertRegister(registry, recordTemplate);
+            dataStorage.insertRegistry(registry);
+            dataStorage.insertRegister(registry, recordTemplate);
             System.out.println("Data: {" + registry + "," + identifier + "}");
         }
 
         @Override
         public void insert(Map<String, Object> dataFields) {
             try {
-                dataStore.getRegistry(registry).getRegister(identifier).insert(dataFields);
+                dataStorage.getRegistry(registry).getRegister(identifier).insert(dataFields);
             }
  catch (ValueOfPrimaryFieldAlreadyInsertedException e) {
             }
