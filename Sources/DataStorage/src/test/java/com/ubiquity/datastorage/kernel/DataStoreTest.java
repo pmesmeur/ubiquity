@@ -1,6 +1,7 @@
 package com.ubiquity.datastorage.kernel;
 
 import com.ubiquity.datastorage.kernel.exceptions.RegistryNotFoundException;
+import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;

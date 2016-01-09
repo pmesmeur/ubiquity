@@ -2,6 +2,8 @@ package com.ubiquity.datastorage.kernel;
 
 import com.google.common.base.Strings;
 import com.ubiquity.datastorage.kernel.exceptions.RegistryNotFoundException;
+import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
+import com.ubiquity.datastorage.kernel.interfaces.IRegistryFactory;
 
 import java.util.Map;
 import java.util.Set;
@@ -11,10 +13,14 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DataStore {
 
     private final Map<String, IRegistry> registries = new ConcurrentHashMap<String, IRegistry>();
+    private final IRegistryFactory registryFactory;
 
+    public DataStore() {
+        this.registryFactory = new RegistryFactory();
+    }
 
     public IRegistry insertRegistry(String identifier) {
-        IRegistry registry = Registry.create(identifier);
+        IRegistry registry = registryFactory.createRegistry(identifier);
         registries.put(identifier, registry);
         return registry;
     }

@@ -2,6 +2,7 @@ package com.ubiquity.datastorage.kernel;
 
 import com.ubiquity.datastorage.kernel.exceptions.RegisterAlreadyExistsException;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterNotFoundException;
+import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 import org.junit.Assert;
 import org.junit.Test;
 
