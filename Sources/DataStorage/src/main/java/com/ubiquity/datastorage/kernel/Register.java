@@ -53,16 +53,18 @@ public class Register {
 
     private void populateIndexes(Map<String, Object> recordFields, Record record) {
         try {
-            for (Map.Entry<String, IIndex> indexEntry : indexes.entrySet()) {
-                populateIndex(indexEntry, recordFields, record);
-            }
+            tryPopulateIndexes(recordFields, record);
         }
 
         catch (RuntimeException e) {
-            for (Map.Entry<String, IIndex> indexEntry : indexes.entrySet()) {
-                unpopulateIndex(indexEntry, recordFields, record);
-            }
+            unpopulateIndexes(recordFields, record);
             throw e;
+        }
+    }
+
+    private void tryPopulateIndexes(Map<String, Object> recordFields, Record record) {
+        for (Map.Entry<String, IIndex> indexEntry : indexes.entrySet()) {
+            populateIndex(indexEntry, recordFields, record);
         }
     }
 
@@ -73,6 +75,12 @@ public class Register {
 
         Object indexedObject = recordFields.get(attributeName);
         index.insertRecord(indexedObject, record);
+    }
+
+    private void unpopulateIndexes(Map<String, Object> recordFields, Record record) {
+        for (Map.Entry<String, IIndex> indexEntry : indexes.entrySet()) {
+            unpopulateIndex(indexEntry, recordFields, record);
+        }
     }
 
     private void unpopulateIndex(Map.Entry<String, IIndex> indexEntry,
