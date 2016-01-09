@@ -7,7 +7,7 @@ import com.ubiquity.datastorage.kernel.exceptions.RegisterNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class Registry {
+public final class Registry implements IRegistry {
 
     private final String identifier;
     private final Map<String, Register> registers;
@@ -29,10 +29,12 @@ public final class Registry {
         /// TODO: additional checks such as allowed characters...
     }
 
+    @Override
     public String getIdentifier() {
         return identifier;
     }
 
+    @Override
     public void insertRegister(IRecordTemplate recordTemplate) {
         checkRecordTemplate(recordTemplate);
 
@@ -44,6 +46,7 @@ public final class Registry {
         registers.put(identifier, new Register(recordTemplate));
     }
 
+    @Override
     public Register getRegister(String identifier) {
         assert identifier != null;
 

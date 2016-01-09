@@ -42,8 +42,8 @@ public class DataStoreTest {
 
 
     private void testRegistryInsertion(String identifier) {
-        Registry registry1 = dataStore.insertRegistry(identifier);
-        Assert.assertEquals(registry1, dataStore.getRegistry(identifier));
+        IRegistry registry = dataStore.insertRegistry(identifier);
+        Assert.assertEquals(registry, dataStore.getRegistry(identifier));
     }
 
 
@@ -74,7 +74,7 @@ public class DataStoreTest {
         dataStore.insertRegistry(DATA_REGISTRY_NAME);
         dataStore.insertRegister(DATA_REGISTRY_NAME, recordTemplate);
 
-        Registry registry = dataStore.getRegistry(DATA_REGISTRY_NAME);
+        IRegistry registry = dataStore.getRegistry(DATA_REGISTRY_NAME);
         assertNotNull(registry);
 
         Register register = registry.getRegister(recordTemplate.getIdentifier());

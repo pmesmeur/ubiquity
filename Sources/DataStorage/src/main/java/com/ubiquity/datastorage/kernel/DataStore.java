@@ -10,18 +10,18 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DataStore {
 
-    private final Map<String, Registry> registries = new ConcurrentHashMap<String, Registry>();
+    private final Map<String, IRegistry> registries = new ConcurrentHashMap<String, IRegistry>();
 
 
-    public Registry insertRegistry(String identifier) {
-        Registry registry = Registry.create(identifier);
+    public IRegistry insertRegistry(String identifier) {
+        IRegistry registry = Registry.create(identifier);
         registries.put(identifier, registry);
         return registry;
     }
 
 
-    public Registry getRegistry(String identifier) {
-        Registry registry = registries.get(identifier);
+    public IRegistry getRegistry(String identifier) {
+        IRegistry registry = registries.get(identifier);
         if (registry == null) {
             throw new RegistryNotFoundException(identifier);
         }
@@ -38,7 +38,7 @@ public class DataStore {
         assert!Strings.isNullOrEmpty(registryId);
         assert recordTemplate != null;
 
-        Registry registry = getRegistry(registryId);
+        IRegistry registry = getRegistry(registryId);
         registry.insertRegister(recordTemplate);
     }
 }

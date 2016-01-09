@@ -3,7 +3,7 @@ package com.ubiquity.datastorage;
 
 import com.ubiquity.datastorage.kernel.DataStore;
 import com.ubiquity.datastorage.kernel.IRecordTemplate;
-import com.ubiquity.datastorage.kernel.Registry;
+import com.ubiquity.datastorage.kernel.IRegistry;
 
 public class DataStorage {
     private DataStore dataStore;
@@ -12,7 +12,7 @@ public class DataStorage {
         this.dataStore = new DataStore();
     }
 
-    public Registry getRegistry(String registry) {
+    public IRegistry getRegistry(String registry) {
         return dataStore.getRegistry(registry);
     }
 

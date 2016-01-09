@@ -24,7 +24,7 @@ public class RegistryTest {
 
     @Test
     public void testGetIdentifier() {
-        Registry registry = Registry.create(DATA_Registry_ID);
+        IRegistry registry = Registry.create(DATA_Registry_ID);
         Assert.assertNotNull(registry);
 
         Assert.assertArrayEquals(DATA_Registry_ID.getBytes(),
@@ -33,7 +33,7 @@ public class RegistryTest {
 
     @Test(expected = RegisterAlreadyExistsException.class)
     public void testInsertExistingRegister() {
-        Registry registry = Registry.create(DATA_Registry_ID);
+        IRegistry registry = Registry.create(DATA_Registry_ID);
 
         IRecordTemplate recordTempalte = createRecordTempalte(PRIMARY);
 
@@ -43,13 +43,13 @@ public class RegistryTest {
 
     @Test(expected = AssertionError.class)
     public void testGetRegisterWithNullIdentifier() {
-        Registry registry = Registry.create("RegistryIdentifier");
+        IRegistry registry = Registry.create("RegistryIdentifier");
         registry.getRegister(null);
     }
 
     @Test(expected = RegisterNotFoundException.class)
     public void testGetRegisterWithUnknownIdentifier() {
-        Registry registry = Registry.create("RegistryIdentifier");
+        IRegistry registry = Registry.create("RegistryIdentifier");
         registry.getRegister("UnknownRegisterIdentifier");
     }
 }
