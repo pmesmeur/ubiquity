@@ -2,7 +2,6 @@ package com.ubiquity.datastorage.kernel;
 
 import com.ubiquity.datastorage.kernel.exceptions.RegisterAlreadyExistsException;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterNotFoundException;
-import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -25,7 +24,7 @@ public class RegistryTest {
 
     @Test
     public void testGetIdentifier() {
-        IRegistry registry = Registry.create(DATA_Registry_ID);
+        Registry registry = Registry.create(DATA_Registry_ID);
         Assert.assertNotNull(registry);
 
         Assert.assertArrayEquals(DATA_Registry_ID.getBytes(),
@@ -34,7 +33,7 @@ public class RegistryTest {
 
     @Test(expected = RegisterAlreadyExistsException.class)
     public void testInsertExistingRegister() {
-        IRegistry registry = Registry.create(DATA_Registry_ID);
+        Registry registry = Registry.create(DATA_Registry_ID);
 
         IRecordTemplate recordTempalte = createRecordTempalte(PRIMARY);
 
@@ -44,13 +43,13 @@ public class RegistryTest {
 
     @Test(expected = AssertionError.class)
     public void testGetRegisterWithNullIdentifier() {
-        IRegistry registry = Registry.create("RegistryIdentifier");
+        Registry registry = Registry.create("RegistryIdentifier");
         registry.getRegister(null);
     }
 
     @Test(expected = RegisterNotFoundException.class)
     public void testGetRegisterWithUnknownIdentifier() {
-        IRegistry registry = Registry.create("RegistryIdentifier");
+        Registry registry = Registry.create("RegistryIdentifier");
         registry.getRegister("UnknownRegisterIdentifier");
     }
 }
