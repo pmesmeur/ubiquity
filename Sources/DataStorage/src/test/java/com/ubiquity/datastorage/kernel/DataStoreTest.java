@@ -1,6 +1,7 @@
 package com.ubiquity.datastorage.kernel;
 
 import com.ubiquity.datastorage.kernel.exceptions.RegistryNotFoundException;
+import com.ubiquity.datastorage.kernel.interfaces.IRegister;
 import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 import junit.framework.Assert;
 import org.junit.Before;
@@ -78,7 +79,7 @@ public class DataStoreTest {
         IRegistry registry = dataStore.getRegistry(DATA_REGISTRY_NAME);
         assertNotNull(registry);
 
-        Register register = registry.getRegister(recordTemplate.getIdentifier());
+        IRegister register = registry.getRegister(recordTemplate.getIdentifier());
         assertNotNull(register);
     }
 

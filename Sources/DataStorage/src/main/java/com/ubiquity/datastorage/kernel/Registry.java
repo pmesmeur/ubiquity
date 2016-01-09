@@ -3,6 +3,7 @@ package com.ubiquity.datastorage.kernel;
 import com.google.common.base.Strings;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterAlreadyExistsException;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterNotFoundException;
+import com.ubiquity.datastorage.kernel.interfaces.IRegister;
 import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 
 import java.util.HashMap;
@@ -11,12 +12,12 @@ import java.util.Map;
 public final class Registry implements IRegistry {
 
     private final String identifier;
-    private final Map<String, Register> registers;
+    private final Map<String, IRegister> registers;
 
     private Registry(String identifier) {
         checkIdentifier(identifier);
         this.identifier = identifier;
-        this.registers = new HashMap<String, Register>();
+        this.registers = new HashMap<String, IRegister>();
     }
 
     public static Registry create(String identifier) {
@@ -48,10 +49,10 @@ public final class Registry implements IRegistry {
     }
 
     @Override
-    public Register getRegister(String identifier) {
+    public IRegister getRegister(String identifier) {
         assert identifier != null;
 
-        Register result = registers.get(identifier);
+        IRegister result = registers.get(identifier);
         if (result == null) {
             throw new RegisterNotFoundException(identifier);
         }
