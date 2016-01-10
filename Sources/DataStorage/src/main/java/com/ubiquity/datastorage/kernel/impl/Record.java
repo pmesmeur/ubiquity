@@ -1,8 +1,10 @@
-package com.ubiquity.datastorage.kernel;
+package com.ubiquity.datastorage.kernel.impl;
 
 import com.ubiquity.datastorage.kernel.exceptions.MissingMandatoryFieldException;
 import com.ubiquity.datastorage.kernel.exceptions.RecordDoesNotFitTemplateException;
 import com.ubiquity.datastorage.kernel.exceptions.WrongFieldTypeException;
+import com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 
 import java.time.Duration;
 import java.time.LocalDate;

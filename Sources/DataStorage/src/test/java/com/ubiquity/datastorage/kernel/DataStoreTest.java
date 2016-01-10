@@ -1,6 +1,8 @@
 package com.ubiquity.datastorage.kernel;
 
+import com.ubiquity.datastorage.kernel.exceptions.NullFactoryException;
 import com.ubiquity.datastorage.kernel.exceptions.RegistryNotFoundException;
+import com.ubiquity.datastorage.kernel.interfaces.*;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
-import static com.ubiquity.datastorage.kernel.IFieldTemplate.Kind.PRIMARY;
-import static com.ubiquity.datastorage.kernel.IFieldTemplate.Type.STRING;
+import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Kind.PRIMARY;
+import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Type.STRING;
 import static org.junit.Assert.assertNotNull;
 
 public class DataStoreTest {
@@ -21,7 +23,17 @@ public class DataStoreTest {
 
     @Before
     public void init() {
-        dataStore = new DataStore();
+        RecordFactory recordFactory = new RecordFactory();
+        RegistryFactory registryFactory = new RegistryFactory(recordFactory);
+
+        dataStore = new DataStore(registryFactory);
+    }
+
+
+    @Test(expected = NullFactoryException.class)
+    public void testNullFactory() {
+        IRegistryFactory nullRegistryFactory = null;
+        new DataStore(nullRegistryFactory);
     }
 
 
@@ -42,8 +54,8 @@ public class DataStoreTest {
 
 
     private void testRegistryInsertion(String identifier) {
-        Registry registry1 = dataStore.insertRegistry(identifier);
-        Assert.assertEquals(registry1, dataStore.getRegistry(identifier));
+        IRegistry registry = dataStore.insertRegistry(identifier);
+        Assert.assertEquals(registry, dataStore.getRegistry(identifier));
     }
 
 
@@ -74,10 +86,10 @@ public class DataStoreTest {
         dataStore.insertRegistry(DATA_REGISTRY_NAME);
         dataStore.insertRegister(DATA_REGISTRY_NAME, recordTemplate);
 
-        Registry registry = dataStore.getRegistry(DATA_REGISTRY_NAME);
+        IRegistry registry = dataStore.getRegistry(DATA_REGISTRY_NAME);
         assertNotNull(registry);
 
-        Register register = registry.getRegister(recordTemplate.getIdentifier());
+        IRegister register = registry.getRegister(recordTemplate.getIdentifier());
         assertNotNull(register);
     }
 

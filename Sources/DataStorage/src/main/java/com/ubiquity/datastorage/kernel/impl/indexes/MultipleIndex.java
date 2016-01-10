@@ -1,8 +1,8 @@
-package com.ubiquity.datastorage.kernel.indexes;
+package com.ubiquity.datastorage.kernel.impl.indexes;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.ubiquity.datastorage.kernel.Record;
+import com.ubiquity.datastorage.kernel.impl.Record;
 
 import java.util.Collection;
 

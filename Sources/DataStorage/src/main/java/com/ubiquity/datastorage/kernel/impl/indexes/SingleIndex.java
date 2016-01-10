@@ -1,6 +1,6 @@
-package com.ubiquity.datastorage.kernel.indexes;
+package com.ubiquity.datastorage.kernel.impl.indexes;
 
-import com.ubiquity.datastorage.kernel.Record;
+import com.ubiquity.datastorage.kernel.impl.Record;
 import com.ubiquity.datastorage.kernel.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
 
 import java.util.Collection;
@@ -12,7 +12,7 @@ class SingleIndex implements IIndex {
     private final Map<Object, Record> indexedEntries;
 
     public SingleIndex() {
-        indexedEntries = new HashMap();
+        indexedEntries = new HashMap<Object, Record>();
     }
 
     @Override

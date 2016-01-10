@@ -1,7 +1,10 @@
-package com.ubiquity.datastorage.kernel;
+package com.ubiquity.datastorage.kernel.impl;
 
-import com.ubiquity.datastorage.kernel.indexes.IIndex;
-import com.ubiquity.datastorage.kernel.indexes.IndexFactory;
+import com.ubiquity.datastorage.kernel.impl.indexes.IIndex;
+import com.ubiquity.datastorage.kernel.impl.indexes.IndexFactory;
+import com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRegister;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,13 +12,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Register {
+public class Register implements IRegister {
 
     private final IRecordTemplate recordTemplate;
     private final Collection<Record> entries;
     private final Map<String, IIndex> indexes;
 
-    public Register(IRecordTemplate recordTemplate) {
+    public static Register create(IRecordTemplate recordTemplate) {
+        return new Register(recordTemplate);
+    }
+
+    private Register(IRecordTemplate recordTemplate) {
         RecordTemplateValidator.validate(recordTemplate);
 
         this.recordTemplate = recordTemplate; /// TODO: make a copy
@@ -41,10 +48,12 @@ public class Register {
         }
     }
 
+    @Override
     public IRecordTemplate getDefinition() {
         return recordTemplate;
     }
 
+    @Override
     public void insert(Map<String, Object> recordFields) {
         Record record = new Record(recordTemplate, recordFields);
         populateIndexes(recordFields, record);

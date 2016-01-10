@@ -1,9 +1,11 @@
-package com.ubiquity.datastorage.kernel;
+package com.ubiquity.datastorage.kernel.impl;
 
 import com.google.common.base.Strings;
 import com.ubiquity.datastorage.kernel.exceptions.DoubleTypeCannotBeUniqueException;
 import com.ubiquity.datastorage.kernel.exceptions.NoPrimaryFieldException;
-import com.ubiquity.datastorage.kernel.exceptions.ObjectTypeCannotBeIndexException;
+import com.ubiquity.datastorage.kernel.exceptions.ObjectTypeCannotBeAnIndexException;
+import com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 
 import java.util.Collection;
 
@@ -48,7 +50,7 @@ class RecordTemplateValidator {
 
         if (fieldTemplate.getKind().isIndexed()) {
             if (fieldTemplate.getType() == IFieldTemplate.Type.OBJECT) {
-                throw new ObjectTypeCannotBeIndexException(fieldName);
+                throw new ObjectTypeCannotBeAnIndexException(fieldName);
             }
         }
 

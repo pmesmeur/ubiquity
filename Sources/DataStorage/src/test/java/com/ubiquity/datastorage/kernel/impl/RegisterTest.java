@@ -1,8 +1,11 @@
-package com.ubiquity.datastorage.kernel;
+package com.ubiquity.datastorage.kernel.impl;
 
 import com.ubiquity.datastorage.kernel.exceptions.RecordDoesNotFitTemplateException;
 import com.ubiquity.datastorage.kernel.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
-import com.ubiquity.datastorage.kernel.indexes.IIndex;
+import com.ubiquity.datastorage.kernel.impl.Register;
+import com.ubiquity.datastorage.kernel.impl.indexes.IIndex;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRegister;
 import com.ubiquity.datastorage.kernel.utils.RecordTemplateHelper;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,18 +16,22 @@ import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.ubiquity.datastorage.kernel.IFieldTemplate.Kind.PRIMARY;
+import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Kind.PRIMARY;
 
 public class RegisterTest {
 
     @Test(expected = AssertionError.class)
     public void testCreateWithNullRecordTemplate() {
-        new Register(null);
+        createRegister(null);
+    }
+
+    private Register createRegister(IRecordTemplate recordTemplate) {
+        return Register.create(recordTemplate);
     }
 
     @Test
     public void testInsertRecord() {
-        Register register = new Register(RecordTemplateHelper.createBasicRecordTemplate());
+        IRegister register = createRegister(RecordTemplateHelper.createBasicRecordTemplate());
         Map<String, Object> recordFields = createRecordFields();
 
         register.insert(recordFields);
@@ -52,7 +59,7 @@ public class RegisterTest {
 
     @Test
     public void testIndexesCreated() {
-        Register register = new Register(RecordTemplateHelper.createBasicRecordTemplate());
+        Register register = createRegister(RecordTemplateHelper.createBasicRecordTemplate());
         Map<String, IIndex> indexes = register.getIndexes();
 
         Assert.assertEquals(8, indexes.size());
@@ -69,7 +76,7 @@ public class RegisterTest {
 
     @Test
     public void testRecordIndexed() {
-        Register register = new Register(RecordTemplateHelper.createBasicRecordTemplate());
+        Register register = createRegister(RecordTemplateHelper.createBasicRecordTemplate());
         register.insert(createRecordFields("HelloWorld"));
         register.insert(createRecordFields("Foo"));
         register.insert(createRecordFields("Bar"));
@@ -84,7 +91,7 @@ public class RegisterTest {
 
     @Test(expected = ValueOfPrimaryFieldAlreadyInsertedException.class)
     public void testDoubleRecordOnPrimaryField() {
-        Register register = new Register(RecordTemplateHelper.createPrimaryOptionalRecordTemplate());
+        Register register = createRegister(RecordTemplateHelper.createPrimaryOptionalRecordTemplate());
         Map<String, Object> recordFields = createPrimaryOptionalRecordFields();
         register.insert(recordFields);
         register.insert(recordFields);
@@ -101,7 +108,7 @@ public class RegisterTest {
 
     @Test
     public void testSizeOfIndexesWhenErrorOnPrimaryField() {
-        Register register = new Register(RecordTemplateHelper.createRecordTempalte(PRIMARY));
+        Register register = createRegister(RecordTemplateHelper.createRecordTempalte(PRIMARY));
         register.insert(createRecordFields("Field1", 1., 'A', 1, Boolean.FALSE, register,
                 LocalDate.MIN, LocalTime.MIN, Duration.ZERO));
         try {
@@ -136,7 +143,7 @@ public class RegisterTest {
 
     @Test(expected = RecordDoesNotFitTemplateException.class)
     public void testInsertRecordThatDoesNotFitTemplate() {
-        Register register = new Register(RecordTemplateHelper.createPrimaryOptionalRecordTemplate());
+        Register register = createRegister(RecordTemplateHelper.createPrimaryOptionalRecordTemplate());
         Map<String, Object> recordFields = createRecordFields();
 
         register.insert(recordFields);
