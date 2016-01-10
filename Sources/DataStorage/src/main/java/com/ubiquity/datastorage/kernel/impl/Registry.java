@@ -17,11 +17,8 @@ public final class Registry implements IRegistry {
     private final IRecordFactory recordFactory;
     private final String identifier;
     private final Map<String, IRegister> registers;
+    private final RegistryNotifier registryNotifier;
 
-
-    public static Registry create(IRecordFactory recordFactory, String identifier) {
-        return new Registry(recordFactory, identifier);
-    }
 
     private Registry(IRecordFactory recordFactory, String identifier) {
         checkRecordFactory(recordFactory);
@@ -29,20 +26,25 @@ public final class Registry implements IRegistry {
 
         this.recordFactory = recordFactory;
         this.identifier = identifier;
-        this.registers = new HashMap<String, IRegister>();
+        this.registers = new HashMap<>();
+        this.registryNotifier = new RegistryNotifier();
+    }
+
+    public static Registry create(IRecordFactory recordFactory, String identifier) {
+        return new Registry(recordFactory, identifier);
+    }
+
+    private static void checkIdentifier(String identifier) {
+        assert identifier != null;
+        assert !identifier.isEmpty();
+
+        /// TODO: additional checks such as allowed characters...
     }
 
     private void checkRecordFactory(IRecordFactory recordFactory) {
         if (recordFactory == null) {
             throw new NullFactoryException(Registry.class, IRecordFactory.class);
         }
-    }
-
-    private static void checkIdentifier(String identifier) {
-        assert identifier != null;
-        assert!identifier.isEmpty();
-
-        /// TODO: additional checks such as allowed characters...
     }
 
     @Override
@@ -59,8 +61,8 @@ public final class Registry implements IRegistry {
             throw new RegisterAlreadyExistsException(identifier);
         }
 
-
         registers.put(identifier, recordFactory.create(recordTemplate));
+        registryNotifier.registerInserted(recordTemplate);
     }
 
     @Override
