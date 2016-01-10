@@ -1,13 +1,13 @@
 package com.ubiquity.datastorage.utils;
 
-import com.ubiquity.datastorage.kernel.IFieldTemplate;
-import com.ubiquity.datastorage.kernel.IRecordTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static com.ubiquity.datastorage.kernel.IFieldTemplate.Kind.PRIMARY;
-import static com.ubiquity.datastorage.kernel.IFieldTemplate.Type.STRING;
+import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Kind.PRIMARY;
+import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Type.STRING;
 
 public class RecordTemplate implements IRecordTemplate {
 

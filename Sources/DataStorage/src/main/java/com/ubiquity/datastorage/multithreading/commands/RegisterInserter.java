@@ -1,7 +1,7 @@
 package com.ubiquity.datastorage.multithreading.commands;
 
 import com.ubiquity.datastorage.kernel.DataStore;
-import com.ubiquity.datastorage.kernel.IRecordTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 
 
 public class RegisterInserter implements ICommand {

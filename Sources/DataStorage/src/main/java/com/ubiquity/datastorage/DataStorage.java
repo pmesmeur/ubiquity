@@ -2,10 +2,10 @@ package com.ubiquity.datastorage;
 
 
 import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 import com.ubiquity.datastorage.multithreading.Scheduler;
 import com.ubiquity.datastorage.multithreading.commands.RegisterInserter;
 import com.ubiquity.datastorage.multithreading.commands.RegistryInserter;
-import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 
 
 public class DataStorage {
@@ -25,5 +25,9 @@ public class DataStorage {
 
     public void insertRegister(String registry, IRecordTemplate recordTemplate) {
         scheduler.execute(new RegisterInserter(registry, recordTemplate));
+    }
+
+    public void shutdown() {
+        scheduler.shutdown();
     }
 }

@@ -1,14 +1,14 @@
 package com.ubiquity.demos.musicbrainz;
 
+import com.google.common.base.Strings;
+import com.ubiquity.datastorage.DataStorage;
+import com.ubiquity.datastorage.kernel.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
+import com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
+
 import java.io.File;
 import java.util.Collection;
 import java.util.Map;
-
-import com.google.common.base.Strings;
-import com.ubiquity.datastorage.DataStorage;
-import com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate;
-import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
-import com.ubiquity.datastorage.kernel.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
 
 public class MusicbrainzDemo implements DataParser.TypeProvider {
 
@@ -30,6 +30,7 @@ public class MusicbrainzDemo implements DataParser.TypeProvider {
     private void run() {
         final File folder = new File(DIR_NAME);
         scanFolder(folder);
+        dataStorage.shutdown();
     }
 
 
@@ -48,6 +49,12 @@ public class MusicbrainzDemo implements DataParser.TypeProvider {
         DataInsertor dataInsertor = new DataInsertor();
 
         dataInsertor.parseAndInsertDataDescriptor(DIR_NAME + "/" + dscFileName);
+
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         String dataFileName = dscFileName.replace(".dsc", ".txt");
         dataInsertor.parseAndInsertData(DIR_NAME + "/" + dataFileName);

@@ -2,7 +2,9 @@ package com.ubiquity.datastorage.multithreading;
 
 
 import com.ubiquity.datastorage.kernel.DataStore;
-import com.ubiquity.datastorage.kernel.Registry;
+import com.ubiquity.datastorage.kernel.RecordFactory;
+import com.ubiquity.datastorage.kernel.RegistryFactory;
+import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 import com.ubiquity.datastorage.multithreading.commands.ICommand;
 
 import java.util.concurrent.ExecutorService;
@@ -17,11 +19,14 @@ public class Scheduler {
 
     public Scheduler() {
         this.service = Executors.newFixedThreadPool(10);
-        this.dataStore = new DataStore();
+        RecordFactory recordFactory = new RecordFactory();
+        RegistryFactory registryFactory = new RegistryFactory(recordFactory);
+
+        this.dataStore = new DataStore(registryFactory);
     }
 
 
-    public Registry getRegistry(String registry) {
+    public IRegistry getRegistry(String registry) {
         return dataStore.getRegistry(registry);
     }
 
@@ -35,5 +40,9 @@ public class Scheduler {
             }
 
         });
+    }
+
+    public void shutdown() {
+        service.shutdown();
     }
 }
