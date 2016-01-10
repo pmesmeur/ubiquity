@@ -1,8 +1,10 @@
-package com.ubiquity.datastorage.kernel;
+package com.ubiquity.datastorage.kernel.impl;
 
+import com.ubiquity.datastorage.kernel.RecordFactory;
 import com.ubiquity.datastorage.kernel.exceptions.NullFactoryException;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterAlreadyExistsException;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterNotFoundException;
+import com.ubiquity.datastorage.kernel.impl.Registry;
 import com.ubiquity.datastorage.kernel.interfaces.IRecordFactory;
 import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import org.junit.Assert;

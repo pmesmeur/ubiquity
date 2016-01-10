@@ -1,7 +1,7 @@
-package com.ubiquity.datastorage.kernel;
+package com.ubiquity.datastorage.kernel.impl;
 
-import com.ubiquity.datastorage.kernel.indexes.IIndex;
-import com.ubiquity.datastorage.kernel.indexes.IndexFactory;
+import com.ubiquity.datastorage.kernel.impl.indexes.IIndex;
+import com.ubiquity.datastorage.kernel.impl.indexes.IndexFactory;
 import com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRegister;

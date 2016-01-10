@@ -1,4 +1,4 @@
-package com.ubiquity.datastorage.kernel.indexes;
+package com.ubiquity.datastorage.kernel.impl.indexes;
 
 public class IndexFactory {
 

@@ -1,5 +1,6 @@
 package com.ubiquity.datastorage.kernel;
 
+import com.ubiquity.datastorage.kernel.impl.Registry;
 import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 import com.ubiquity.datastorage.kernel.interfaces.IRegistryFactory;
 

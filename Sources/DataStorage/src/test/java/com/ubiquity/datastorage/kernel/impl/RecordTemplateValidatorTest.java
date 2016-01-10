@@ -1,8 +1,9 @@
-package com.ubiquity.datastorage.kernel;
+package com.ubiquity.datastorage.kernel.impl;
 
 import com.ubiquity.datastorage.kernel.exceptions.DoubleTypeCannotBeUniqueException;
 import com.ubiquity.datastorage.kernel.exceptions.NoPrimaryFieldException;
 import com.ubiquity.datastorage.kernel.exceptions.ObjectTypeCannotBeAnIndexException;
+import com.ubiquity.datastorage.kernel.impl.RecordTemplateValidator;
 import com.ubiquity.datastorage.kernel.utils.RecordTemplateBuilder;
 import org.junit.Test;
 

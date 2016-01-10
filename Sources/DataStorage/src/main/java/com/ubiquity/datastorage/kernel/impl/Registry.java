@@ -1,4 +1,4 @@
-package com.ubiquity.datastorage.kernel;
+package com.ubiquity.datastorage.kernel.impl;
 
 import com.google.common.base.Strings;
 import com.ubiquity.datastorage.kernel.exceptions.NullFactoryException;

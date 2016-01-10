@@ -1,8 +1,9 @@
-package com.ubiquity.datastorage.kernel;
+package com.ubiquity.datastorage.kernel.impl;
 
 import com.ubiquity.datastorage.kernel.exceptions.RecordDoesNotFitTemplateException;
 import com.ubiquity.datastorage.kernel.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
-import com.ubiquity.datastorage.kernel.indexes.IIndex;
+import com.ubiquity.datastorage.kernel.impl.Register;
+import com.ubiquity.datastorage.kernel.impl.indexes.IIndex;
 import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRegister;
 import com.ubiquity.datastorage.kernel.utils.RecordTemplateHelper;
