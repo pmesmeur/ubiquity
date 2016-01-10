@@ -2,7 +2,7 @@ package com.ubiquity.datastorage.kernel;
 
 import com.ubiquity.datastorage.kernel.exceptions.DoubleTypeCannotBeUniqueException;
 import com.ubiquity.datastorage.kernel.exceptions.NoPrimaryFieldException;
-import com.ubiquity.datastorage.kernel.exceptions.ObjectTypeCannotBeIndexException;
+import com.ubiquity.datastorage.kernel.exceptions.ObjectTypeCannotBeAnIndexException;
 import com.ubiquity.datastorage.kernel.utils.RecordTemplateBuilder;
 import org.junit.Test;
 
@@ -53,7 +53,7 @@ public class RecordTemplateValidatorTest {
                 .validate(recordTemplateBuilder.withIdentifier("Identifier").build());
     }
 
-    @Test(expected = ObjectTypeCannotBeIndexException.class)
+    @Test(expected = ObjectTypeCannotBeAnIndexException.class)
     public void testIndexedFieldObject() {
         RecordTemplateBuilder recordTemplateBuilder = new RecordTemplateBuilder();
         recordTemplateBuilder.withIdentifier("Identifier").addFieldTemplate()
