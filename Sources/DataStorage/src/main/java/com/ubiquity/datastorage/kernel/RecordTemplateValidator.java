@@ -4,6 +4,8 @@ import com.google.common.base.Strings;
 import com.ubiquity.datastorage.kernel.exceptions.DoubleTypeCannotBeUniqueException;
 import com.ubiquity.datastorage.kernel.exceptions.NoPrimaryFieldException;
 import com.ubiquity.datastorage.kernel.exceptions.ObjectTypeCannotBeIndexException;
+import com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 
 import java.util.Collection;
 

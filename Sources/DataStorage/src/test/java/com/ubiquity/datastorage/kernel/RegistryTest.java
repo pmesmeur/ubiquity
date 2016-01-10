@@ -3,11 +3,12 @@ package com.ubiquity.datastorage.kernel;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterAlreadyExistsException;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterNotFoundException;
 import com.ubiquity.datastorage.kernel.interfaces.IRecordFactory;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.ubiquity.datastorage.kernel.IFieldTemplate.Kind.PRIMARY;
+import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Kind.PRIMARY;
 import static com.ubiquity.datastorage.kernel.utils.RecordTemplateHelper.createRecordTempalte;
 
 public class RegistryTest {

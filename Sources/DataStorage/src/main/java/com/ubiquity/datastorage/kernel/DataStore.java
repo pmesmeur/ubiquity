@@ -2,6 +2,7 @@ package com.ubiquity.datastorage.kernel;
 
 import com.google.common.base.Strings;
 import com.ubiquity.datastorage.kernel.exceptions.RegistryNotFoundException;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 import com.ubiquity.datastorage.kernel.interfaces.IRegistryFactory;
 

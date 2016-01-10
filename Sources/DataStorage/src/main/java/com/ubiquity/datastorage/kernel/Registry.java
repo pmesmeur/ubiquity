@@ -4,6 +4,7 @@ import com.google.common.base.Strings;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterAlreadyExistsException;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterNotFoundException;
 import com.ubiquity.datastorage.kernel.interfaces.IRecordFactory;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRegister;
 import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 

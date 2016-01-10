@@ -6,8 +6,8 @@ import com.ubiquity.datastorage.kernel.exceptions.ObjectTypeCannotBeIndexExcepti
 import com.ubiquity.datastorage.kernel.utils.RecordTemplateBuilder;
 import org.junit.Test;
 
-import static com.ubiquity.datastorage.kernel.IFieldTemplate.Kind.*;
-import static com.ubiquity.datastorage.kernel.IFieldTemplate.Type.*;
+import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Kind.*;
+import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Type.*;
 
 public class RecordTemplateValidatorTest {
 

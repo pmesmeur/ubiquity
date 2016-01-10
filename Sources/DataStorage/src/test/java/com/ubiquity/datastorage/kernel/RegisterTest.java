@@ -3,6 +3,7 @@ package com.ubiquity.datastorage.kernel;
 import com.ubiquity.datastorage.kernel.exceptions.RecordDoesNotFitTemplateException;
 import com.ubiquity.datastorage.kernel.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
 import com.ubiquity.datastorage.kernel.indexes.IIndex;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRegister;
 import com.ubiquity.datastorage.kernel.utils.RecordTemplateHelper;
 import org.junit.Assert;
@@ -14,7 +15,7 @@ import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.ubiquity.datastorage.kernel.IFieldTemplate.Kind.PRIMARY;
+import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Kind.PRIMARY;
 
 public class RegisterTest {
 

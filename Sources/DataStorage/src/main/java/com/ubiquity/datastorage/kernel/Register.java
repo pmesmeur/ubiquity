@@ -2,6 +2,8 @@ package com.ubiquity.datastorage.kernel;
 
 import com.ubiquity.datastorage.kernel.indexes.IIndex;
 import com.ubiquity.datastorage.kernel.indexes.IndexFactory;
+import com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRegister;
 
 import java.util.ArrayList;

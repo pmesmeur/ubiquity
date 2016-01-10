@@ -1,6 +1,8 @@
 package com.ubiquity.datastorage.kernel;
 
 import com.ubiquity.datastorage.kernel.exceptions.RegistryNotFoundException;
+import com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRegister;
 import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 import junit.framework.Assert;
@@ -11,8 +13,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
-import static com.ubiquity.datastorage.kernel.IFieldTemplate.Kind.PRIMARY;
-import static com.ubiquity.datastorage.kernel.IFieldTemplate.Type.STRING;
+import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Kind.PRIMARY;
+import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Type.STRING;
 import static org.junit.Assert.assertNotNull;
 
 public class DataStoreTest {

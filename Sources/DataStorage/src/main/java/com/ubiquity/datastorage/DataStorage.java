@@ -2,7 +2,7 @@ package com.ubiquity.datastorage;
 
 
 import com.ubiquity.datastorage.kernel.DataStore;
-import com.ubiquity.datastorage.kernel.IRecordTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 
 public class DataStorage {
