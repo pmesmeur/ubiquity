@@ -16,7 +16,11 @@ public class Register implements IRegister {
     private final Collection<Record> entries;
     private final Map<String, IIndex> indexes;
 
-    public Register(IRecordTemplate recordTemplate) {
+    public static Register create(IRecordTemplate recordTemplate) {
+        return new Register(recordTemplate);
+    }
+
+    private Register(IRecordTemplate recordTemplate) {
         RecordTemplateValidator.validate(recordTemplate);
 
         this.recordTemplate = recordTemplate; /// TODO: make a copy

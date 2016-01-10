@@ -2,7 +2,9 @@ package com.ubiquity.datastorage.kernel;
 
 import com.ubiquity.datastorage.kernel.exceptions.RegisterAlreadyExistsException;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterNotFoundException;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordFactory;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import static com.ubiquity.datastorage.kernel.IFieldTemplate.Kind.PRIMARY;
@@ -10,30 +12,43 @@ import static com.ubiquity.datastorage.kernel.utils.RecordTemplateHelper.createR
 
 public class RegistryTest {
 
-    final String DATA_Registry_ID = "RegistryIdentifier";
+    private final String DATA_REGISTRY_ID = "RegistryIdentifier";
+
+    private IRecordFactory recordFactory;
+
+    @Before
+    public void init() {
+        recordFactory = new RecordFactory();
+    }
 
     @Test(expected = AssertionError.class)
     public void testNullIdentifier() {
-        Registry.create(null);
+        createRegistry(null);
     }
 
     @Test(expected = AssertionError.class)
     public void testEmptyIdentifier() {
-        Registry.create("");
+        createRegistry("");
     }
+
+
+    private Registry createRegistry(String identifier) {
+        return Registry.create(recordFactory, identifier);
+    }
+
 
     @Test
     public void testGetIdentifier() {
-        Registry registry = Registry.create(DATA_Registry_ID);
+        Registry registry = createRegistry(DATA_REGISTRY_ID);
         Assert.assertNotNull(registry);
 
-        Assert.assertArrayEquals(DATA_Registry_ID.getBytes(),
+        Assert.assertArrayEquals(DATA_REGISTRY_ID.getBytes(),
                 registry.getIdentifier().getBytes());
     }
 
     @Test(expected = RegisterAlreadyExistsException.class)
     public void testInsertExistingRegister() {
-        Registry registry = Registry.create(DATA_Registry_ID);
+        Registry registry = createRegistry(DATA_REGISTRY_ID);
 
         IRecordTemplate recordTempalte = createRecordTempalte(PRIMARY);
 
@@ -43,13 +58,13 @@ public class RegistryTest {
 
     @Test(expected = AssertionError.class)
     public void testGetRegisterWithNullIdentifier() {
-        Registry registry = Registry.create("RegistryIdentifier");
+        Registry registry = createRegistry("RegistryIdentifier");
         registry.getRegister(null);
     }
 
     @Test(expected = RegisterNotFoundException.class)
     public void testGetRegisterWithUnknownIdentifier() {
-        Registry registry = Registry.create("RegistryIdentifier");
+        Registry registry = createRegistry("RegistryIdentifier");
         registry.getRegister("UnknownRegisterIdentifier");
     }
 }

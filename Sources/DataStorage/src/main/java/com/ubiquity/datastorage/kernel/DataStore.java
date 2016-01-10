@@ -12,11 +12,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DataStore {
 
-    private final Map<String, IRegistry> registries = new ConcurrentHashMap<String, IRegistry>();
     private final IRegistryFactory registryFactory;
+    private final Map<String, IRegistry> registries = new ConcurrentHashMap<String, IRegistry>();
 
     public DataStore() {
-        this.registryFactory = new RegistryFactory();
+        RecordFactory recordFactory = new RecordFactory();
+        this.registryFactory = new RegistryFactory(recordFactory);
     }
 
     public IRegistry insertRegistry(String identifier) {
