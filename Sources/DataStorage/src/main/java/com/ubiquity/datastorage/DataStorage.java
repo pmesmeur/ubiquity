@@ -1,12 +1,12 @@
 package com.ubiquity.datastorage;
 
 
-import com.ubiquity.datastorage.kernel.DataStore;
-import com.ubiquity.datastorage.kernel.IRecordTemplate;
-import com.ubiquity.datastorage.kernel.Registry;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.multithreading.Scheduler;
 import com.ubiquity.datastorage.multithreading.commands.RegisterInserter;
 import com.ubiquity.datastorage.multithreading.commands.RegistryInserter;
+import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
+
 
 public class DataStorage {
     private Scheduler scheduler;
@@ -15,7 +15,7 @@ public class DataStorage {
         this.scheduler = new Scheduler();
     }
 
-    public Registry getRegistry(String registry) {
+    public IRegistry getRegistry(String registry) {
         return scheduler.getRegistry(registry);
     }
 

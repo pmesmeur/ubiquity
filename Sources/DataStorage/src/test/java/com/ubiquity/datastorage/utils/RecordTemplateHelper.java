@@ -1,10 +1,10 @@
 package com.ubiquity.datastorage.utils;
 
-import com.ubiquity.datastorage.kernel.IRecordTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 
-import static com.ubiquity.datastorage.kernel.IFieldTemplate.Kind;
-import static com.ubiquity.datastorage.kernel.IFieldTemplate.Kind.*;
-import static com.ubiquity.datastorage.kernel.IFieldTemplate.Type.*;
+import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Kind;
+import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Kind.*;
+import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Type.*;
 
 public class RecordTemplateHelper {
 

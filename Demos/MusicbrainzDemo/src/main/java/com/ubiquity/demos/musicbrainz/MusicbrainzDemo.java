@@ -6,8 +6,8 @@ import java.util.Map;
 
 import com.google.common.base.Strings;
 import com.ubiquity.datastorage.DataStorage;
-import com.ubiquity.datastorage.kernel.IFieldTemplate;
-import com.ubiquity.datastorage.kernel.IRecordTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
 
 public class MusicbrainzDemo implements DataParser.TypeProvider {

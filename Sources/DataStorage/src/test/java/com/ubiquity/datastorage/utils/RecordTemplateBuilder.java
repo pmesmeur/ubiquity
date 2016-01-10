@@ -1,7 +1,7 @@
 package com.ubiquity.datastorage.utils;
 
-import com.ubiquity.datastorage.kernel.IFieldTemplate;
-import com.ubiquity.datastorage.kernel.IRecordTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 
 import java.util.ArrayList;
 import java.util.Collection;

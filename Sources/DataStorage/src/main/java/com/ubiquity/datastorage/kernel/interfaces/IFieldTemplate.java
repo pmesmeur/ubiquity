@@ -1,4 +1,4 @@
-package com.ubiquity.datastorage.kernel;
+package com.ubiquity.datastorage.kernel.interfaces;
 
 public interface IFieldTemplate {
             String getIdentifier();

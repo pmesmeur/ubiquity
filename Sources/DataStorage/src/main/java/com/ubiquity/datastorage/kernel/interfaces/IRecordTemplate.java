@@ -1,4 +1,4 @@
-package com.ubiquity.datastorage.kernel;
+package com.ubiquity.datastorage.kernel.interfaces;
 
 import java.util.Collection;
 
