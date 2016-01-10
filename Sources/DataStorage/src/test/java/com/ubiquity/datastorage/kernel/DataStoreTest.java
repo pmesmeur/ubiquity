@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Kind.PRIMARY;
@@ -38,11 +39,50 @@ public class DataStoreTest {
 
 
     @Test
+    public void testListenersAdditionAndRemoval() {
+        IDataStoreListener listener1 = createDataStoreListener(null);
+        IDataStoreListener listener2 = createDataStoreListener(null);
+        IDataStoreListener listener3 = createDataStoreListener(null);
+
+        dataStore.addListener(listener1);
+        dataStore.addListener(listener2);
+        dataStore.addListener(listener3);
+
+        Assert.assertEquals(dataStore.getNbListeners(), 3);
+
+        dataStore.removeListener(listener1);
+        dataStore.removeListener(listener2);
+        dataStore.removeListener(listener3);
+
+        Assert.assertEquals(dataStore.getNbListeners(), 0);
+    }
+
+
+    @Test
     public void testRegistriesInsert() {
+        Set<String> notifiedRegistryIds = new HashSet<>();
+
+        dataStore.addListener(createDataStoreListener(notifiedRegistryIds));
         testRegistryInsertions(NB_INSERTIONS);
 
         Set<String> RegistriesId = dataStore.getAllRegistriesId();
         Assert.assertEquals(RegistriesId.size(), NB_INSERTIONS);
+        Assert.assertEquals(notifiedRegistryIds.size(), NB_INSERTIONS);
+    }
+
+
+    private IDataStoreListener createDataStoreListener(final Set<String> notifiedRegistryIds) {
+        return new IDataStoreListener() {
+            @Override
+            public void onRegistryInserted(String registryId) {
+                notifiedRegistryIds.add(registryId);
+            }
+
+            @Override
+            public void onRegistryDeleted(String registryId) {
+                notifiedRegistryIds.remove(registryId);
+            }
+        };
     }
 
 
@@ -146,6 +186,7 @@ public class DataStoreTest {
         public String getIdentifier() {
             return "AnIdentifier";
         }
+
 
         @Override
         public Collection<IFieldTemplate> getFieldTemplates() {

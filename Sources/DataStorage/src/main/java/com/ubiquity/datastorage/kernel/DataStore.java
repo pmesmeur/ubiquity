@@ -3,6 +3,8 @@ package com.ubiquity.datastorage.kernel;
 import com.google.common.base.Strings;
 import com.ubiquity.datastorage.kernel.exceptions.NullFactoryException;
 import com.ubiquity.datastorage.kernel.exceptions.RegistryNotFoundException;
+import com.ubiquity.datastorage.kernel.impl.DataStoreNotifier;
+import com.ubiquity.datastorage.kernel.interfaces.IDataStoreListener;
 import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 import com.ubiquity.datastorage.kernel.interfaces.IRegistryFactory;
@@ -14,13 +16,25 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DataStore {
 
+    protected final DataStoreNotifier dataStoreNotifier;
     private final IRegistryFactory registryFactory;
-    private final Map<String, IRegistry> registries = new ConcurrentHashMap<String, IRegistry>();
-
+    private final Map<String, IRegistry> registries;
 
     public DataStore(IRegistryFactory registryFactory) {
         checkRegistryFactory(registryFactory);
         this.registryFactory = registryFactory;
+        registries = new ConcurrentHashMap<>();
+        dataStoreNotifier = new DataStoreNotifier();
+    }
+
+
+    public void addListener(IDataStoreListener dataStoreListener) {
+        dataStoreNotifier.addListener(dataStoreListener);
+    }
+
+
+    public void removeListener(IDataStoreListener dataStoreListener) {
+        dataStoreNotifier.removeListener(dataStoreListener);
     }
 
 
@@ -34,6 +48,7 @@ public class DataStore {
     public IRegistry insertRegistry(String identifier) {
         IRegistry registry = registryFactory.createRegistry(identifier);
         registries.put(identifier, registry);
+        dataStoreNotifier.registryInserted(identifier);
         return registry;
     }
 
@@ -58,5 +73,9 @@ public class DataStore {
 
         IRegistry registry = getRegistry(registryId);
         registry.insertRegister(recordTemplate);
+    }
+
+    protected int getNbListeners() {
+        return dataStoreNotifier.getNbListeners();
     }
 }
