@@ -1,10 +1,8 @@
 package com.ubiquity.datastorage.kernel;
 
+import com.ubiquity.datastorage.kernel.exceptions.NullFactoryException;
 import com.ubiquity.datastorage.kernel.exceptions.RegistryNotFoundException;
-import com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate;
-import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
-import com.ubiquity.datastorage.kernel.interfaces.IRegister;
-import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
+import com.ubiquity.datastorage.kernel.interfaces.*;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +23,17 @@ public class DataStoreTest {
 
     @Before
     public void init() {
-        dataStore = new DataStore();
+        RecordFactory recordFactory = new RecordFactory();
+        RegistryFactory registryFactory = new RegistryFactory(recordFactory);
+
+        dataStore = new DataStore(registryFactory);
+    }
+
+
+    @Test(expected = NullFactoryException.class)
+    public void testNullFactory() {
+        IRegistryFactory nullRegistryFactory = null;
+        new DataStore(nullRegistryFactory);
     }
 
 

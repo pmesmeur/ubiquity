@@ -2,6 +2,8 @@ package com.ubiquity.datastorage;
 
 
 import com.ubiquity.datastorage.kernel.DataStore;
+import com.ubiquity.datastorage.kernel.RecordFactory;
+import com.ubiquity.datastorage.kernel.RegistryFactory;
 import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
 
@@ -9,7 +11,10 @@ public class DataStorage {
     private DataStore dataStore;
 
     public DataStorage() {
-        this.dataStore = new DataStore();
+        RecordFactory recordFactory = new RecordFactory();
+        RegistryFactory registryFactory = new RegistryFactory(recordFactory);
+
+        this.dataStore = new DataStore(registryFactory);
     }
 
     public IRegistry getRegistry(String registry) {

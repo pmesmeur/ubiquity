@@ -1,6 +1,7 @@
 package com.ubiquity.datastorage.kernel;
 
 import com.google.common.base.Strings;
+import com.ubiquity.datastorage.kernel.exceptions.NullFactoryException;
 import com.ubiquity.datastorage.kernel.exceptions.RegistryNotFoundException;
 import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
@@ -16,10 +17,19 @@ public class DataStore {
     private final IRegistryFactory registryFactory;
     private final Map<String, IRegistry> registries = new ConcurrentHashMap<String, IRegistry>();
 
-    public DataStore() {
-        RecordFactory recordFactory = new RecordFactory();
-        this.registryFactory = new RegistryFactory(recordFactory);
+
+    public DataStore(IRegistryFactory registryFactory) {
+        checkRegistryFactory(registryFactory);
+        this.registryFactory = registryFactory;
     }
+
+
+    private void checkRegistryFactory(IRegistryFactory registryFactory) {
+        if (registryFactory == null) {
+            throw new NullFactoryException(DataStore.class, IRegistryFactory.class);
+        }
+    }
+
 
     public IRegistry insertRegistry(String identifier) {
         IRegistry registry = registryFactory.createRegistry(identifier);

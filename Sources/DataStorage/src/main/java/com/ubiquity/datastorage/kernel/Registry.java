@@ -1,6 +1,7 @@
 package com.ubiquity.datastorage.kernel;
 
 import com.google.common.base.Strings;
+import com.ubiquity.datastorage.kernel.exceptions.NullFactoryException;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterAlreadyExistsException;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterNotFoundException;
 import com.ubiquity.datastorage.kernel.interfaces.IRecordFactory;
@@ -23,10 +24,18 @@ public final class Registry implements IRegistry {
     }
 
     private Registry(IRecordFactory recordFactory, String identifier) {
+        checkRecordFactory(recordFactory);
         checkIdentifier(identifier);
+
         this.recordFactory = recordFactory;
         this.identifier = identifier;
         this.registers = new HashMap<String, IRegister>();
+    }
+
+    private void checkRecordFactory(IRecordFactory recordFactory) {
+        if (recordFactory == null) {
+            throw new NullFactoryException(Registry.class, IRecordFactory.class);
+        }
     }
 
     private static void checkIdentifier(String identifier) {
