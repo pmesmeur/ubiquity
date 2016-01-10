@@ -27,12 +27,12 @@ public class DataStoreNotifier {
     }
 
 
-    public void registryInserted(final String identifier) {
+    public void registryInserted(String identifier) {
         listeners.stream().forEach(p -> p.onRegistryInserted(identifier));
     }
 
 
-    public void registryDeleted(final String identifier) {
+    public void registryDeleted(String identifier) {
         listeners.stream().forEach(p -> p.onRegistryDeleted(identifier));
     }
 
