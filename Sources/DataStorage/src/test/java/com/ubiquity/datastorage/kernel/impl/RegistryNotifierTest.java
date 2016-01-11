@@ -28,15 +28,7 @@ public class RegistryNotifierTest {
 
 
     private IRegistryListener createDummyRegistryListener() {
-        return new IRegistryListener() {
-            @Override
-            public void onRegisterInserted(IRecordTemplate recordTemplate) {
-            }
-
-            @Override
-            public void onRegisterDeleted(String registerId) {
-            }
-        };
+        return new NotificationCounter();
     }
 
 
