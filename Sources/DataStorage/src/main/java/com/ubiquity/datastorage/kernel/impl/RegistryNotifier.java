@@ -16,15 +16,15 @@ public class RegistryNotifier {
     }
 
 
-    public void addListener(IRegistryListener dataStoreListener) {
-        assert dataStoreListener != null;
-        listeners.add(dataStoreListener);
+    public void addListener(IRegistryListener registryListener) {
+        assert registryListener != null;
+        listeners.add(registryListener);
     }
 
 
-    public void removeListener(IRegistryListener dataStoreListener) {
-        assert dataStoreListener != null;
-        listeners.remove(dataStoreListener);
+    public void removeListener(IRegistryListener registryListener) {
+        assert registryListener != null;
+        listeners.remove(registryListener);
     }
 
 
