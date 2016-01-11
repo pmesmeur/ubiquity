@@ -51,7 +51,7 @@ public class DataStoreNotifierTest {
 
 
     @Test
-    public void testRegisterInserted() {
+    public void testRegistryInserted() {
         NotificationCounter notificationCounter = new NotificationCounter();
         dataStoreNotifier.addListener(notificationCounter);
         Assert.assertEquals(0, notificationCounter.getNbInsertion());
@@ -76,7 +76,7 @@ public class DataStoreNotifierTest {
 
 
     @Test
-    public void testRegisterDeleted() {
+    public void testRegistryDeleted() {
         NotificationCounter notificationCounter = new NotificationCounter();
         dataStoreNotifier.addListener(notificationCounter);
         dataStoreNotifier.registryInserted("DummyRegistry");
