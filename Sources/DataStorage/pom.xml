@@ -12,6 +12,7 @@
 
     <artifactId>ubiquity-datastorage</artifactId>
     <name>Ubiquity :: Root :: DataStorage</name>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
