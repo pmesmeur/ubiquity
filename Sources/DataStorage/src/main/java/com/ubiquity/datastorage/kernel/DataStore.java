@@ -75,7 +75,21 @@ public class DataStore {
         registry.insertRegister(recordTemplate);
     }
 
+
     protected int getNbListeners() {
         return dataStoreNotifier.getNbListeners();
+    }
+
+
+    public IRegistry deleteRegistry(String identifier) {
+        IRegistry resistry = registries.remove(identifier);
+
+        if (resistry != null) {
+            dataStoreNotifier.registryDeleted(resistry.getIdentifier());
+        } else {
+            throw new RegistryNotFoundException(identifier);
+        }
+
+        return resistry;
     }
 }

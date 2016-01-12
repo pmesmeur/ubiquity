@@ -60,13 +60,33 @@ public class DataStoreTest {
 
     @Test
     public void testRegistriesInsert() {
+        testRegistryInsertions(NB_INSERTIONS);
+
+        Set<String> RegistriesId = dataStore.getAllRegistriesId();
+        Assert.assertEquals(RegistriesId.size(), NB_INSERTIONS);
+    }
+
+
+    private void testRegistryInsertions(int quantity) {
+        for (int index = 0; index < quantity; index++) {
+            testRegistryInsertion("id" + index);
+        }
+    }
+
+
+    private void testRegistryInsertion(String identifier) {
+        IRegistry registry = dataStore.insertRegistry(identifier);
+        Assert.assertEquals(registry, dataStore.getRegistry(identifier));
+    }
+
+
+    @Test
+    public void testRegistriesInsertNotification() {
         Set<String> notifiedRegistryIds = new HashSet<>();
 
         dataStore.addListener(createDataStoreListener(notifiedRegistryIds));
         testRegistryInsertions(NB_INSERTIONS);
 
-        Set<String> RegistriesId = dataStore.getAllRegistriesId();
-        Assert.assertEquals(RegistriesId.size(), NB_INSERTIONS);
         Assert.assertEquals(notifiedRegistryIds.size(), NB_INSERTIONS);
     }
 
@@ -86,16 +106,37 @@ public class DataStoreTest {
     }
 
 
-    private void testRegistryInsertions(int quantity) {
+    @Test
+    public void testRegistriesDeleteNotification() {
+        Set<String> notifiedRegistryIds = new HashSet<>();
+
+        dataStore.addListener(createDataStoreListener(notifiedRegistryIds));
+        testRegistryInsertions(NB_INSERTIONS);
+        testRegistryDeletions(NB_INSERTIONS - 1);
+
+        Assert.assertEquals(notifiedRegistryIds.size(), 1);
+    }
+
+
+    private void testRegistryDeletions(int quantity) {
         for (int index = 0; index < quantity; index++) {
-            testRegistryInsertion("id" + index);
+            testRegistryDeletion("id" + index);
         }
     }
 
 
-    private void testRegistryInsertion(String identifier) {
-        IRegistry registry = dataStore.insertRegistry(identifier);
-        Assert.assertEquals(registry, dataStore.getRegistry(identifier));
+    private void testRegistryDeletion(String identifier) {
+        IRegistry registry = dataStore.deleteRegistry(identifier);
+        assertRegistryWasDeleted(registry);
+    }
+
+    private void assertRegistryWasDeleted(IRegistry registry) {
+        try {
+            dataStore.getRegistry(registry.getIdentifier());
+        } catch (RegistryNotFoundException e) {
+            return;
+        }
+        Assert.fail();
     }
 
 
