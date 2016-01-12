@@ -58,6 +58,21 @@ public class DataStoreTest {
     }
 
 
+    private IDataStoreListener createDataStoreListener(final Set<String> notifiedRegistryIds) {
+        return new IDataStoreListener() {
+            @Override
+            public void onRegistryInserted(String registryId) {
+                notifiedRegistryIds.add(registryId);
+            }
+
+            @Override
+            public void onRegistryDeleted(String registryId) {
+                notifiedRegistryIds.remove(registryId);
+            }
+        };
+    }
+
+
     @Test
     public void testRegistriesInsert() {
         testRegistryInsertions(NB_INSERTIONS);
@@ -77,44 +92,6 @@ public class DataStoreTest {
     private void testRegistryInsertion(String identifier) {
         IRegistry registry = dataStore.insertRegistry(identifier);
         Assert.assertEquals(registry, dataStore.getRegistry(identifier));
-    }
-
-
-    @Test
-    public void testRegistriesInsertNotification() {
-        Set<String> notifiedRegistryIds = new HashSet<>();
-
-        dataStore.addListener(createDataStoreListener(notifiedRegistryIds));
-        testRegistryInsertions(NB_INSERTIONS);
-
-        Assert.assertEquals(notifiedRegistryIds.size(), NB_INSERTIONS);
-    }
-
-
-    private IDataStoreListener createDataStoreListener(final Set<String> notifiedRegistryIds) {
-        return new IDataStoreListener() {
-            @Override
-            public void onRegistryInserted(String registryId) {
-                notifiedRegistryIds.add(registryId);
-            }
-
-            @Override
-            public void onRegistryDeleted(String registryId) {
-                notifiedRegistryIds.remove(registryId);
-            }
-        };
-    }
-
-
-    @Test
-    public void testRegistriesDeleteNotification() {
-        Set<String> notifiedRegistryIds = new HashSet<>();
-
-        dataStore.addListener(createDataStoreListener(notifiedRegistryIds));
-        testRegistryInsertions(NB_INSERTIONS);
-        testRegistryDeletions(NB_INSERTIONS - 1);
-
-        Assert.assertEquals(notifiedRegistryIds.size(), 1);
     }
 
 
@@ -196,6 +173,29 @@ public class DataStoreTest {
     @Test(expected = AssertionError.class)
     public void testInsertRecordWithNullDefinition() {
         dataStore.insertRegister("ThisRegistryDoesNotExist", null);
+    }
+
+
+    @Test
+    public void testRegistriesInsertNotification() {
+        Set<String> notifiedRegistryIds = new HashSet<>();
+
+        dataStore.addListener(createDataStoreListener(notifiedRegistryIds));
+        testRegistryInsertions(NB_INSERTIONS);
+
+        Assert.assertEquals(notifiedRegistryIds.size(), NB_INSERTIONS);
+    }
+
+
+    @Test
+    public void testRegistriesDeleteNotification() {
+        Set<String> notifiedRegistryIds = new HashSet<>();
+
+        dataStore.addListener(createDataStoreListener(notifiedRegistryIds));
+        testRegistryInsertions(NB_INSERTIONS);
+        testRegistryDeletions(NB_INSERTIONS - 1);
+
+        Assert.assertEquals(notifiedRegistryIds.size(), 1);
     }
 
 
