@@ -5,4 +5,6 @@ public interface IRegistry {
     String getIdentifier();
     void insertRegister(IRecordTemplate recordTemplate);
     IRegister getRegister(String identifier);
+
+    IRegister deleteRegister(String identifier);
 }

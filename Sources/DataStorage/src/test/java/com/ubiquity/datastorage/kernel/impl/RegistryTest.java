@@ -4,12 +4,15 @@ import com.ubiquity.datastorage.kernel.RecordFactory;
 import com.ubiquity.datastorage.kernel.exceptions.NullFactoryException;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterAlreadyExistsException;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterNotFoundException;
-import com.ubiquity.datastorage.kernel.impl.Registry;
 import com.ubiquity.datastorage.kernel.interfaces.IRecordFactory;
 import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
+import com.ubiquity.datastorage.kernel.interfaces.IRegistryListener;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Kind.PRIMARY;
 import static com.ubiquity.datastorage.kernel.utils.RecordTemplateHelper.createRecordTempalte;
@@ -84,4 +87,47 @@ public class RegistryTest {
         Registry registry = createRegistry("RegistryIdentifier");
         registry.getRegister("UnknownRegisterIdentifier");
     }
+
+
+    @Test
+    public void testRegistriesInsertNotification() {
+        Set<String> notifiedRegistryIds = new HashSet<>();
+        Registry registry = createRegistry(DATA_REGISTRY_ID);
+
+        registry.addListener(createRegistryListener(notifiedRegistryIds));
+        IRecordTemplate recordTempalte = createRecordTempalte(PRIMARY);
+        registry.insertRegister(recordTempalte);
+
+        Assert.assertEquals(notifiedRegistryIds.size(), 1);
+    }
+
+
+    private IRegistryListener createRegistryListener(final Set<String> notifiedRegistryIds) {
+        return new IRegistryListener() {
+            @Override
+            public void onRegisterInserted(IRecordTemplate recordTemplate) {
+                notifiedRegistryIds.add(recordTemplate.getIdentifier());
+            }
+
+            @Override
+            public void onRegisterDeleted(String registerId) {
+                notifiedRegistryIds.remove(registerId);
+            }
+        };
+    }
+
+
+    @Test
+    public void testRegistriesDeleteNotification() {
+        Set<String> notifiedRegistryIds = new HashSet<>();
+        Registry registry = createRegistry(DATA_REGISTRY_ID);
+
+        registry.addListener(createRegistryListener(notifiedRegistryIds));
+        IRecordTemplate recordTempalte = createRecordTempalte(PRIMARY);
+        registry.insertRegister(recordTempalte);
+        registry.deleteRegister(recordTempalte.getIdentifier());
+
+        Assert.assertEquals(notifiedRegistryIds.size(), 0);
+    }
+
 }

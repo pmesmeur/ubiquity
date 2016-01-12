@@ -4,10 +4,7 @@ import com.google.common.base.Strings;
 import com.ubiquity.datastorage.kernel.exceptions.NullFactoryException;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterAlreadyExistsException;
 import com.ubiquity.datastorage.kernel.exceptions.RegisterNotFoundException;
-import com.ubiquity.datastorage.kernel.interfaces.IRecordFactory;
-import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
-import com.ubiquity.datastorage.kernel.interfaces.IRegister;
-import com.ubiquity.datastorage.kernel.interfaces.IRegistry;
+import com.ubiquity.datastorage.kernel.interfaces.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,6 +44,16 @@ public final class Registry implements IRegistry {
         }
     }
 
+    public void addListener(IRegistryListener registryListener) {
+        registryNotifier.addListener(registryListener);
+    }
+
+
+    public void removeListener(IRegistryListener registryListener) {
+        registryNotifier.removeListener(registryListener);
+    }
+
+
     @Override
     public String getIdentifier() {
         return identifier;
@@ -65,6 +72,13 @@ public final class Registry implements IRegistry {
         registryNotifier.registerInserted(recordTemplate);
     }
 
+
+    private void checkRecordTemplate(IRecordTemplate recordTemplate) {
+        assert recordTemplate != null;
+        assert !Strings.isNullOrEmpty(recordTemplate.getIdentifier());
+    }
+
+
     @Override
     public IRegister getRegister(String identifier) {
         assert identifier != null;
@@ -77,9 +91,18 @@ public final class Registry implements IRegistry {
         return result;
     }
 
-    private void checkRecordTemplate(IRecordTemplate recordTemplate) {
-        assert recordTemplate != null;
-        assert!Strings.isNullOrEmpty(recordTemplate.getIdentifier());
-    }
 
+    @Override
+    public IRegister deleteRegister(String identifier) {
+        IRegister register = registers.remove(identifier);
+
+        if (register != null) {
+            String registerIdentifier = register.getDefinition().getIdentifier();
+            registryNotifier.registerDeleted(registerIdentifier);
+        } else {
+            throw new RegisterNotFoundException(identifier);
+        }
+
+        return register;
+    }
 }
