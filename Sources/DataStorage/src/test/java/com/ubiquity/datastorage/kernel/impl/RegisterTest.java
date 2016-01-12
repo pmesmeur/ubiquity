@@ -2,10 +2,10 @@ package com.ubiquity.datastorage.kernel.impl;
 
 import com.ubiquity.datastorage.kernel.exceptions.RecordDoesNotFitTemplateException;
 import com.ubiquity.datastorage.kernel.exceptions.ValueOfPrimaryFieldAlreadyInsertedException;
-import com.ubiquity.datastorage.kernel.impl.Register;
 import com.ubiquity.datastorage.kernel.impl.indexes.IIndex;
 import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRegister;
+import com.ubiquity.datastorage.kernel.interfaces.IRegisterListener;
 import com.ubiquity.datastorage.kernel.utils.RecordTemplateHelper;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,7 +14,9 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import static com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate.Kind.PRIMARY;
 
@@ -149,4 +151,42 @@ public class RegisterTest {
         register.insert(recordFields);
     }
 
+
+    @Test
+    public void testRegistriesInsertNotification() {
+        Set<String> notifiedRegistryIds = new HashSet<>();
+        Register register = createRegister(RecordTemplateHelper.createPrimaryOptionalRecordTemplate());
+        register.addListener(createRegisterListener(notifiedRegistryIds));
+
+        Map<String, Object> recordFields = createPrimaryOptionalRecordFields();
+        register.insert(recordFields);
+        Assert.assertEquals(notifiedRegistryIds.size(), 1);
+
+        try {
+            register.insert(recordFields);
+            Assert.fail();
+        } catch (Exception e) {
+            Assert.assertEquals(notifiedRegistryIds.size(), 1);
+        }
+
+    }
+
+
+    private IRegisterListener createRegisterListener(final Set<String> notifiedRegistryIds) {
+        return new IRegisterListener() {
+            @Override
+            public void onRecordInserted(Map<String, Object> recordFields) {
+                notifiedRegistryIds.add(new Integer(recordFields.hashCode()).toString());
+            }
+
+            @Override
+            public void onRecordUpdated(Map<String, Object> recordFields) {
+            }
+
+            @Override
+            public void onRecordDeleted(Map<String, Object> recordFields) {
+                notifiedRegistryIds.remove(new Integer(recordFields.hashCode()).toString());
+            }
+        };
+    }
 }

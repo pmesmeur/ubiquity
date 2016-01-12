@@ -5,6 +5,7 @@ import com.ubiquity.datastorage.kernel.impl.indexes.IndexFactory;
 import com.ubiquity.datastorage.kernel.interfaces.IFieldTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRecordTemplate;
 import com.ubiquity.datastorage.kernel.interfaces.IRegister;
+import com.ubiquity.datastorage.kernel.interfaces.IRegisterListener;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,10 +18,7 @@ public class Register implements IRegister {
     private final IRecordTemplate recordTemplate;
     private final Collection<Record> entries;
     private final Map<String, IIndex> indexes;
-
-    public static Register create(IRecordTemplate recordTemplate) {
-        return new Register(recordTemplate);
-    }
+    private final RegisterNotifier registerNotifier;
 
     private Register(IRecordTemplate recordTemplate) {
         RecordTemplateValidator.validate(recordTemplate);
@@ -28,6 +26,11 @@ public class Register implements IRegister {
         this.recordTemplate = recordTemplate; /// TODO: make a copy
         this.entries = new ArrayList<Record>();
         this.indexes = buildIndexes(recordTemplate);
+        registerNotifier = new RegisterNotifier();
+    }
+
+    public static Register create(IRecordTemplate recordTemplate) {
+        return new Register(recordTemplate);
     }
 
     private static Map<String, IIndex> buildIndexes(IRecordTemplate recordTemplate) {
@@ -48,17 +51,31 @@ public class Register implements IRegister {
         }
     }
 
+
+    public void addListener(IRegisterListener registerListener) {
+        registerNotifier.addListener(registerListener);
+    }
+
+
+    public void removeListener(IRegisterListener registerListener) {
+        registerNotifier.removeListener(registerListener);
+    }
+
+
     @Override
     public IRecordTemplate getDefinition() {
         return recordTemplate;
     }
+
 
     @Override
     public void insert(Map<String, Object> recordFields) {
         Record record = new Record(recordTemplate, recordFields);
         populateIndexes(recordFields, record);
         entries.add(record);
+        registerNotifier.recordInserted(recordFields);
     }
+
 
     private void populateIndexes(Map<String, Object> recordFields, Record record) {
         try {
@@ -71,11 +88,13 @@ public class Register implements IRegister {
         }
     }
 
+
     private void tryPopulateIndexes(Map<String, Object> recordFields, Record record) {
         for (Map.Entry<String, IIndex> indexEntry : indexes.entrySet()) {
             populateIndex(indexEntry, recordFields, record);
         }
     }
+
 
     private void populateIndex(Map.Entry<String, IIndex> indexEntry,
             Map<String, Object> recordFields, Record record) {

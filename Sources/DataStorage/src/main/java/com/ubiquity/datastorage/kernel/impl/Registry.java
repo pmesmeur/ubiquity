@@ -44,6 +44,7 @@ public final class Registry implements IRegistry {
         }
     }
 
+
     public void addListener(IRegistryListener registryListener) {
         registryNotifier.addListener(registryListener);
     }
